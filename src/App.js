@@ -7,7 +7,8 @@ import { reject } from "q";
 class App extends React.Component {
   state = {
     image: "",
-    user: ""
+    user: "",
+    landmark: ""
   };
 
   // JW - This function is used to upload pictures via camera or photo storage
