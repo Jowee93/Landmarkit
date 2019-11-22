@@ -1,0 +1,7 @@
+{
+  "appId": "com.camera.webapp",
+  "appName": "landmark_pwa",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "build"
+}
