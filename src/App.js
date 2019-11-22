@@ -4,18 +4,12 @@ import "./App.css";
 import { resolve } from "dns";
 import { reject } from "q";
 
-import {
-  Plugins,
-  CameraResultType,
-  Camera,
-  CameraSource
-} from "@capacitor/core";
-
 class App extends React.Component {
   state = {
     image: ""
   };
 
+  // JW - This function is used to upload pictures via camera or photo storage
   upload = Promise => {
     return new Promise(async (resolve, reject) => {
       const filePicker = document.querySelector("input");
@@ -55,7 +49,6 @@ class App extends React.Component {
             onChange={() => this.upload()}
           ></input>
           <img src={this.image} />
-          <button onClick={this.takephoto}>Take Photo</button>
         </header>
       </div>
     );
