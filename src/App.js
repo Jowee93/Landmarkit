@@ -3,6 +3,8 @@ import logo from "./logo.svg";
 import "./App.css";
 import { resolve } from "dns";
 import { reject } from "q";
+import { Route } from "react-router-dom";
+import LandingPage from "./pages/landingPage";
 
 class App extends React.Component {
   state = {
@@ -32,7 +34,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
+        {/* <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
             Edit <code>src/App.js</code> and save to reload.
@@ -51,7 +53,13 @@ class App extends React.Component {
             onChange={() => this.upload()}
           ></input>
           <img src={this.image} />
-        </header>
+        </header> */}
+        <Route
+          path="/"
+          component={props => {
+            return <LandingPage {...props} />;
+          }}
+        />
       </div>
     );
   }
