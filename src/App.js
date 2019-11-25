@@ -1,8 +1,10 @@
 import React from "react";
 import logo from "./logo.svg";
-import "./App.css";
+import "./App.css"
 import { resolve } from "dns";
 import { reject } from "q";
+import FunModal from './components/funModal';
+import GenModal from './components/genModal';
 
 class App extends React.Component {
   state = {
@@ -51,6 +53,12 @@ class App extends React.Component {
             onChange={() => this.upload()}
           ></input>
           <img src={this.image} />
+          <br />
+          <div className="App-buttons">
+            <GenModal />
+            <br />
+            <FunModal />
+          </div>
         </header>
       </div>
     );

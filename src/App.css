@@ -15,8 +15,15 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  flex-wrap: wrap;
 }
 
 .App-link {
   color: #09d3ac;
+}
+
+.App-buttons {
+  position: absolute;
+  right: 5%;
+  overflow: hidden;
 }
