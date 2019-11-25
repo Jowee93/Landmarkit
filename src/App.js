@@ -3,18 +3,12 @@ import logo from "./logo.svg";
 import "./App.css"
 import { resolve } from "dns";
 import { reject } from "q";
-<<<<<<< HEAD
 import NavbarComponent from "./components/NavbarComponent";
 import FunModal from './components/funModal';
 import GenModal from './components/genModal';
-=======
 import { Route } from "react-router-dom";
 import LandingPage from "./pages/landingPage";
-<<<<<<< HEAD
->>>>>>> Add API to capture & upload image and post request to flask server
-=======
 import PhotoPage from "./pages/photoPage";
->>>>>>> Add photopage
 
 class App extends React.Component {
   state = {
@@ -63,7 +57,6 @@ class App extends React.Component {
             onChange={() => this.upload()}
           ></input>
           <img src={this.image} />
-<<<<<<< HEAD
           <br />
           <div className="App-buttons">
             <GenModal />
@@ -72,7 +65,6 @@ class App extends React.Component {
           </div>
         </header>
         <NavbarComponent></NavbarComponent>
-=======
         </header> */}
         <Route
           path="/"
@@ -81,16 +73,12 @@ class App extends React.Component {
             return <LandingPage {...props} />;
           }}
         />
-<<<<<<< HEAD
->>>>>>> Add API to capture & upload image and post request to flask server
-=======
         <Route
           path="/photo"
           component={props => {
             return <PhotoPage {...props} />;
           }}
         />
->>>>>>> Add photopage
       </div>
     );
   }
