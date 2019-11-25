@@ -3,6 +3,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import { resolve } from "dns";
 import { reject } from "q";
+import NavbarComponent from "./components/NavbarComponent";
 
 class App extends React.Component {
   state = {
@@ -52,6 +53,7 @@ class App extends React.Component {
           ></input>
           <img src={this.image} />
         </header>
+        <NavbarComponent></NavbarComponent>
       </div>
     );
   }
