@@ -5,6 +5,7 @@ import { resolve } from "dns";
 import { reject } from "q";
 import { Route } from "react-router-dom";
 import LandingPage from "./pages/landingPage";
+import PhotoPage from "./pages/photoPage";
 
 class App extends React.Component {
   state = {
@@ -56,8 +57,15 @@ class App extends React.Component {
         </header> */}
         <Route
           path="/"
+          exact
           component={props => {
             return <LandingPage {...props} />;
+          }}
+        />
+        <Route
+          path="/photo"
+          component={props => {
+            return <PhotoPage {...props} />;
           }}
         />
       </div>
