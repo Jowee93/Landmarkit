@@ -23,10 +23,11 @@ class LandingPage extends React.Component {
 
     axios({
       method: "POST",
-      url: "http://192.168.0.167:5001/api/v1/users/json",
+      url: "http://localhost:5001/api/v1/users/json",
       data: formData
     })
       .then(response => {
+        console.log(response);
         if (response.data.success) {
           this.setState({
             currentImage: ""
@@ -54,13 +55,6 @@ class LandingPage extends React.Component {
           <Button type="submit" color="primary">
             Add
           </Button>
-          {/* <button
-            onClick={this.changecolor}
-            id="testbutton"
-            style={{ color: "red" }}
-          >
-            test button
-          </button> */}
         </Form>
       </div>
     );

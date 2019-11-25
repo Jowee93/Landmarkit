@@ -10,7 +10,11 @@ import GenModal from './components/genModal';
 =======
 import { Route } from "react-router-dom";
 import LandingPage from "./pages/landingPage";
+<<<<<<< HEAD
 >>>>>>> Add API to capture & upload image and post request to flask server
+=======
+import PhotoPage from "./pages/photoPage";
+>>>>>>> Add photopage
 
 class App extends React.Component {
   state = {
@@ -72,11 +76,21 @@ class App extends React.Component {
         </header> */}
         <Route
           path="/"
+          exact
           component={props => {
             return <LandingPage {...props} />;
           }}
         />
+<<<<<<< HEAD
 >>>>>>> Add API to capture & upload image and post request to flask server
+=======
+        <Route
+          path="/photo"
+          component={props => {
+            return <PhotoPage {...props} />;
+          }}
+        />
+>>>>>>> Add photopage
       </div>
     );
   }
