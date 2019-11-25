@@ -6,6 +6,9 @@ import { reject } from "q";
 import NavbarComponent from "./components/NavbarComponent";
 import FunModal from './components/funModal';
 import GenModal from './components/genModal';
+import { Route } from "react-router-dom";
+import LandingPage from "./pages/landingPage";
+import PhotoPage from "./pages/photoPage";
 
 class App extends React.Component {
   state = {
@@ -35,7 +38,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
+        {/* <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
             Edit <code>src/App.js</code> and save to reload.
@@ -62,6 +65,20 @@ class App extends React.Component {
           </div>
         </header>
         <NavbarComponent></NavbarComponent>
+        </header> */}
+        <Route
+          path="/"
+          exact
+          component={props => {
+            return <LandingPage {...props} />;
+          }}
+        />
+        <Route
+          path="/photo"
+          component={props => {
+            return <PhotoPage {...props} />;
+          }}
+        />
       </div>
     );
   }
