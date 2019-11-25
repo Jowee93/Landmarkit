@@ -6,10 +6,6 @@ import * as serviceWorker from "./serviceWorker";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { defineCustomElements } from "@ionic/pwa-elements/loader";
 import { BrowserRouter as Router } from "react-router-dom";
-<<<<<<< HEAD
-=======
-import "bootstrap/dist/css/bootstrap.min.css";
->>>>>>> Add API to capture & upload image and post request to flask server
 
 ReactDOM.render(
   <Router>

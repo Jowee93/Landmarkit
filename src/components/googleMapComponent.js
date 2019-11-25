@@ -59,5 +59,5 @@ class GoogleMapComponent extends React.Component {
 }
 
 export default GoogleApiWrapper({
-  apiKey: "AIzaSyCAXfhuexrKg2ioMAlnsRcWahLV9Hq9nZY"
+  apiKey: ""
 })(GoogleMapComponent);
