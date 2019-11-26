@@ -18,6 +18,10 @@ export default function ImageGalleryComponent() {
     setViewerIsOpen(false);
   };
 
+  const test = () => {
+    console.log("Hello");
+  };
+
   return (
     <div>
       <Gallery photos={photos} onClick={openLightbox} />
@@ -25,8 +29,9 @@ export default function ImageGalleryComponent() {
         {viewerIsOpen ? (
           <Modal onClose={closeLightbox}>
             <Carousel
+              onClickImage={test}
               currentIndex={currentImage}
-              views={photos.map(x => ({
+              views={photos.map((x, index) => ({
                 ...x,
                 srcset: x.srcSet,
                 caption: x.title

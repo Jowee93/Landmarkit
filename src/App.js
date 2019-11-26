@@ -10,6 +10,7 @@ import { Route } from "react-router-dom";
 import LandingPage from "./pages/landingPage";
 import PhotoPage from "./pages/photoPage";
 import MainPage from "./pages/mainPage";
+import MyProfile from "./pages/myProfile";
 
 class App extends React.Component {
   state = {
@@ -84,6 +85,12 @@ class App extends React.Component {
           path="/main"
           component={props => {
             return <MainPage {...props} />;
+          }}
+        />
+        <Route
+          path="/myprofile"
+          component={props => {
+            return <MyProfile {...props} />;
           }}
         />
       </div>
