@@ -1,5 +1,6 @@
 import React from "react";
 import { Map, GoogleApiWrapper, InfoWindow, Marker } from "google-maps-react";
+import { Container, Row, Col } from "reactstrap";
 
 const mapStyles = {
   width: "100%",
@@ -32,28 +33,36 @@ class GoogleMapComponent extends React.Component {
 
   render() {
     return (
-      <div style={{ position: "relative", width: "100vw", height: "30vh" }}>
-        <Map
-          google={this.props.google}
-          zoom={16}
-          style={mapStyles}
-          initialCenter={{ lat: 3.1574419999999996, lng: 101.711609 }}
+      <Container className="d-flex justify-content-center">
+        <div
+          style={{
+            position: "relative",
+            width: "100vw",
+            height: "50vh"
+          }}
         >
-          <Marker
-            onClick={this.onMarkerClick}
-            name={"Kenyatta International Convention Centre"}
-          />
-          <InfoWindow
-            marker={this.state.activeMarker}
-            visible={this.state.showingInfoWindow}
-            onClose={this.onClose}
+          <Map
+            google={this.props.google}
+            zoom={16}
+            style={mapStyles}
+            initialCenter={{ lat: 3.1574419999999996, lng: 101.711609 }}
           >
-            <div>
-              <h4>{this.state.selectedPlace.name}</h4>
-            </div>
-          </InfoWindow>
-        </Map>
-      </div>
+            <Marker
+              onClick={this.onMarkerClick}
+              name={"Kenyatta International Convention Centre"}
+            />
+            <InfoWindow
+              marker={this.state.activeMarker}
+              visible={this.state.showingInfoWindow}
+              onClose={this.onClose}
+            >
+              <div>
+                <h4>{this.state.selectedPlace.name}</h4>
+              </div>
+            </InfoWindow>
+          </Map>
+        </div>
+      </Container>
     );
   }
 }
