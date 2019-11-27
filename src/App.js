@@ -1,14 +1,15 @@
 import React from "react";
 import logo from "./logo.svg";
-import "./App.css"
+import "./App.css";
 import { resolve } from "dns";
 import { reject } from "q";
 import NavbarComponent from "./components/NavbarComponent";
-import FunModal from './components/funModal';
-import GenModal from './components/genModal';
+import FunModal from "./components/funModal";
+import GenModal from "./components/genModal";
 import { Route } from "react-router-dom";
 import LandingPage from "./pages/landingPage";
-import PhotoPage from "./pages/photoPage";
+// import PhotoPage from "./pages/photoPage";
+import Notification from "./components/inbox";
 
 class App extends React.Component {
   state = {
@@ -73,10 +74,16 @@ class App extends React.Component {
             return <LandingPage {...props} />;
           }}
         />
-        <Route
+        {/* <Route
           path="/photo"
           component={props => {
             return <PhotoPage {...props} />;
+          }}
+        /> */}
+        <Route
+          path="/inbox"
+          component={props => {
+            return <Notification {...props} />;
           }}
         />
       </div>
