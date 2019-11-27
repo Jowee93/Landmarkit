@@ -53,9 +53,7 @@ export default function PhotoBottomNav() {
     bottom: false,
     right: false
   });
-  const [show, setShow] = React.useState({
-    show: false
-  });
+  const [show, setShow] = React.useState(false);
 
   const toggleDrawer = (side, open) => event => {
     if (
@@ -184,12 +182,12 @@ export default function PhotoBottomNav() {
       >
         {fullList("bottom")}
       </Drawer>
-      <Modal show={show.show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose}>
         <ModalHeader closeButton>
-          <ModalTitle>Location</ModalTitle>
+          <ModalTitle>Google Maps !</ModalTitle>
         </ModalHeader>
         <ModalBody>
-          <h4>Title</h4>
+          <h4>Places Nearby</h4>
           <GoogleMapComponent></GoogleMapComponent>
         </ModalBody>
         <ModalFooter>

@@ -16,7 +16,7 @@ const profilePicStyle = {
 };
 
 const bodyStyle = {
-  height: "80vh",
+  height: "75vh",
   borderTopLeftRadius: "10%",
   borderTopRightRadius: "10%",
   backgroundColor: "white"

@@ -33,18 +33,17 @@ class GoogleMapComponent extends React.Component {
 
   render() {
     return (
-      <Container className="d-flex justify-content-center m-3">
+      <Container className="d-flex justify-content-center">
         <div
           style={{
             position: "relative",
-            width: "75vw",
-            height: "10vh",
-            borderRadius: "50%"
+            width: "100vw",
+            height: "50vh"
           }}
         >
           <Map
             google={this.props.google}
-            zoom={8}
+            zoom={16}
             style={mapStyles}
             initialCenter={{ lat: 3.1574419999999996, lng: 101.711609 }}
           >
