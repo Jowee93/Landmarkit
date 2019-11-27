@@ -11,6 +11,8 @@ import LandingPage from "./pages/landingPage";
 import PhotoPage from "./pages/photoPage";
 import MainPage from "./pages/mainPage";
 import MyProfile from "./pages/myProfile";
+// import PhotoPage from "./pages/photoPage";
+import Notification from "./components/inbox";
 
 class App extends React.Component {
   state = {
@@ -75,10 +77,16 @@ class App extends React.Component {
             return <LandingPage {...props} />;
           }}
         />
-        <Route
+        {/* <Route
           path="/photo"
           component={props => {
             return <PhotoPage {...props} />;
+          }}
+        /> */}
+        <Route
+          path="/inbox"
+          component={props => {
+            return <Notification {...props} />;
           }}
         />
         <Route

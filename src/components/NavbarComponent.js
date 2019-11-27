@@ -7,14 +7,17 @@ import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import SearchIcon from "@material-ui/icons/Search";
 import PersonAddIcon from "@material-ui/icons/PersonAdd";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
+import Button from "@material-ui/core/Button";
+import UploadButtons from "./uploadComponent";
 
 const useStyles = makeStyles({
   root: {
-    width: "100%"
+    width: "100%",
+    position: "fixed",
+    bottom: 0
   }
 });
 
-// class NavbarComponent extends React.Component {
 export default function LabelBottomNavigation() {
   const classes = useStyles();
   const [value, setValue] = React.useState("recents");
@@ -24,7 +27,7 @@ export default function LabelBottomNavigation() {
   };
 
   return (
-    <>
+    <div>
       <BottomNavigation
         value={value}
         onChange={handleChange}
@@ -35,27 +38,26 @@ export default function LabelBottomNavigation() {
           value="Profile"
           icon={<AccountCircleIcon />}
         />
+
         <BottomNavigationAction
           label="Search"
           value="search"
           icon={<SearchIcon />}
         />
-        <BottomNavigationAction
-          label="Upload"
-          value="Upload"
-          icon={<AddCircleIcon />}
-        />
+        <UploadButtons></UploadButtons>
+
         <BottomNavigationAction
           label="Add"
           value="Add"
           icon={<PersonAddIcon />}
         />
+
         <BottomNavigationAction
           label="Notifications"
           value="notifications"
           icon={<NotificationsIcon />}
         />
       </BottomNavigation>
-    </>
+    </div>
   );
 }
