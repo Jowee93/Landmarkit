@@ -14,12 +14,9 @@ const bottomContainerStyle = {
   bottom: "0",
   position: "fixed"
 };
+import NavBarComponent from "../components/NavbarComponent";
 
 class PhotoPage extends React.Component {
-  state = {
-    currentImage: ""
-  };
-
   render() {
     return (
       <div>
@@ -29,6 +26,11 @@ class PhotoPage extends React.Component {
         <Container className="mb-3" style={bottomContainerStyle}>
           <PhotoBottomNav></PhotoBottomNav>
         </Container>
+        <h1>PhotoPage</h1>
+
+        <GoogleMapComponent />
+        <PhotoComponent />
+        <NavBarComponent />
       </div>
     );
   }
