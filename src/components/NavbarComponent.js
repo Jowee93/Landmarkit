@@ -18,7 +18,7 @@ const useStyles = makeStyles({
   }
 });
 
-export default function LabelBottomNavigation() {
+export default function NavbarComponent() {
   const classes = useStyles();
   const [value, setValue] = React.useState("recents");
 

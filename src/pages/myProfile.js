@@ -23,6 +23,10 @@ const bodyStyle = {
 };
 
 class MyProfile extends React.Component {
+  state = {
+    currentImage: ""
+  };
+
   render() {
     return (
       <div>
@@ -57,6 +61,7 @@ class MyProfile extends React.Component {
                 <div className="">
                   <img style={profilePicStyle} src={ninja_avatar}></img>
                   <p>@JoWee</p>
+                  <img src={this.props.location.state.currentImage}></img>
                 </div>
 
                 <SettingsIcon />
