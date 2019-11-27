@@ -77,12 +77,12 @@ class App extends React.Component {
             return <LandingPage {...props} />;
           }}
         />
-        {/* <Route
+        <Route
           path="/photo"
           component={props => {
             return <PhotoPage {...props} />;
           }}
-        /> */}
+        />
         <Route
           path="/inbox"
           component={props => {

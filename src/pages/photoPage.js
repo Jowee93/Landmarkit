@@ -3,6 +3,7 @@ import React from "react";
 import PhotoComponent from "../components/photoComponent";
 import { Container, Row, Col } from "reactstrap";
 import PhotoBottomNav from "../components/photoBottomNav";
+import NavBarComponent from "../components/NavbarComponent";
 
 const containerStyle = {
   height: "100%",
@@ -14,9 +15,6 @@ const bottomContainerStyle = {
   bottom: "0",
   position: "fixed"
 };
-import NavBarComponent from "../components/NavbarComponent";
-
-import NavBarComponent from "../components/NavbarComponent";
 
 class PhotoPage extends React.Component {
   render() {
@@ -30,7 +28,7 @@ class PhotoPage extends React.Component {
         </Container>
         <h1>PhotoPage</h1>
 
-        <GoogleMapComponent />
+        {/* <GoogleMapComponent /> */}
         <PhotoComponent />
         <NavBarComponent />
       </div>
