@@ -16,6 +16,8 @@ const bottomContainerStyle = {
 };
 import NavBarComponent from "../components/NavbarComponent";
 
+import NavBarComponent from "../components/NavbarComponent";
+
 class PhotoPage extends React.Component {
   render() {
     return (
