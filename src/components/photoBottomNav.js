@@ -43,7 +43,7 @@ const buttonStyle = {
 };
 
 // class NavbarComponent extends React.Component {
-export default function PhotoBottomNav() {
+export default function PhotoBottomNav(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [value, setValue] = React.useState("recents");
@@ -96,6 +96,7 @@ export default function PhotoBottomNav() {
                 <p className="card-text">
                   With supporting text below as a natural lead-in to additional
                   content.
+                  {props.photodescription.description}
                 </p>
                 <a href="/" className="btn btn-primary">
                   Go somewhere

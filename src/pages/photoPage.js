@@ -16,6 +16,10 @@ const bottomContainerStyle = {
 };
 
 class PhotoPage extends React.Component {
+  state = {
+    description: this.props.location.state.description
+  };
+
   render() {
     return (
       <div>
@@ -25,6 +29,9 @@ class PhotoPage extends React.Component {
         <Container className="mb-3" style={bottomContainerStyle}>
           <NavBarComponent />
           <PhotoBottomNav></PhotoBottomNav>
+          <PhotoBottomNav
+            photodescription={this.state.description}
+          ></PhotoBottomNav>
         </Container>
       </div>
     );

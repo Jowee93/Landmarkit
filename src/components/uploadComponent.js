@@ -20,11 +20,12 @@ const useStyles = makeStyles(theme => ({
 
 export default function UploadButtons() {
   const classes = useStyles();
-  const [currentImage, setcurrentImage] = React.useState("");
+  const [currentImage, setCurrentImage] = React.useState("");
+  const [description, setDescription] = React.useState("");
   const history = useHistory();
 
-  const handleSubmit = e => {
-    setcurrentImage(URL.createObjectURL(e.target.files[0]));
+  const handleSubmit = async e => {
+    setCurrentImage(URL.createObjectURL(e.target.files[0]));
 
     e.preventDefault();
 
@@ -33,24 +34,31 @@ export default function UploadButtons() {
     formData.append("user_image", e.target.files[0]);
     formData.append("user_id", 31);
 
-    axios({
+    e.persist();
+
+    await axios({
       method: "POST",
       url: "http://localhost:5001/api/v1/users/json",
       data: formData
     })
       .then(response => {
-        console.log(response);
+        console.log(response.data[0]);
+        setDescription(response.data[0].description);
+        if (response) {
+          history.push({
+            pathname: "/photo",
+            state: {
+              currentImage: URL.createObjectURL(e.target.files[0]),
+              description: response.data[0]
+            }
+          });
+        } else {
+          console.log("Failed");
+        }
       })
       .catch(error => {
         console.log(error.response);
       });
-
-    return history.push({
-      pathname: "/photo",
-      state: {
-        currentImage: URL.createObjectURL(e.target.files[0])
-      }
-    });
   };
 
   return (
