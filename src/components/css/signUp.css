@@ -1,34 +1,33 @@
-.App {
-  text-align: center;
+.paper {
+    margin-top: spacing(8);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.App-logo {
-  height: 40vmin;
+.avatar {
+margin: spacing(1);
+background-color: yellow;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-  flex-wrap: wrap;
+.form {
+width: 100%;
+margin-top: spacing(3);
 }
 
-.App-link {
-  color: #09d3ac;
+.submit {
+margin: spacing(3, 0, 2);
 }
 
-.App-buttons {
-  position: absolute;
-  right: 5%;
-  overflow: hidden;
+.iconRoot {
+    text-align: center;
 }
 
-.App-body {
+.imageIcon {
+    height: 100%;
+}
+
+.body {
 background: -webkit-linear-gradient(-45deg, #499CEA44 60%, #798EEA 40%);
   background: -o-linear-gradient(-45deg, #499CEA44 60%, #798EEA 40%);
   background: -ms-linear-gradient(-45deg, #499CEA44 60%, #798EEA 40%);
@@ -37,5 +36,5 @@ background: -webkit-linear-gradient(-45deg, #499CEA44 60%, #798EEA 40%);
   background: linear-gradient(70deg, #499CEA44 60%, #798EEA 40%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#499CEA44', endColorstr='#798EEA', GradientType=1 );
   z-index: 1;
-
 }
+

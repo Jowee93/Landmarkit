@@ -13,6 +13,8 @@ import MainPage from "./pages/mainPage";
 import MyProfile from "./pages/myProfile";
 // import PhotoPage from "./pages/photoPage";
 import Notification from "./components/inbox";
+import SignUp from "./components/signUp"
+import HomePage from "./pages/inOrOutPage"
 
 class App extends React.Component {
   state = {
@@ -41,6 +43,7 @@ class App extends React.Component {
 
   render() {
     return (
+      <body className="App-body">
       <div className="App">
         {/* <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
@@ -70,13 +73,13 @@ class App extends React.Component {
         </header>
         <NavbarComponent></NavbarComponent>
         </header> */}
-        <Route
+        {/* <Route
           path="/"
           exact
           component={props => {
             return <LandingPage {...props} />;
           }}
-        />
+        /> */}
         <Route
           path="/photo"
           component={props => {
@@ -101,7 +104,9 @@ class App extends React.Component {
             return <MyProfile {...props} />;
           }}
         />
+        <HomePage />
       </div>
+      </body>
     );
   }
 }
