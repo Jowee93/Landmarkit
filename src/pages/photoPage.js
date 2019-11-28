@@ -1,5 +1,4 @@
 import React from "react";
-
 import PhotoComponent from "../components/photoComponent";
 import { Container, Row, Col } from "reactstrap";
 import PhotoBottomNav from "../components/photoBottomNav";
@@ -8,7 +7,7 @@ import NavBarComponent from "../components/NavbarComponent";
 const containerStyle = {
   height: "100%",
   backgroundColor: "black",
-  padding: "10vh 0 10vh 0"
+  padding: "22vh 0 22vh 0"
 };
 
 const bottomContainerStyle = {
@@ -24,13 +23,9 @@ class PhotoPage extends React.Component {
           <PhotoComponent />
         </Container>
         <Container className="mb-3" style={bottomContainerStyle}>
+          <NavBarComponent />
           <PhotoBottomNav></PhotoBottomNav>
         </Container>
-        <h1>PhotoPage</h1>
-
-        {/* <GoogleMapComponent /> */}
-        <PhotoComponent />
-        <NavBarComponent />
       </div>
     );
   }

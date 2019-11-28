@@ -77,9 +77,9 @@ export default function PhotoBottomNav() {
       <Container style={{ height: "35vh" }}>
         <h1
           style={{
-            position: "fixed",
+            position: "absolute",
             display: "block",
-            zIndex: "10",
+            Index: "10",
             backgroundColor: "white",
             width: "100%"
           }}
