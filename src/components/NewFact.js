@@ -1,40 +1,48 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
-
+import Modal from "react-bootstrap/Modal";
 const useStyles = makeStyles(theme => ({
-  root: {
-    "& > *": {
-      margin: theme.spacing(1)
-    }
+  container: {
+    display: "block",
+    height: "100vh"
+  },
+  textField: {
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(1),
+    width: "100%"
   }
 }));
 
-export default function OutlinedButtons() {
+export default function MultilineTextFields() {
   const classes = useStyles();
+  const [value, setValue] = React.useState("Controlled");
+
+  const handleChange = event => {
+    setValue(event.target.value);
+  };
 
   return (
-    <div className={classes.container}>
+    <form className={classes.container} noValidate autoComplete="off">
       <div>
         <TextField
-          id="standard-full-width"
-          label="Label"
-          style={{ margin: 8 }}
-          placeholder="Placeholder"
-          helperText="Full width!"
+          id="outlined-multiline-static"
+          label="Fun Fact !"
           fullWidth
+          multiline
+          rows="10"
+          placeholder="Share your facts !"
+          className={classes.textField}
           margin="normal"
-          InputLabelProps={{
-            shrink: true
-          }}
+          variant="outlined"
         />
-        <div className={classes.root}>
-          <Button variant="outlined" color="secondary">
-            Add New Fact
-          </Button>
-        </div>
       </div>
-    </div>
+      <div>
+        <Button variant="outlined" color="primary">
+          Add new fact
+        </Button>
+      </div>
+    </form>
   );
 }

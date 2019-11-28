@@ -12,12 +12,9 @@ import PhotoPage from "./pages/photoPage";
 import MainPage from "./pages/mainPage";
 import MyProfile from "./pages/myProfile";
 import Notification from "./components/inbox";
-<<<<<<< HEAD
-import SignUp from "./components/signUp"
-import HomePage from "./pages/inOrOutPage"
-=======
+import SignUp from "./components/signUp";
+import HomePage from "./pages/inOrOutPage";
 import NewFact from "./components/NewFact";
->>>>>>> add new features
 
 class App extends React.Component {
   state = {
@@ -47,8 +44,8 @@ class App extends React.Component {
   render() {
     return (
       <body className="App-body">
-      <div className="App">
-        {/* <header className="App-header">
+        <div className="App">
+          {/* <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
             Edit <code>src/App.js</code> and save to reload.
@@ -76,45 +73,44 @@ class App extends React.Component {
         </header>
         <NavbarComponent></NavbarComponent>
         </header> */}
-        {/* <Route
+          {/* <Route
           path="/"
           exact
           component={props => {
             return <LandingPage {...props} />;
           }}
         /> */}
-        <Route
-          path="/photo"
-          component={props => {
-            return <PhotoPage {...props} />;
-          }}
-        />
-        <Route
-          path="/inbox"
-          component={props => {
-            return <Notification {...props} />;
-          }}
-        />
-        <Route
-          path="/main"
-          component={props => {
-            return <MainPage {...props} />;
-          }}
-        />
-        <Route
-          path="/myprofile"
-          component={props => {
-            return <MyProfile {...props} />;
-          }}
-        />
-        <HomePage />
-        <Route
-          path="/newfact"
-          component={props => {
-            return <NewFact {...props} />;
-          }}
-        />
-      </div>
+          <Route
+            path="/photo"
+            component={props => {
+              return <PhotoPage {...props} />;
+            }}
+          />
+          <Route
+            path="/inbox"
+            component={props => {
+              return <Notification {...props} />;
+            }}
+          />
+          <Route
+            path="/main"
+            component={props => {
+              return <MainPage {...props} />;
+            }}
+          />
+          <Route
+            path="/myprofile"
+            component={props => {
+              return <MyProfile {...props} />;
+            }}
+          />
+          <Route
+            path="/newfact"
+            component={props => {
+              return <NewFact {...props} />;
+            }}
+          />
+        </div>
       </body>
     );
   }
