@@ -13,20 +13,6 @@ export default function ImageGalleryComponent() {
   const [images, setImages] = useState([]);
   const history = useHistory();
 
-  useEffect(() => {
-    // axios({
-    //   method: "GET",
-    //   url: "http://192.168.1.16:5001/api/v1/users/test"
-    // })
-    //   .then(response => {
-    //     console.log(response.data);
-    //     setImages(response.data);
-    //   })
-    //   .catch(error => {
-    //     console.log(error.response);
-    //   });
-  }, []);
-
   const openLightbox = useCallback((event, { photo, index }) => {
     setCurrentImage(index);
     setCurrentImage(photo.id);
@@ -48,6 +34,22 @@ export default function ImageGalleryComponent() {
     setCurrentImage(0);
     setViewerIsOpen(false);
   };
+
+  useEffect(() => {
+    console.log("Hello");
+    // $("img").addClass("GalleryImage");
+    // axios({
+    //   method: "GET",
+    //   url: "http://192.168.1.16:5001/api/v1/users/test"
+    // })
+    //   .then(response => {
+    //     console.log(response.data);
+    //     setImages(response.data);
+    //   })
+    //   .catch(error => {
+    //     console.log(error.response);
+    //   });
+  }, []);
 
   return (
     <div>

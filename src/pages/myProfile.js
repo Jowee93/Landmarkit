@@ -152,7 +152,7 @@ class MyProfile extends React.Component {
                   className="m-3"
                   id="outlined-multiline-static"
                   label="Biography"
-                  rowMax="4"
+                  rowmax="4"
                   variant="outlined"
                   color="secondary"
                   value={this.state.description}
