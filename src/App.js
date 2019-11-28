@@ -12,15 +12,9 @@ import PhotoPage from "./pages/photoPage";
 import MainPage from "./pages/mainPage";
 import MyProfile from "./pages/myProfile";
 import Notification from "./components/inbox";
-<<<<<<< HEAD
 import SignUp from "./components/signUp";
 import HomePage from "./pages/inOrOutPage";
 import NewFact from "./components/NewFact";
-=======
-import SignUp from "./components/signUp"
-import HomePage from "./pages/inOrOutPage"
-import SearchPage from "./pages/searchPage";
->>>>>>> Add search page
 
 class App extends React.Component {
   state = {
@@ -117,38 +111,6 @@ class App extends React.Component {
             }}
           />
         </div>
-        <Route
-          path="/photo"
-          component={props => {
-            return <PhotoPage {...props} />;
-          }}
-        />
-        <Route
-          path="/inbox"
-          component={props => {
-            return <Notification {...props} />;
-          }}
-        />
-        <Route
-          path="/main"
-          component={props => {
-            return <MainPage {...props} />;
-          }}
-        />
-        <Route
-          path="/myprofile"
-          component={props => {
-            return <MyProfile {...props} />;
-          }}
-        />
-        <HomePage />
-        <Route
-          path="/search"
-          component={props => {
-            return <SearchPage {...props} />;
-          }}
-        />
-      </div>
       </body>
     );
   }

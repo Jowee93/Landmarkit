@@ -62,6 +62,8 @@ export default function NavbarComponent() {
         />
 
         <BottomNavigationAction
+          component={Link}
+          to="/inbox"
           label="Notifications"
           value="notifications"
           icon={<NotificationsIcon />}
