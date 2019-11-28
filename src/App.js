@@ -11,10 +11,13 @@ import LandingPage from "./pages/landingPage";
 import PhotoPage from "./pages/photoPage";
 import MainPage from "./pages/mainPage";
 import MyProfile from "./pages/myProfile";
-// import PhotoPage from "./pages/photoPage";
 import Notification from "./components/inbox";
+<<<<<<< HEAD
 import SignUp from "./components/signUp"
 import HomePage from "./pages/inOrOutPage"
+=======
+import NewFact from "./components/NewFact";
+>>>>>>> add new features
 
 class App extends React.Component {
   state = {
@@ -105,6 +108,12 @@ class App extends React.Component {
           }}
         />
         <HomePage />
+        <Route
+          path="/newfact"
+          component={props => {
+            return <NewFact {...props} />;
+          }}
+        />
       </div>
       </body>
     );
