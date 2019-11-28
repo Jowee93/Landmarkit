@@ -37,7 +37,7 @@ class GenModal extends Component {
           General Facts.
         </Button>
 
-        <Modal className="modal-fade" show={this.state.show} onHide={this.handleClose}>
+        <Modal show={this.state.show} onHide={this.handleClose}>
           <ModalDialog>
             <ModalHeader closeButton>
               <title>Modal Heading</title>

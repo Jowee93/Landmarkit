@@ -9,6 +9,8 @@ import GenModal from './components/genModal';
 import { Route } from "react-router-dom";
 import LandingPage from "./pages/landingPage";
 import PhotoPage from "./pages/photoPage";
+import SignUp from "./components/signUp"
+import HomePage from "./pages/inOrOutPage"
 
 class App extends React.Component {
   state = {
@@ -37,6 +39,7 @@ class App extends React.Component {
 
   render() {
     return (
+      <body className="App-body">
       <div className="App">
         {/* <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
@@ -66,20 +69,22 @@ class App extends React.Component {
         </header>
         <NavbarComponent></NavbarComponent>
         </header> */}
-        <Route
+        {/* <Route
           path="/"
           exact
           component={props => {
             return <LandingPage {...props} />;
           }}
-        />
+        /> */}
         <Route
           path="/photo"
           component={props => {
             return <PhotoPage {...props} />;
           }}
         />
+        <HomePage />
       </div>
+      </body>
     );
   }
 }
