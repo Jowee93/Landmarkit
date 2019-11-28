@@ -4,15 +4,13 @@ import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Modal from "react-bootstrap/Modal";
 import axios from "axios";
+import { Card, CardTitle, CardText, CardDeck } from "reactstrap";
 
 const useStyles = makeStyles(theme => ({
   container: {
-    display: "block",
-    height: "100vh"
+    display: "block"
   },
   textField: {
-    marginLeft: theme.spacing(1),
-    marginRight: theme.spacing(1),
     width: "100%"
   }
 }));
@@ -47,31 +45,37 @@ export default function MultilineTextFields() {
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className={classes.container}
-      noValidate
-      autoComplete="off"
-    >
-      <div>
-        <TextField
-          id="outlined-multiline-static"
-          label="Fun Fact !"
-          fullWidth
-          multiline
-          rows="10"
-          placeholder="Share your facts !"
-          className={classes.textField}
-          margin="normal"
-          variant="outlined"
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <Button type="submit" variant="outlined" color="primary">
-          Add new fact
-        </Button>
-      </div>
-    </form>
+    <div>
+      <CardDeck className="d-flex" style={{ height: "100vh" }}>
+        <Card className="d-flex m-3" body outline color="danger">
+          <form
+            onSubmit={handleSubmit}
+            className={classes.container}
+            noValidate
+            autoComplete="off"
+          >
+            <div>
+              <TextField
+                id="outlined-multiline-static"
+                label="Fun Fact !"
+                fullWidth
+                multiline
+                rows="10"
+                placeholder="Share your facts !"
+                className={classes.textField}
+                margin="normal"
+                variant="outlined"
+                onChange={handleChange}
+              />
+            </div>
+            <div>
+              <Button type="submit" variant="outlined" color="primary">
+                Add new fact
+              </Button>
+            </div>
+          </form>
+        </Card>
+      </CardDeck>
+    </div>
   );
 }

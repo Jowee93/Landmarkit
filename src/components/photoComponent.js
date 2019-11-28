@@ -18,13 +18,12 @@ const photoStyle = {
 };
 
 class PhotoComponent extends React.Component {
+  state = {
+    currentImage: this.props.photoImage
+  };
+
   render() {
-    return (
-      <Picture
-        style={photoStyle}
-        src="http://jw-next-clone-instagram.s3.amazonaws.com/klcc-outdoor.jpg"
-      ></Picture>
-    );
+    return <Picture style={photoStyle} src={this.state.currentImage}></Picture>;
   }
 }
 

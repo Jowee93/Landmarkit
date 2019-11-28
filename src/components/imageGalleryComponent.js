@@ -20,12 +20,13 @@ export default function ImageGalleryComponent() {
     console.log(photo);
     console.log(photo.src);
     console.log(index);
-    // history.push({
-    //   pathname: "/photo",
-    //   state: {
-    //     currentImage: photo.src
-    //   }
-    // });
+    history.push({
+      pathname: `/photo/${photo.id}`,
+      state: {
+        currentImage: photo.src,
+        description: photo
+      }
+    });
 
     // setViewerIsOpen(true);
   }, []);
@@ -38,22 +39,22 @@ export default function ImageGalleryComponent() {
   useEffect(() => {
     console.log("Hello");
     // $("img").addClass("GalleryImage");
-    // axios({
-    //   method: "GET",
-    //   url: "http://192.168.1.16:5001/api/v1/users/test"
-    // })
-    //   .then(response => {
-    //     console.log(response.data);
-    //     setImages(response.data);
-    //   })
-    //   .catch(error => {
-    //     console.log(error.response);
-    //   });
+    axios({
+      method: "GET",
+      url: "http://localhost:5001/api/v1/users/test"
+    })
+      .then(response => {
+        console.log(response.data);
+        setImages(response.data);
+      })
+      .catch(error => {
+        console.log(error.response);
+      });
   }, []);
 
   return (
     <div>
-      <Gallery photos={photos} onClick={openLightbox} />
+      <Gallery photos={images} onClick={openLightbox} />
       {/* <ModalGateway>
         {viewerIsOpen ? (
           <Modal onClose={closeLightbox}>

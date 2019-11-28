@@ -46,7 +46,7 @@ export default function UploadButtons() {
         setDescription(response.data[0].description);
         if (response) {
           history.push({
-            pathname: "/photo",
+            pathname: `/photo/${response.data[0].id}`,
             state: {
               currentImage: URL.createObjectURL(e.target.files[0]),
               description: response.data[0]

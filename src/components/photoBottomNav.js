@@ -18,10 +18,12 @@ import GoogleMapComponent from "./googleMapComponent";
 import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
 import Button from "@material-ui/core/Button";
+import InfoTwoToneIcon from "@material-ui/icons/InfoTwoTone";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    width: "100%"
+    width: "100%",
+    backgroundColor: "black"
   },
   fab: {
     position: "absolute",
@@ -30,6 +32,9 @@ const useStyles = makeStyles(theme => ({
   },
   button: {
     margin: theme.spacing(1)
+  },
+  icon: {
+    color: "#ffd5d5"
   }
 }));
 
@@ -166,13 +171,19 @@ export default function PhotoBottomNav(props) {
         <BottomNavigationAction
           onClick={toggleDrawer("bottom", true)}
           label="Did you know?"
-          icon={<InfoIcon />}
+          icon={<InfoTwoToneIcon />}
+          className={classes.icon}
         />
-        <BottomNavigationAction label="Post" icon={<PostAddIcon />} />
+        <BottomNavigationAction
+          label="Post"
+          icon={<PostAddIcon />}
+          className={classes.icon}
+        />
         <BottomNavigationAction
           onClick={handleShow}
           label="Nearby"
           icon={<LocationOnIcon />}
+          className={classes.icon}
         />
       </BottomNavigation>
       <Drawer

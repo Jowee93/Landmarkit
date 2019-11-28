@@ -81,8 +81,15 @@ class App extends React.Component {
             return <LandingPage {...props} />;
           }}
         /> */}
+          {/* <Route
+            path="/photo/current"
+            exact
+            component={props => {
+              return <PhotoPage {...props} />;
+            }}
+          /> */}
           <Route
-            path="/photo"
+            path="/photo/:id"
             component={props => {
               return <PhotoPage {...props} />;
             }}
