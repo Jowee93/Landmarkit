@@ -1,16 +1,47 @@
-import React, { useState, useCallback } from "react";
-import { render } from "react-dom";
+import React, { useState, useCallback, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import Gallery from "react-photo-gallery";
 import Carousel, { Modal, ModalGateway } from "react-images";
 import { photos } from "./photos";
+import axios from "axios";
+
+import $ from "jquery";
 
 export default function ImageGalleryComponent() {
   const [currentImage, setCurrentImage] = useState(0);
   const [viewerIsOpen, setViewerIsOpen] = useState(false);
+  const [images, setImages] = useState([]);
+  const history = useHistory();
+
+  // useEffect(() => {
+  //   axios({
+  //     method: "GET",
+  //     url: "http://192.168.1.16:5001/api/v1/users/test"
+  //   })
+  //     .then(response => {
+  //       console.log(response.data);
+  //       setImages(response.data);
+  //     })
+  //     .catch(error => {
+  //       console.log(error.response);
+  //     });
+  // }, []);
 
   const openLightbox = useCallback((event, { photo, index }) => {
     setCurrentImage(index);
-    setViewerIsOpen(true);
+    setCurrentImage(photo.id);
+    console.log(photo.id);
+    console.log(photo);
+    console.log(photo.src);
+    console.log(index);
+    // history.push({
+    //   pathname: "/photo",
+    //   state: {
+    //     currentImage: photo.src
+    //   }
+    // });
+
+    // setViewerIsOpen(true);
   }, []);
 
   const closeLightbox = () => {
@@ -18,18 +49,13 @@ export default function ImageGalleryComponent() {
     setViewerIsOpen(false);
   };
 
-  const test = () => {
-    console.log("Hello");
-  };
-
   return (
     <div>
       <Gallery photos={photos} onClick={openLightbox} />
-      <ModalGateway>
+      {/* <ModalGateway>
         {viewerIsOpen ? (
           <Modal onClose={closeLightbox}>
             <Carousel
-              onClickImage={test}
               currentIndex={currentImage}
               views={photos.map((x, index) => ({
                 ...x,
@@ -39,7 +65,7 @@ export default function ImageGalleryComponent() {
             />
           </Modal>
         ) : null}
-      </ModalGateway>
+      </ModalGateway> */}
     </div>
   );
 }

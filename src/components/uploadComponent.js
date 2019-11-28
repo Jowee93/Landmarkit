@@ -72,6 +72,8 @@ export default function UploadButtons() {
       />
       <label htmlFor="icon-button-file">
         <IconButton
+          size="small"
+          className="pb-3"
           color="primary"
           aria-label="upload picture"
           component="span"

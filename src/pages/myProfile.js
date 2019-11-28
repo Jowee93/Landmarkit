@@ -35,26 +35,26 @@ class MyProfile extends React.Component {
   };
 
   // API to retrieve user details from database
-  componentDidMount() {
-    let JWT = localStorage.getItem("userToken");
-    axios({
-      method: "GET",
-      url: "<PUT URL TO FLASK BACKEND [users/me]>",
-      headers: { Authorization: `Bearer ${JWT}` }
-    })
-      .then(result => {
-        this.setState({
-          profile: result,
-          username: result.username,
-          email: result.email,
-          description: result.description,
-          profileImage: result.profileImage
-        });
-      })
-      .catch(error => {
-        console.log(error.response);
-      });
-  }
+  // componentDidMount() {
+  //   let JWT = localStorage.getItem("userToken");
+  //   axios({
+  //     method: "GET",
+  //     url: "<PUT URL TO FLASK BACKEND [users/me]>",
+  //     headers: { Authorization: `Bearer ${JWT}` }
+  //   })
+  //     .then(result => {
+  //       this.setState({
+  //         profile: result,
+  //         username: result.username,
+  //         email: result.email,
+  //         description: result.description,
+  //         profileImage: result.profileImage
+  //       });
+  //     })
+  //     .catch(error => {
+  //       console.log(error.response);
+  //     });
+  // }
 
   edit = () => {
     this.setState({
