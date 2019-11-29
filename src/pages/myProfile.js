@@ -5,6 +5,8 @@ import SettingsIcon from "@material-ui/icons/Settings";
 import Button from "@material-ui/core/Button";
 import NavbarComponent from "../components/NavbarComponent";
 import ninja_avatar from "../components/ninja_avatar.png";
+import TextField from "@material-ui/core/TextField";
+import axios from "axios";
 
 const profilePicStyle = {
   borderRadius: "50%",
@@ -23,6 +25,67 @@ const bodyStyle = {
 };
 
 class MyProfile extends React.Component {
+  state = {
+    profile: [],
+    username: "",
+    email: "",
+    description: "",
+    profileImage: "",
+    editmode: false
+  };
+
+  // API to retrieve user details from database
+  // componentDidMount() {
+  //   let JWT = localStorage.getItem("userToken");
+  //   axios({
+  //     method: "GET",
+  //     url: "<PUT URL TO FLASK BACKEND [users/me]>",
+  //     headers: { Authorization: `Bearer ${JWT}` }
+  //   })
+  //     .then(result => {
+  //       this.setState({
+  //         profile: result,
+  //         username: result.username,
+  //         email: result.email,
+  //         description: result.description,
+  //         profileImage: result.profileImage
+  //       });
+  //     })
+  //     .catch(error => {
+  //       console.log(error.response);
+  //     });
+  // }
+
+  edit = () => {
+    this.setState({
+      editmode: this.state.editmode ? false : true
+    });
+  };
+
+  handleChange = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  };
+
+  handleSubmit = async e => {
+    const { username, password, description } = this.state;
+    e.preventDefault();
+    e.persist();
+
+    await axios({
+      method: "POST",
+      url: "<PUT IN URL TO UPDATE PROFILE>",
+      data: { username, password, description }
+    })
+      .then(response => {
+        window.location.reload();
+      })
+      .catch(error => {
+        console.log(error.response);
+      });
+  };
+
   render() {
     return (
       <div>
@@ -54,16 +117,69 @@ class MyProfile extends React.Component {
               <Row className="d-flex justify-content-between align-items-center ml-3 mr-3 mb-3">
                 <PersonAddIcon />
 
-                <div className="">
+                <div>
                   <img style={profilePicStyle} src={ninja_avatar}></img>
                   <p>@JoWee</p>
+                  <p>"Ninja Shuriken !"</p>
                 </div>
 
                 <SettingsIcon />
               </Row>
-              <Button variant="outlined" color="secondary">
-                Edit Profile
-              </Button>
+              <form onSubmit={this.handleSubmit} className="d-flex flex-column">
+                <TextField
+                  disabled={this.state.editmode ? false : true}
+                  name="username"
+                  className="m-3"
+                  label="Username"
+                  variant="outlined"
+                  color="secondary"
+                  value={this.state.username}
+                  onChange={this.handleChange}
+                ></TextField>
+                <TextField
+                  disabled={this.state.editmode ? false : true}
+                  name="email"
+                  className="m-3"
+                  label="Email"
+                  variant="outlined"
+                  color="secondary"
+                  value={this.state.email}
+                  onChange={this.handleChange}
+                ></TextField>
+                <TextField
+                  disabled={this.state.editmode ? false : true}
+                  name="description"
+                  className="m-3"
+                  id="outlined-multiline-static"
+                  label="Biography"
+                  rowmax="4"
+                  variant="outlined"
+                  color="secondary"
+                  value={this.state.description}
+                  onChange={this.handleChange}
+                  multiline
+                />
+                <div className="">
+                  <button
+                    style={
+                      this.state.editmode
+                        ? { display: "block" }
+                        : { display: "none" }
+                    }
+                    className="btn btn-outline-info mx-auto mb-3"
+                  >
+                    SUBMIT CHANGES
+                  </button>
+                  <Button
+                    className="d-block mx-auto"
+                    onClick={this.edit}
+                    variant="outlined"
+                    color="secondary"
+                  >
+                    {this.state.editmode ? "Cancel" : "Edit Profile"}
+                  </Button>
+                </div>
+              </form>
             </Col>
           </Row>
         </Container>

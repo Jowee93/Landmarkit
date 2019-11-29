@@ -18,10 +18,12 @@ import GoogleMapComponent from "./googleMapComponent";
 import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
 import Button from "@material-ui/core/Button";
+import InfoTwoToneIcon from "@material-ui/icons/InfoTwoTone";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    width: "100%"
+    width: "100%",
+    backgroundColor: "black"
   },
   fab: {
     position: "absolute",
@@ -30,6 +32,9 @@ const useStyles = makeStyles(theme => ({
   },
   button: {
     margin: theme.spacing(1)
+  },
+  icon: {
+    color: "#ffd5d5"
   }
 }));
 
@@ -43,7 +48,7 @@ const buttonStyle = {
 };
 
 // class NavbarComponent extends React.Component {
-export default function PhotoBottomNav() {
+export default function PhotoBottomNav(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [value, setValue] = React.useState("recents");
@@ -96,6 +101,7 @@ export default function PhotoBottomNav() {
                 <p className="card-text">
                   With supporting text below as a natural lead-in to additional
                   content.
+                  {props.photodescription.description}
                 </p>
                 <a href="/" className="btn btn-primary">
                   Go somewhere
@@ -165,13 +171,19 @@ export default function PhotoBottomNav() {
         <BottomNavigationAction
           onClick={toggleDrawer("bottom", true)}
           label="Did you know?"
-          icon={<InfoIcon />}
+          icon={<InfoTwoToneIcon />}
+          className={classes.icon}
         />
-        <BottomNavigationAction label="Post" icon={<PostAddIcon />} />
+        <BottomNavigationAction
+          label="Post"
+          icon={<PostAddIcon />}
+          className={classes.icon}
+        />
         <BottomNavigationAction
           onClick={handleShow}
           label="Nearby"
           icon={<LocationOnIcon />}
+          className={classes.icon}
         />
       </BottomNavigation>
       <Drawer

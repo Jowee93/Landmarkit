@@ -10,22 +10,27 @@ const containerStyle = {
   padding: "22vh 0 22vh 0"
 };
 
-const bottomContainerStyle = {
-  bottom: "0",
-  position: "fixed"
-};
+const bottomContainerStyle = {};
 
 class PhotoPage extends React.Component {
+  state = {
+    currentImage: this.props.location.state.currentImage,
+    description: this.props.location.state.description
+  };
+
   render() {
     return (
       <div>
         <Container style={containerStyle}>
-          <PhotoComponent />
+          <PhotoComponent photoImage={this.state.currentImage} />
         </Container>
-        <Container className="mb-3" style={bottomContainerStyle}>
-          <NavBarComponent />
-          <PhotoBottomNav></PhotoBottomNav>
-        </Container>
+        <div style={{ position: "absolute", bottom: "20vh" }}>
+          <PhotoBottomNav
+            photodescription={this.state.description}
+          ></PhotoBottomNav>
+        </div>
+
+        <NavBarComponent />
       </div>
     );
   }

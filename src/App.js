@@ -11,10 +11,12 @@ import LandingPage from "./pages/landingPage";
 import PhotoPage from "./pages/photoPage";
 import MainPage from "./pages/mainPage";
 import MyProfile from "./pages/myProfile";
-import Notification from "./components/inbox";
+import Notification from "./components/inboxPage";
 import SignUp from "./components/signUp";
 import HomePage from "./pages/inOrOutPage";
 import NewFact from "./components/NewFact";
+import SearchPage from "./pages/searchPage";
+import GoogleMap from "./components/googleMapComponent";
 
 class App extends React.Component {
   state = {
@@ -80,8 +82,15 @@ class App extends React.Component {
             return <LandingPage {...props} />;
           }}
         /> */}
+          {/* <Route
+            path="/photo/current"
+            exact
+            component={props => {
+              return <PhotoPage {...props} />;
+            }}
+          /> */}
           <Route
-            path="/photo"
+            path="/photo/:id"
             component={props => {
               return <PhotoPage {...props} />;
             }}
@@ -108,6 +117,18 @@ class App extends React.Component {
             path="/newfact"
             component={props => {
               return <NewFact {...props} />;
+            }}
+          />
+          <Route
+            path="/search"
+            component={props => {
+              return <SearchPage {...props} />;
+            }}
+          />
+          <Route
+            path="/googlemap"
+            component={props => {
+              return <GoogleMap {...props} />;
             }}
           />
         </div>

@@ -1,15 +1,47 @@
 import React from "react";
 import { Input, Form, FormGroup, Button } from "reactstrap";
 import axios from "axios";
+import { Redirect } from "react-router-dom";
 
 class LandingPage extends React.Component {
   state = {
-    currentImage: ""
+    currentImage: "",
+    previewImage: ""
   };
 
   handleImage = e => {
     this.setState({
-      currentImage: e.target.files[0]
+      currentImage: e.target.files[0],
+      previewImage: URL.createObjectURL(e.target.files[0])
+    });
+
+    // e.preventDefault();
+
+    // let formData = new FormData();
+
+    // formData.append("user_image", e.target.files[0]);
+    // formData.append("user_id", 31);
+
+    // axios({
+    //   method: "POST",
+    //   url: "http://localhost:5001/api/v1/users/json",
+    //   data: formData
+    // })
+    //   .then(response => {
+    //     console.log(response);
+    //     // if (response.data.success) {
+    //     //   this.setState({
+    //     //     currentImage: ""
+    //     //   });
+    //     // }
+    //   })
+    //   .catch(error => {
+    //     console.log(error.response);
+    //   });
+
+    return this.props.history.push({
+      pathname: "/photo",
+      state: { currentImage: URL.createObjectURL(e.target.files[0]) }
     });
   };
 
@@ -39,6 +71,10 @@ class LandingPage extends React.Component {
       });
   };
 
+  test = () => {
+    console.log(this.state.currentImage);
+  };
+
   render() {
     return (
       <div>
@@ -52,9 +88,11 @@ class LandingPage extends React.Component {
               onChange={this.handleImage}
             />
           </FormGroup>
-          <Button type="submit" color="primary">
+          <Button onClick={this.test} type="submit" color="primary">
             Add
           </Button>
+          <p onClick={this.test}>click me</p>
+          <img src={this.state.previewImage}></img>
         </Form>
       </div>
     );
