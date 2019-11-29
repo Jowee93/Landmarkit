@@ -11,15 +11,16 @@ export default function ImageGalleryComponent() {
   const [currentImage, setCurrentImage] = useState(0);
   const [viewerIsOpen, setViewerIsOpen] = useState(false);
   const [images, setImages] = useState([]);
+
   const history = useHistory();
 
   const openLightbox = useCallback((event, { photo, index }) => {
-    setCurrentImage(index);
+    // setCurrentImage(index);
     setCurrentImage(photo.id);
-    console.log(photo.id);
-    console.log(photo);
-    console.log(photo.src);
-    console.log(index);
+    console.log(`Clicked photo id: ${photo.id}`);
+    // console.log(photo);
+    // console.log(photo.src);
+    // console.log(index);
     history.push({
       pathname: `/photo/${photo.id}`,
       state: {
@@ -37,13 +38,15 @@ export default function ImageGalleryComponent() {
   };
 
   useEffect(() => {
-    console.log("Hello");
     // $("img").addClass("GalleryImage");
+    let JWT = localStorage.getItem("userToken");
     axios({
       method: "GET",
-      url: "http://localhost:5001/api/v1/users/test"
+      url: "http://192.168.0.167:5000/api/v1/images/me",
+      headers: { Authorization: `Bearer ${JWT}` }
     })
       .then(response => {
+        console.log("Get User Images axios called:");
         console.log(response.data);
         setImages(response.data);
       })
