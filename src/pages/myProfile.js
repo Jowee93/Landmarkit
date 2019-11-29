@@ -6,7 +6,11 @@ import Button from "@material-ui/core/Button";
 import NavbarComponent from "../components/NavbarComponent";
 import ninja_avatar from "../components/ninja_avatar.png";
 import TextField from "@material-ui/core/TextField";
+import IconButton from "@material-ui/core/IconButton";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const profilePicStyle = {
   borderRadius: "50%",
@@ -31,7 +35,8 @@ class MyProfile extends React.Component {
     email: "",
     description: "",
     profileImage: "",
-    editmode: false
+    editmode: false,
+    andchorEl: null
   };
 
   // API to retrieve user details from database
@@ -90,6 +95,33 @@ class MyProfile extends React.Component {
       });
   };
 
+  handleClick = event => {
+    this.setState({
+      anchorEl: event.currentTarget
+    });
+  };
+
+  handleClose = () => {
+    this.setState({
+      anchorEl: null
+    });
+  };
+
+  handleLogOut = () => {
+    localStorage.removeItem("userData");
+    localStorage.removeItem("userToken");
+
+    this.props.history.push({
+      pathname: "/"
+    });
+  };
+
+  linkToSearch = () => {
+    this.props.history.push({
+      pathname: "/search"
+    });
+  };
+
   render() {
     return (
       <div>
@@ -119,7 +151,9 @@ class MyProfile extends React.Component {
           <Row>
             <Col className="shadow" style={bodyStyle}>
               <Row className="d-flex justify-content-between align-items-center ml-3 mr-3 mb-3">
-                <PersonAddIcon />
+                <IconButton onClick={this.linkToSearch}>
+                  <PersonAddIcon />
+                </IconButton>
 
                 <div>
                   <img
@@ -130,8 +164,24 @@ class MyProfile extends React.Component {
                   <p>@{this.state.username}</p>
                   <p>"{this.state.description}"</p>
                 </div>
-
-                <SettingsIcon />
+                <Button
+                  aria-controls="simple-menu"
+                  aria-haspopup="true"
+                  onClick={this.handleClick}
+                >
+                  <IconButton>
+                    <SettingsIcon />
+                  </IconButton>
+                </Button>
+                <Menu
+                  id="simple-menu"
+                  anchorEl={this.state.anchorEl}
+                  keepMounted
+                  open={Boolean(this.state.anchorEl)}
+                  onClose={this.handleClose}
+                >
+                  <MenuItem onClick={this.handleLogOut}>Logout</MenuItem>
+                </Menu>
               </Row>
               <form onSubmit={this.handleSubmit} className="d-flex flex-column">
                 <TextField

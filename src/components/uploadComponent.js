@@ -38,7 +38,7 @@ export default function UploadButtons() {
 
     await axios({
       method: "POST",
-      url: "http://localhost:5001/api/v1/users/json",
+      url: "http://192.168.0.167:5000/api/v1/users/json",
       data: formData
     })
       .then(response => {

@@ -27,7 +27,7 @@ class SignUp extends Component {
     });
   };
 
-  handleSubmit = e => {
+  handleSubmit = async e => {
     e.preventDefault();
     const { username, email, password } = this.state;
     const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -45,21 +45,23 @@ class SignUp extends Component {
     //   });
     //   return "That email doesn't exist";
     // } else {
-    axios
+    await axios
       .post("http://192.168.0.167:5000/api/v1/users/signup", {
         username: username,
         email: email,
         password: password
       })
       .then(res => {
-        let JWT = res.data.jwt;
-        localStorage.setItem("userToken", JWT);
-        localStorage.setItem("userData", JSON.stringify(res.data));
+        // let JWT = res.data.jwt;
+        // localStorage.setItem("userToken", JWT);
+        // localStorage.setItem("userData", JSON.stringify(res.data));
+        console.log("Successfully signed up !");
         this.setState({
           currentUsername: username,
           currentEmail: email,
           currentPassword: password
         });
+        window.location.reload();
       })
       .catch(error => {
         console.log(error);
@@ -69,7 +71,7 @@ class SignUp extends Component {
 
   render() {
     return (
-      <body>
+      <div>
         <Container component="main" maxWidth="xs">
           <CssBaseline />
           <div className="paper">
@@ -198,7 +200,7 @@ class SignUp extends Component {
             <br />
           </div>
         </Container>
-      </body>
+      </div>
     );
   }
 }
