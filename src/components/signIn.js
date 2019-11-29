@@ -9,8 +9,9 @@ import Typography from "@material-ui/core/Typography";
 import "../components/css/signUp.css";
 import Container from "@material-ui/core/Container";
 import axios from "axios";
+import { Redirect } from "react-router-dom";
 
-class SignIn extends Component {
+class SignIn extends React.Component {
   state = {
     username: "",
     password: ""
@@ -22,15 +23,16 @@ class SignIn extends Component {
     });
   };
 
-  handleSubmit = e => {
+  handleSubmit = async e => {
     e.preventDefault();
     const { username, password } = this.state;
-    axios
+    await axios
       .post("http://192.168.0.167:5000/api/v1/users/login", {
         username: username,
         password: password
       })
       .then(res => {
+        console.log("Successfully signed in !");
         console.log(res);
         let JWT = res.data.jwt;
         localStorage.setItem("userToken", JWT);
@@ -39,9 +41,10 @@ class SignIn extends Component {
           currentUsername: username,
           currentPassword: password
         });
+        window.location = "/main";
       })
       .catch(error => {
-        console.log(error);
+        console.log(error.response);
       });
   };
 

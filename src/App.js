@@ -45,7 +45,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <body className="App-body">
+      <div className="App-body">
         <div className="App">
           {/* <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
@@ -132,7 +132,7 @@ class App extends React.Component {
             }}
           />
         </div>
-      </body>
+      </div>
     );
   }
 }
