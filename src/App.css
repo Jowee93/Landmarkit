@@ -28,7 +28,7 @@
   overflow: hidden;
 }
 
-.App-body {
+/* .App-body {
 background: -webkit-linear-gradient(-45deg, #499CEA44 60%, #798EEA 40%);
   background: -o-linear-gradient(-45deg, #499CEA44 60%, #798EEA 40%);
   background: -ms-linear-gradient(-45deg, #499CEA44 60%, #798EEA 40%);
@@ -38,4 +38,4 @@ background: -webkit-linear-gradient(-45deg, #499CEA44 60%, #798EEA 40%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#499CEA44', endColorstr='#798EEA', GradientType=1 );
   z-index: 1;
 
-}
+} */

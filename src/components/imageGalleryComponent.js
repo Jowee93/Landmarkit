@@ -54,7 +54,7 @@ export default function ImageGalleryComponent() {
 
   return (
     <div>
-      <Gallery photos={images} onClick={openLightbox} />
+      <Gallery photos={photos} onClick={openLightbox} />
       {/* <ModalGateway>
         {viewerIsOpen ? (
           <Modal onClose={closeLightbox}>

@@ -16,6 +16,7 @@ import SignUp from "./components/signUp";
 import HomePage from "./pages/inOrOutPage";
 import NewFact from "./components/NewFact";
 import SearchPage from "./pages/searchPage";
+import GoogleMap from "./components/googleMapComponent";
 
 class App extends React.Component {
   state = {
@@ -122,6 +123,12 @@ class App extends React.Component {
             path="/search"
             component={props => {
               return <SearchPage {...props} />;
+            }}
+          />
+          <Route
+            path="/googlemap"
+            component={props => {
+              return <GoogleMap {...props} />;
             }}
           />
         </div>
