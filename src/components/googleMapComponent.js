@@ -1,6 +1,7 @@
 import React from "react";
 import { Map, GoogleApiWrapper, InfoWindow, Marker } from "google-maps-react";
 import { Container, Row, Col } from "reactstrap";
+import axios from 'axios';
 
 const mapStyles = {
   width: "100%",
@@ -12,7 +13,10 @@ class GoogleMapComponent extends React.Component {
   state = {
     showingInfoWindow: false, //Hides or the shows the infoWindow
     activeMarker: {}, //Shows the active marker upon click
-    selectedPlace: {} //Shows the infoWindow to the selected place upon a marker
+    selectedPlace: {}, //Shows the infoWindow to the selected place upon a marker
+    foursquareData: [],
+    lat: "",
+    long= ""
   };
 
   onMarkerClick = (props, marker, e) =>
@@ -30,6 +34,27 @@ class GoogleMapComponent extends React.Component {
       });
     }
   };
+
+  componentDidMount(){
+    const parameters = {
+      query: "",
+      near: "",
+    }
+
+    axios
+      .get(`https://api.foursquare.com/v2/venues/explore?intent=browse&ll=${this.state.lat},${this.state.long}` + new URLSearchParams(parameters))
+      .then(res => {
+        // console.log(res.data.res.groups[0].items)
+        console.log(res);
+        this.setState({
+          foursquareData: res
+        })
+      })
+      .catch(error => {
+        console.log("ERROR! " + error);
+      })
+  }
+
 
   render() {
     return (
