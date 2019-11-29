@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import BottomNavigation from "@material-ui/core/BottomNavigation";
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
@@ -18,6 +18,9 @@ import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
 import Button from "@material-ui/core/Button";
 import InfoTwoToneIcon from "@material-ui/icons/InfoTwoTone";
+import axios from "axios";
+import { funfacts } from "./factsDataset";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -46,11 +49,11 @@ const buttonStyle = {
   position: "fixed"
 };
 
-// class NavbarComponent extends React.Component {
 export default function PhotoBottomNav(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [value, setValue] = React.useState("recents");
+  const [facts, setFacts] = React.useState([]);
   const [state, setState] = React.useState({
     top: false,
     left: false,
@@ -58,6 +61,24 @@ export default function PhotoBottomNav(props) {
     right: false
   });
   const [show, setShow] = React.useState(false);
+  const history = useHistory();
+
+  useEffect(() => {
+    let JWT = localStorage.getItem("userToken");
+    axios({
+      method: "GET",
+      url: `http://192.168.0.167:5000/api/v1/images/${props.photodescription.id}/facts`,
+      headers: { Authorization: `Bearer ${JWT}` }
+    })
+      .then(response => {
+        console.log("Get Image Facts axios called:");
+        console.log(response.data);
+        setFacts(response.data);
+      })
+      .catch(error => {
+        console.log(error.response);
+      });
+  }, []);
 
   const toggleDrawer = (side, open) => event => {
     if (
@@ -69,6 +90,15 @@ export default function PhotoBottomNav(props) {
     }
 
     setState({ ...state, [side]: open });
+  };
+
+  const addFact = () => {
+    history.push({
+      pathname: `/image/${props.photodescription.id}/newfact`,
+      state: {
+        image_id: `${props.photodescription.id}`
+      }
+    });
   };
 
   const fullList = side => (
@@ -96,41 +126,44 @@ export default function PhotoBottomNav(props) {
           <div className="col-sm-6">
             <div className="card mb-3">
               <div className="card-body">
-                <h5 className="card-title">Special title treatment</h5>
+                <h5 className="card-title">General Information</h5>
                 <p className="card-text">
-                  With supporting text below as a natural lead-in to additional
-                  content.
+                  Placeholder for general information from backend:
                   {props.photodescription.description}
                 </p>
-                <a href="/" className="btn btn-primary">
+                {/* <a href="/" className="btn btn-primary">
                   Go somewhere
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="col-sm-6">
-            <div className="card mb-3">
-              <div className="card-body">
-                <h5 className="card-title">Special title treatment</h5>
-                <p className="card-text">
-                  With supporting text below as a natural lead-in to additional
-                  content.
-                </p>
-                <a href="#" className="btn btn-primary">
-                  Go somewhere
-                </a>
+                </a> */}
               </div>
             </div>
           </div>
         </div>
+
+        {funfacts.map((fact, index) => (
+          <div className="row">
+            <div className="col-sm-6">
+              <div className="card mb-3">
+                <div className="card-body">
+                  <h5 className="card-title">Fact {index}</h5>
+                  <p className="card-text">{fact.text}</p>
+                  <span className="float-right">
+                    <small>{fact.username}</small>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+
         <Button
           variant="contained"
           color="secondary"
           className={classes.button}
           startIcon={<AddIcon />}
           style={buttonStyle}
+          onClick={addFact}
         >
-          Add new fact
+          New fact
         </Button>
         {/* <Fab
           style={buttonStyle}

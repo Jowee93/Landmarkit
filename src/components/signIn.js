@@ -26,15 +26,15 @@ class SignIn extends Component {
     e.preventDefault();
     const { username, password } = this.state;
     axios
-      .post("http://192.168.1.140:5000/users/test", {
+      .post("http://192.168.0.167:5000/api/v1/users/login", {
         username: username,
         password: password
       })
       .then(res => {
-        console.log(res)
-        let JWT = res.data.token;
-        // localStorage.setItem("userToken", JWT);
-        // localStorage.setItem("userData", JSON.stringify(res.data));
+        console.log(res);
+        let JWT = res.data.jwt;
+        localStorage.setItem("userToken", JWT);
+        localStorage.setItem("userData", JSON.stringify(res.data));
         this.setState({
           currentUsername: username,
           currentPassword: password

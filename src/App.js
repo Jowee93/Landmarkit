@@ -75,13 +75,13 @@ class App extends React.Component {
         </header>
         <NavbarComponent></NavbarComponent>
         </header> */}
-          {/* <Route
-          path="/"
-          exact
-          component={props => {
-            return <LandingPage {...props} />;
-          }}
-        /> */}
+          <Route
+            path="/"
+            exact
+            component={props => {
+              return <HomePage {...props} />;
+            }}
+          />
           {/* <Route
             path="/photo/current"
             exact
@@ -114,7 +114,7 @@ class App extends React.Component {
             }}
           />
           <Route
-            path="/newfact"
+            path="/image/:id/newfact"
             component={props => {
               return <NewFact {...props} />;
             }}

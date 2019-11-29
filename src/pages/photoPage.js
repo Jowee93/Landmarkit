@@ -23,6 +23,7 @@ class PhotoPage extends React.Component {
       <div>
         <Container style={containerStyle}>
           <PhotoComponent photoImage={this.state.currentImage} />
+          <p className="mt-3">{this.state.description.name}</p>
         </Container>
         <div style={{ position: "absolute", bottom: "20vh" }}>
           <PhotoBottomNav

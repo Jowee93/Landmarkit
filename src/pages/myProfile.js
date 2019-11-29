@@ -35,26 +35,28 @@ class MyProfile extends React.Component {
   };
 
   // API to retrieve user details from database
-  // componentDidMount() {
-  //   let JWT = localStorage.getItem("userToken");
-  //   axios({
-  //     method: "GET",
-  //     url: "<PUT URL TO FLASK BACKEND [users/me]>",
-  //     headers: { Authorization: `Bearer ${JWT}` }
-  //   })
-  //     .then(result => {
-  //       this.setState({
-  //         profile: result,
-  //         username: result.username,
-  //         email: result.email,
-  //         description: result.description,
-  //         profileImage: result.profileImage
-  //       });
-  //     })
-  //     .catch(error => {
-  //       console.log(error.response);
-  //     });
-  // }
+  componentDidMount() {
+    let JWT = localStorage.getItem("userToken");
+    axios({
+      method: "GET",
+      url: "http://192.168.0.167:5000/api/v1/users/me",
+      headers: { Authorization: `Bearer ${JWT}` }
+    })
+      .then(result => {
+        console.log("Get User Profile axios called:");
+        console.log(result.data);
+        this.setState({
+          profile: result.data,
+          username: result.data.username,
+          email: result.data.email,
+          description: result.data.description,
+          profileImage: result.data.profileImage
+        });
+      })
+      .catch(error => {
+        console.log(error.response);
+      });
+  }
 
   edit = () => {
     this.setState({
@@ -69,14 +71,16 @@ class MyProfile extends React.Component {
   };
 
   handleSubmit = async e => {
+    let JWT = localStorage.getItem("userToken");
     const { username, password, description } = this.state;
     e.preventDefault();
     e.persist();
 
     await axios({
       method: "POST",
-      url: "<PUT IN URL TO UPDATE PROFILE>",
-      data: { username, password, description }
+      url: "http://192.168.0.167:5000/api/v1/users/me/edit",
+      data: { username, password, description },
+      headers: { Authorization: `Bearer ${JWT}` }
     })
       .then(response => {
         window.location.reload();
@@ -118,9 +122,13 @@ class MyProfile extends React.Component {
                 <PersonAddIcon />
 
                 <div>
-                  <img style={profilePicStyle} src={ninja_avatar}></img>
-                  <p>@JoWee</p>
-                  <p>"Ninja Shuriken !"</p>
+                  <img
+                    style={profilePicStyle}
+                    src={this.state.profileImage}
+                    alt="profileImage"
+                  ></img>
+                  <p>@{this.state.username}</p>
+                  <p>"{this.state.description}"</p>
                 </div>
 
                 <SettingsIcon />
