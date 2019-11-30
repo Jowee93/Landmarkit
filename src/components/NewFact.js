@@ -6,11 +6,7 @@ import Modal from "react-bootstrap/Modal";
 import axios from "axios";
 import { Card, CardTitle, CardText, CardDeck } from "reactstrap";
 import { useHistory, useLocation, Redirect } from "react-router-dom";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
-import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
+import TopBackNav from "./topBackNav";
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -55,25 +51,9 @@ export default function MultilineTextFields() {
       });
   };
 
-  const handleBack = () => {
-    history.goBack();
-  };
-
   return (
     <div>
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton
-            onClick={handleBack}
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="menu"
-          >
-            <ArrowBackIosIcon />
-          </IconButton>
-        </Toolbar>
-      </AppBar>
+      <TopBackNav></TopBackNav>
       <CardDeck className="d-flex" style={{ height: "100vh" }}>
         <Card className="d-flex m-3 p-3 shadow">
           <form
