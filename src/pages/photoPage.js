@@ -3,6 +3,7 @@ import PhotoComponent from "../components/photoComponent";
 import { Container, Row, Col } from "reactstrap";
 import PhotoBottomNav from "../components/photoBottomNav";
 import NavBarComponent from "../components/NavbarComponent";
+import TopBackNav from "../components/topBackNav";
 
 const containerStyle = {
   height: "100%",
@@ -21,6 +22,7 @@ class PhotoPage extends React.Component {
   render() {
     return (
       <div>
+        <TopBackNav></TopBackNav>
         <Container style={containerStyle}>
           <PhotoComponent photoImage={this.state.currentImage} />
           <p className="mt-3">{this.state.description.name}</p>
