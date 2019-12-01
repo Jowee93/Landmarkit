@@ -6,7 +6,7 @@ import { reject } from "q";
 import NavbarComponent from "./components/NavbarComponent";
 import FunModal from "./components/funModal";
 import GenModal from "./components/genModal";
-import { Route,withRouter } from "react-router-dom";
+import { Route, withRouter } from "react-router-dom";
 import LandingPage from "./pages/landingPage";
 import PhotoPage from "./pages/photoPage";
 import MainPage from "./pages/mainPage";
