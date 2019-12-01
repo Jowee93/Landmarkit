@@ -17,6 +17,7 @@ import HomePage from "./pages/inOrOutPage";
 import NewFact from "./components/NewFact";
 import SearchPage from "./pages/searchPage";
 import GoogleMap from "./components/googleMapComponent";
+import TransitionTest from "./components/transitionTest";
 
 class App extends React.Component {
   state = {
@@ -129,6 +130,12 @@ class App extends React.Component {
             path="/googlemap"
             component={props => {
               return <GoogleMap {...props} />;
+            }}
+          />
+          <Route
+            path="/test"
+            component={props => {
+              return <TransitionTest {...props} />;
             }}
           />
         </div>

@@ -1,10 +1,8 @@
 import React from "react";
-import { useHistory, useLocation } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import PhotoCamera from "@material-ui/icons/PhotoCamera";
-import { Redirect } from "react-router-dom";
 import axios from "axios";
 
 const useStyles = makeStyles(theme => ({
@@ -38,7 +36,7 @@ export default function UploadButtons() {
 
     await axios({
       method: "POST",
-      url: "http://192.168.0.167:5000/api/v1/users/json",
+      url: "http://172.20.10.8:5000/api/v1/users/json",
       data: formData
     })
       .then(response => {

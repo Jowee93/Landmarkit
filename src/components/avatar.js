@@ -1,8 +1,8 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import { makeStyles } from "@material-ui/core/styles";
 import ninja_avatar from "./ninja_avatar.png";
-import { Redirect, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 const useStyles = makeStyles(theme => ({
@@ -14,15 +14,14 @@ const useStyles = makeStyles(theme => ({
 
 export default function UserPic() {
   const classes = useStyles();
-  const [profileImage, setProfileImage] = useState([]);
+  const [profileImage, setProfileImage] = useState("");
 
   useEffect(() => {
-    // $("img").addClass("GalleryImage");
     let JWT = localStorage.getItem("userToken");
 
     axios({
       method: "GET",
-      url: "http://192.168.0.167:5000/api/v1/users/me",
+      url: "http://172.20.10.8:5000/api/v1/users/me",
       headers: { Authorization: `Bearer ${JWT}` }
     })
       .then(result => {

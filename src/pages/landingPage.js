@@ -1,7 +1,6 @@
 import React from "react";
 import { Input, Form, FormGroup, Button } from "reactstrap";
 import axios from "axios";
-import { Redirect } from "react-router-dom";
 
 class LandingPage extends React.Component {
   state = {

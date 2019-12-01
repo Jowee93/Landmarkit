@@ -1,13 +1,4 @@
 import React from "react";
-import {
-  Media,
-  Card,
-  CardBody,
-  Button,
-  CardTitle,
-  CardText,
-  CardImg
-} from "reactstrap";
 import { Picture } from "react-responsive-picture";
 
 const photoStyle = {

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import Modal from "react-bootstrap/Modal";
 import ModalBody from "react-bootstrap/ModalBody";
 import ModalHeader from "react-bootstrap/ModalHeader";
@@ -35,7 +35,7 @@ class HomePage extends React.Component {
         <br />
         <Modal
           centered
-          show={this.state.show == "login"}
+          show={this.state.show === "login"}
           onHide={this.handleClose}
         >
           <ModalHeader closeButton />
