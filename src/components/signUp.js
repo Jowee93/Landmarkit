@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -6,9 +6,9 @@ import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
 import Icon from "@material-ui/core/Icon";
 import Typography from "@material-ui/core/Typography";
-import "../components/css/signUp.css"
+import "../components/css/signUp.css";
 import Container from "@material-ui/core/Container";
-import axios from 'axios'
+import axios from "axios";
 
 class SignUp extends Component {
   state = {
@@ -23,62 +23,62 @@ class SignUp extends Component {
 
   handleChange = e => {
     this.setState({
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value
     });
   };
 
-  handleSubmit = e => {
+  handleSubmit = async e => {
     e.preventDefault();
     const { username, email, password } = this.state;
-    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if(username.length <= 0 && password.length <= 0 && email.length <= 0) {
-      this.setState({
-        usernameValid: true,
-        passwordValid: true,
-        emailValid: true
-      })
-      return("Please fill in all fields")
-    } else if (email != re) {
-        this.setState({
-          uniqueEmail: true
-        })
-        return ("That email doesn't exist")
-    } else {
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-      axios
-        .post("http://192.168.1.140:5000/users/createuser", {
-          username: username,
-          email: email,
-          password: password
-        })
-        .then(res => {
-          let JWT = res.data.auth_token;
-          localStorage.setItem("userToken", JWT);
-          localStorage.setItem("userData", JSON.stringify(res.data));
-          this.setState({
-            currentUsername: username,
-            currentEmail: email,
-            currentPassword: password
-          });
-        })
-        .catch(error => {
-          console.log(error);
+    // if (username.length <= 0 && password.length <= 0 && email.length <= 0) {
+    //   this.setState({
+    //     usernameValid: true,
+    //     passwordValid: true,
+    //     emailValid: true
+    //   });
+    //   return "Please fill in all fields";
+    // } else if (email !== re) {
+    //   this.setState({
+    //     uniqueEmail: true
+    //   });
+    //   return "That email doesn't exist";
+    // } else {
+    await axios
+      .post("http://172.20.10.8:5000/api/v1/users/signup", {
+        username: username,
+        email: email,
+        password: password
+      })
+      .then(res => {
+        // let JWT = res.data.jwt;
+        // localStorage.setItem("userToken", JWT);
+        // localStorage.setItem("userData", JSON.stringify(res.data));
+        console.log("Successfully signed up !");
+        this.setState({
+          currentUsername: username,
+          currentEmail: email,
+          currentPassword: password
         });
-    }
-  }
-  
+        window.location.reload();
+      })
+      .catch(error => {
+        console.log(error);
+      });
+    // }
+  };
 
   render() {
-    
     return (
-      <body>
+      <div>
         <Container component="main" maxWidth="xs">
           <CssBaseline />
           <div className="paper">
             <br />
             <Avatar className="avatar">
               <Icon className="iconRoot">
-                <img className="imageIcon" src="#" />
+                <img className="imageIcon" src="#" alt="imageIcon" />
               </Icon>
             </Avatar>
             <Typography component="h1" variant="h5">
@@ -129,12 +129,12 @@ class SignUp extends Component {
                     onChange={this.handleChange}
                     type="email"
                     style={
-                      this.state.emailValid
+                      (this.state.emailValid
                         ? { border: "1px solid red" }
-                        : { border: "1px solid green" }
-                    , this.state.uniqueEmail
+                        : { border: "1px solid green" },
+                      this.state.uniqueEmail
                         ? { border: "1px solid red" }
-                        : { border: "1px solid green"}
+                        : { border: "1px solid green" })
                     }
                   />
                   <p
@@ -146,11 +146,11 @@ class SignUp extends Component {
                   >
                     Please fill in email
                   </p>
-                  <p 
+                  <p
                     style={
                       this.state.uniqueEmail
-                        ? { color: "red "}
-                        : {display: "none"}
+                        ? { color: "red " }
+                        : { display: "none" }
                     }
                   >
                     That email doesn't exist
@@ -200,7 +200,7 @@ class SignUp extends Component {
             <br />
           </div>
         </Container>
-      </body>
+      </div>
     );
   }
 }

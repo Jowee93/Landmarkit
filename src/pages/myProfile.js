@@ -6,7 +6,14 @@ import Button from "@material-ui/core/Button";
 import NavbarComponent from "../components/NavbarComponent";
 import ninja_avatar from "../components/ninja_avatar.png";
 import TextField from "@material-ui/core/TextField";
+import IconButton from "@material-ui/core/IconButton";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
 import axios from "axios";
+import { Link } from "react-router-dom";
+import Collapse from "@material-ui/core/Collapse";
+import Slide from "@material-ui/core/Slide";
+import Zoom from "@material-ui/core/Zoom";
 
 const profilePicStyle = {
   borderRadius: "50%",
@@ -31,30 +38,40 @@ class MyProfile extends React.Component {
     email: "",
     description: "",
     profileImage: "",
-    editmode: false
+    editmode: false,
+    andchorEl: null,
+    transition: false
   };
 
   // API to retrieve user details from database
-  // componentDidMount() {
-  //   let JWT = localStorage.getItem("userToken");
-  //   axios({
-  //     method: "GET",
-  //     url: "<PUT URL TO FLASK BACKEND [users/me]>",
-  //     headers: { Authorization: `Bearer ${JWT}` }
-  //   })
-  //     .then(result => {
-  //       this.setState({
-  //         profile: result,
-  //         username: result.username,
-  //         email: result.email,
-  //         description: result.description,
-  //         profileImage: result.profileImage
-  //       });
-  //     })
-  //     .catch(error => {
-  //       console.log(error.response);
-  //     });
-  // }
+  componentDidMount() {
+    let JWT = localStorage.getItem("userToken");
+    axios({
+      method: "GET",
+      url: "http://172.20.10.8:5000/api/v1/users/me",
+      headers: { Authorization: `Bearer ${JWT}` }
+    })
+      .then(result => {
+        console.log("Get User Profile axios called:");
+        console.log(result.data);
+        this.setState({
+          profile: result.data,
+          username: result.data.username,
+          email: result.data.email,
+          description: result.data.description,
+          profileImage: result.data.profileImage
+        });
+      })
+      .catch(error => {
+        console.log(error.response);
+      });
+
+    setTimeout(() => {
+      this.setState({
+        transition: true
+      });
+    }, 0.1);
+  }
 
   edit = () => {
     this.setState({
@@ -69,14 +86,16 @@ class MyProfile extends React.Component {
   };
 
   handleSubmit = async e => {
+    let JWT = localStorage.getItem("userToken");
     const { username, password, description } = this.state;
     e.preventDefault();
     e.persist();
 
     await axios({
       method: "POST",
-      url: "<PUT IN URL TO UPDATE PROFILE>",
-      data: { username, password, description }
+      url: "http://172.20.10.8:5000/api/v1/users/me/edit",
+      data: { username, password, description },
+      headers: { Authorization: `Bearer ${JWT}` }
     })
       .then(response => {
         window.location.reload();
@@ -86,103 +105,159 @@ class MyProfile extends React.Component {
       });
   };
 
+  handleClick = event => {
+    this.setState({
+      anchorEl: event.currentTarget
+    });
+  };
+
+  handleClose = () => {
+    this.setState({
+      anchorEl: null
+    });
+  };
+
+  handleLogOut = () => {
+    localStorage.removeItem("userData");
+    localStorage.removeItem("userToken");
+
+    this.props.history.push({
+      pathname: "/"
+    });
+  };
+
+  linkToSearch = () => {
+    this.props.history.push({
+      pathname: "/search"
+    });
+  };
+
   render() {
     return (
       <div>
-        <Container id="follower_following_wrapper">
-          <Row
-            style={{
-              background: "turquoise",
-              height: "20vh",
-              marginBottom: "-5vh"
-            }}
+        <Zoom in={this.state.transition}>
+          <Container id="follower_following_wrapper">
+            <Row
+              style={{
+                background: "turquoise",
+                height: "20vh",
+                marginBottom: "-5vh"
+              }}
+            >
+              <Col className="d-flex justify-content-between m-3">
+                <span>
+                  0 <br /> FOLLOWERS
+                </span>
+                <span>
+                  0 <br /> FOLLOWING
+                </span>
+              </Col>
+            </Row>
+          </Container>
+        </Zoom>
+        <Zoom in={this.state.transition}>
+          <Container
+            id="addperson_profilePic_settings_wrapper"
+            style={{ position: "relative", bottom: "3vh", zIndex: "10" }}
           >
-            <Col className="d-flex justify-content-between m-3">
-              <span>
-                0 <br /> FOLLOWERS
-              </span>
-              <span>
-                0 <br /> FOLLOWING
-              </span>
-            </Col>
-          </Row>
-        </Container>
+            <Row>
+              <Col className="shadow" style={bodyStyle}>
+                <Row className="d-flex justify-content-between align-items-center ml-3 mr-3 mb-3">
+                  <IconButton onClick={this.linkToSearch}>
+                    <PersonAddIcon />
+                  </IconButton>
 
-        <Container
-          id="addperson_profilePic_settings_wrapper"
-          style={{ position: "relative", bottom: "3vh", zIndex: "10" }}
-        >
-          <Row>
-            <Col className="shadow" style={bodyStyle}>
-              <Row className="d-flex justify-content-between align-items-center ml-3 mr-3 mb-3">
-                <PersonAddIcon />
-
-                <div>
-                  <img style={profilePicStyle} src={ninja_avatar}></img>
-                  <p>@JoWee</p>
-                  <p>"Ninja Shuriken !"</p>
-                </div>
-
-                <SettingsIcon />
-              </Row>
-              <form onSubmit={this.handleSubmit} className="d-flex flex-column">
-                <TextField
-                  disabled={this.state.editmode ? false : true}
-                  name="username"
-                  className="m-3"
-                  label="Username"
-                  variant="outlined"
-                  color="secondary"
-                  value={this.state.username}
-                  onChange={this.handleChange}
-                ></TextField>
-                <TextField
-                  disabled={this.state.editmode ? false : true}
-                  name="email"
-                  className="m-3"
-                  label="Email"
-                  variant="outlined"
-                  color="secondary"
-                  value={this.state.email}
-                  onChange={this.handleChange}
-                ></TextField>
-                <TextField
-                  disabled={this.state.editmode ? false : true}
-                  name="description"
-                  className="m-3"
-                  id="outlined-multiline-static"
-                  label="Biography"
-                  rowmax="4"
-                  variant="outlined"
-                  color="secondary"
-                  value={this.state.description}
-                  onChange={this.handleChange}
-                  multiline
-                />
-                <div className="">
-                  <button
-                    style={
-                      this.state.editmode
-                        ? { display: "block" }
-                        : { display: "none" }
-                    }
-                    className="btn btn-outline-info mx-auto mb-3"
-                  >
-                    SUBMIT CHANGES
-                  </button>
+                  <div>
+                    <img
+                      style={profilePicStyle}
+                      src={this.state.profileImage}
+                      alt="profileImage"
+                    ></img>
+                    <p>@{this.state.username}</p>
+                    <p>"{this.state.description}"</p>
+                  </div>
                   <Button
-                    className="d-block mx-auto"
-                    onClick={this.edit}
+                    aria-controls="simple-menu"
+                    aria-haspopup="true"
+                    onClick={this.handleClick}
+                  >
+                    <IconButton>
+                      <SettingsIcon />
+                    </IconButton>
+                  </Button>
+                  <Menu
+                    id="simple-menu"
+                    anchorEl={this.state.anchorEl}
+                    keepMounted
+                    open={Boolean(this.state.anchorEl)}
+                    onClose={this.handleClose}
+                  >
+                    <MenuItem onClick={this.handleLogOut}>Logout</MenuItem>
+                  </Menu>
+                </Row>
+                <form
+                  onSubmit={this.handleSubmit}
+                  className="d-flex flex-column"
+                >
+                  <TextField
+                    disabled={this.state.editmode ? false : true}
+                    name="username"
+                    className="m-3"
+                    label="Username"
                     variant="outlined"
                     color="secondary"
-                  >
-                    {this.state.editmode ? "Cancel" : "Edit Profile"}
-                  </Button>
-                </div>
-              </form>
-            </Col>
-          </Row>
-        </Container>
+                    value={this.state.username}
+                    onChange={this.handleChange}
+                  ></TextField>
+                  <TextField
+                    disabled={this.state.editmode ? false : true}
+                    name="email"
+                    className="m-3"
+                    label="Email"
+                    variant="outlined"
+                    color="secondary"
+                    value={this.state.email}
+                    onChange={this.handleChange}
+                  ></TextField>
+                  <TextField
+                    disabled={this.state.editmode ? false : true}
+                    name="description"
+                    className="m-3"
+                    id="outlined-multiline-static"
+                    label="Biography"
+                    rowmax="4"
+                    variant="outlined"
+                    color="secondary"
+                    value={this.state.description}
+                    onChange={this.handleChange}
+                    multiline
+                  />
+                  <div className="">
+                    <button
+                      style={
+                        this.state.editmode
+                          ? { display: "block" }
+                          : { display: "none" }
+                      }
+                      className="btn btn-outline-info mx-auto mb-3"
+                    >
+                      SUBMIT CHANGES
+                    </button>
+                    <Button
+                      className="d-block mx-auto"
+                      onClick={this.edit}
+                      variant="outlined"
+                      color="secondary"
+                    >
+                      {this.state.editmode ? "Cancel" : "Edit Profile"}
+                    </Button>
+                  </div>
+                </form>
+              </Col>
+            </Row>
+          </Container>
+        </Zoom>
+
         <NavbarComponent></NavbarComponent>
       </div>
     );

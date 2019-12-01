@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -10,7 +10,7 @@ import "../components/css/signUp.css";
 import Container from "@material-ui/core/Container";
 import axios from "axios";
 
-class SignIn extends Component {
+class SignIn extends React.Component {
   state = {
     username: "",
     password: ""
@@ -22,26 +22,28 @@ class SignIn extends Component {
     });
   };
 
-  handleSubmit = e => {
+  handleSubmit = async e => {
     e.preventDefault();
     const { username, password } = this.state;
-    axios
-      .post("http://192.168.1.140:5000/users/test", {
+    await axios
+      .post("http://172.20.10.8:5000/api/v1/users/login", {
         username: username,
         password: password
       })
       .then(res => {
-        console.log(res)
-        let JWT = res.data.token;
-        // localStorage.setItem("userToken", JWT);
-        // localStorage.setItem("userData", JSON.stringify(res.data));
+        console.log("Successfully signed in !");
+        console.log(res);
+        let JWT = res.data.jwt;
+        localStorage.setItem("userToken", JWT);
+        localStorage.setItem("userData", JSON.stringify(res.data));
         this.setState({
           currentUsername: username,
           currentPassword: password
         });
+        window.location = "/main";
       })
       .catch(error => {
-        console.log(error);
+        console.log(error.response);
       });
   };
 

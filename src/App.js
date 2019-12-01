@@ -6,7 +6,7 @@ import { reject } from "q";
 import NavbarComponent from "./components/NavbarComponent";
 import FunModal from "./components/funModal";
 import GenModal from "./components/genModal";
-import { Route,withRouter } from "react-router-dom";
+import { Route, withRouter } from "react-router-dom";
 import LandingPage from "./pages/landingPage";
 import PhotoPage from "./pages/photoPage";
 import MainPage from "./pages/mainPage";
@@ -18,6 +18,7 @@ import NewFact from "./components/NewFact";
 import SearchPage from "./pages/searchPage";
 import GoogleMap from "./components/googleMapComponent";
 import Location from "./components/Location";
+import TransitionTest from "./components/transitionTest";
 
 class App extends React.Component {
   state = {
@@ -75,13 +76,13 @@ class App extends React.Component {
         </header>
         <NavbarComponent></NavbarComponent>
         </header> */}
-          {/* <Route
-          path="/"
-          exact
-          component={props => {
-            return <LandingPage {...props} />;
-          }}
-        /> */}
+          <Route
+            path="/"
+            exact
+            component={props => {
+              return <HomePage {...props} />;
+            }}
+          />
           {/* <Route
             path="/photo/current"
             exact
@@ -114,7 +115,7 @@ class App extends React.Component {
             }}
           />
           <Route
-            path="/newfact"
+            path="/image/:id/newfact"
             component={props => {
               return <NewFact {...props} />;
             }}

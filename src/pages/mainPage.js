@@ -13,10 +13,6 @@ const galleryContainer = {
   WebkitOverflowScrolling: "touch"
 };
 
-const bodyStyle = {
-  backgroundColor: "black"
-};
-
 class MainPage extends React.Component {
   render() {
     return (
