@@ -14,6 +14,8 @@ import { Link } from "react-router-dom";
 import Collapse from "@material-ui/core/Collapse";
 import Slide from "@material-ui/core/Slide";
 import Zoom from "@material-ui/core/Zoom";
+import Fade from "@material-ui/core/Fade";
+import Grow from "@material-ui/core/Grow";
 
 const profilePicStyle = {
   borderRadius: "50%",
@@ -134,8 +136,8 @@ class MyProfile extends React.Component {
 
   render() {
     return (
-      <div>
-        <Zoom in={this.state.transition}>
+      <Fade in={this.state.transition}>
+        <div>
           <Container id="follower_following_wrapper">
             <Row
               style={{
@@ -154,8 +156,7 @@ class MyProfile extends React.Component {
               </Col>
             </Row>
           </Container>
-        </Zoom>
-        <Zoom in={this.state.transition}>
+
           <Container
             id="addperson_profilePic_settings_wrapper"
             style={{ position: "relative", bottom: "3vh", zIndex: "10" }}
@@ -256,10 +257,10 @@ class MyProfile extends React.Component {
               </Col>
             </Row>
           </Container>
-        </Zoom>
 
-        <NavbarComponent></NavbarComponent>
-      </div>
+          <NavbarComponent></NavbarComponent>
+        </div>
+      </Fade>
     );
   }
 }

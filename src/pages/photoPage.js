@@ -4,6 +4,7 @@ import { Container } from "reactstrap";
 import PhotoBottomNav from "../components/photoBottomNav";
 import NavBarComponent from "../components/NavbarComponent";
 import TopBackNav from "../components/topBackNav";
+import axios from "axios";
 
 const containerStyle = {
   height: "100%",
@@ -13,21 +14,41 @@ const containerStyle = {
 
 class PhotoPage extends React.Component {
   state = {
-    currentImage: this.props.location.state.currentImage,
-    description: this.props.location.state.description
+    // currentImage: this.props.location.state.currentImage,
+    // description: this.props.location.state.description
+    image_id: this.props.match.params.id,
+    image: ""
   };
+
+  async componentDidMount() {
+    await axios({
+      method: "GET",
+      url: `http://192.168.0.167:5000/api/v1/images/${this.props.match.params.id}`
+    }).then(response => {
+      console.log("Get Specific Image axios called:");
+      console.log(response.data);
+      this.setState({
+        image: response.data[0]
+      });
+    });
+  }
 
   render() {
     return (
       <div>
         <TopBackNav></TopBackNav>
         <Container style={containerStyle}>
-          <PhotoComponent photoImage={this.state.currentImage} />
-          <p className="mt-3">{this.state.description.name}</p>
+          <PhotoComponent
+            // photoImage={this.state.currentImage}
+            image_id={this.state.image_id}
+            image={this.state.image}
+          />
+          
         </Container>
         <div style={{ position: "absolute", bottom: "20vh" }}>
           <PhotoBottomNav
-            photodescription={this.state.description}
+            image={this.state.image}
+            image_id={this.state.image_id}
           ></PhotoBottomNav>
         </div>
 

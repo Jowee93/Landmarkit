@@ -46,7 +46,7 @@ class SignUp extends Component {
     //   return "That email doesn't exist";
     // } else {
     await axios
-      .post("http://172.20.10.8:5000/api/v1/users/signup", {
+      .post("http://lamppost.herokuapp.com/api/v1/users/signup", {
         username: username,
         email: email,
         password: password

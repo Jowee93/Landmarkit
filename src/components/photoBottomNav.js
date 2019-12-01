@@ -13,7 +13,7 @@ import ModalFooter from "react-bootstrap/ModalFooter";
 import ModalTitle from "react-bootstrap/ModalTitle";
 import ModalHeader from "react-bootstrap/ModalHeader";
 import Bootstrap from "react-bootstrap";
-import GoogleMapComponent from "./googleMapComponent"; 
+import GoogleMapComponent from "./googleMapComponent";
 import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
 import Button from "@material-ui/core/Button";
@@ -67,7 +67,7 @@ export default function PhotoBottomNav(props) {
     let JWT = localStorage.getItem("userToken");
     axios({
       method: "GET",
-      url: `http://172.20.10.8:5000/api/v1/images/${props.photodescription.id}/facts`,
+      url: `http://lamppost.herokuapp.com/api/v1/images/${props.image_id}/facts`,
       headers: { Authorization: `Bearer ${JWT}` }
     })
       .then(response => {
@@ -94,9 +94,9 @@ export default function PhotoBottomNav(props) {
 
   const addFact = () => {
     history.push({
-      pathname: `/image/${props.photodescription.id}/newfact`,
+      pathname: `/image/${props.image_id}/newfact`,
       state: {
-        image_id: `${props.photodescription.id}`
+        image_id: `${props.image_id}`
       }
     });
   };
@@ -127,10 +127,7 @@ export default function PhotoBottomNav(props) {
             <div className="card mb-3">
               <div className="card-body">
                 <h5 className="card-title">General Information</h5>
-                <p className="card-text">
-                  Placeholder for general information from backend:
-                  {props.photodescription.description}
-                </p>
+                <p className="card-text">{props.image.description}</p>
                 {/* <a href="/" className="btn btn-primary">
                   Go somewhere
                 </a> */}
@@ -139,12 +136,12 @@ export default function PhotoBottomNav(props) {
           </div>
         </div>
 
-        {funfacts.map((fact, index) => (
+        {facts.map((fact, index) => (
           <div className="row">
             <div className="col-sm-6">
               <div className="card mb-3">
                 <div className="card-body">
-                  <h5 className="card-title">Fact {index}</h5>
+                  <h5 className="card-title">{fact.title}</h5>
                   <p className="card-text">{fact.text}</p>
                   <span className="float-right">
                     <small>{fact.username}</small>

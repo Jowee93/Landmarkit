@@ -1,5 +1,6 @@
 import React from "react";
 import { Picture } from "react-responsive-picture";
+import axios from "axios";
 
 const photoStyle = {
   maxWidth: "100%",
@@ -9,12 +10,21 @@ const photoStyle = {
 };
 
 class PhotoComponent extends React.Component {
-  state = {
-    currentImage: this.props.photoImage
-  };
+  // state = {
+  //   currentImage: this.props.photoImage,
+  //   image_id: this.props.image_id,
+
+  // };
 
   render() {
-    return <Picture style={photoStyle} src={this.state.currentImage}></Picture>;
+    return (
+      <>
+        <Picture style={photoStyle} src={this.props.image.url}></Picture>;
+        <p style={{ color: "white" }} className="mt-3">
+          {this.props.image.name}
+        </p>
+      </>
+    );
   }
 }
 

@@ -18,26 +18,32 @@ const useStyles = makeStyles(theme => ({
 
 export default function MultilineTextFields() {
   const classes = useStyles();
-  const [value, setValue] = React.useState("");
+  const [text, setText] = React.useState("");
+  const [title, setTitle] = React.useState("");
   const location = useLocation();
   const history = useHistory();
 
-  const handleChange = event => {
-    setValue(event.target.value);
+  const handleChangeText = event => {
+    setText(event.target.value);
+  };
+
+  const handleChangeTitle = event => {
+    setTitle(event.target.value);
   };
 
   const handleSubmit = async e => {
     e.preventDefault();
     let JWT = localStorage.getItem("userToken");
 
-    let formData = new FormData();
-    formData.append("fact", value);
+    // let formData = new FormData();
+    // formData.append("text", value);
+    // formData.append("title", title);
 
     await axios({
       method: "POST",
-      url: `http://172.20.10.8:5000/api/v1/images/${location.state.image_id}/newfact`,
+      url: `http://192.168.0.167:5000/api/v1/images/${location.state.image_id}/newfact`,
       header: { Authoriation: `Bearer${JWT}` },
-      data: formData
+      data: { title, text }
     })
       .then(response => {
         console.log("Add fact axios is called:");
@@ -64,6 +70,16 @@ export default function MultilineTextFields() {
             <div>
               <TextField
                 id="outlined-multiline-static"
+                label="Title !"
+                fullWidth
+                placeholder="Title !"
+                className={classes.textField}
+                margin="normal"
+                variant="outlined"
+                onChange={handleChangeTitle}
+              />
+              <TextField
+                id="outlined-multiline-static"
                 label="Fun Fact !"
                 fullWidth
                 multiline
@@ -72,7 +88,7 @@ export default function MultilineTextFields() {
                 className={classes.textField}
                 margin="normal"
                 variant="outlined"
-                onChange={handleChange}
+                onChange={handleChangeText}
               />
             </div>
             <div>

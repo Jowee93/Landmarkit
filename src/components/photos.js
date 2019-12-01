@@ -4,12 +4,13 @@ export const photos = [
     width: 4,
     height: 3,
     title: "test",
-    id: "1"
+    id: "4"
   },
   {
     src: "https://source.unsplash.com/Dm-qxdynoEc/800x799",
     width: 1,
-    height: 1
+    height: 1,
+    id: "2"
   },
   {
     src: "https://source.unsplash.com/qDkso9nvCg0/600x799",
