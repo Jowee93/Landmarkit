@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -9,7 +9,6 @@ import Typography from "@material-ui/core/Typography";
 import "../components/css/signUp.css";
 import Container from "@material-ui/core/Container";
 import axios from "axios";
-import { Redirect } from "react-router-dom";
 
 class SignIn extends React.Component {
   state = {
@@ -27,7 +26,7 @@ class SignIn extends React.Component {
     e.preventDefault();
     const { username, password } = this.state;
     await axios
-      .post("http://192.168.0.167:5000/api/v1/users/login", {
+      .post("http://172.20.10.8:5000/api/v1/users/login", {
         username: username,
         password: password
       })

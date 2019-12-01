@@ -18,6 +18,7 @@ import NewFact from "./components/NewFact";
 import SearchPage from "./pages/searchPage";
 import GoogleMap from "./components/googleMapComponent";
 import Location from "./components/Location";
+import TransitionTest from "./components/transitionTest";
 
 class App extends React.Component {
   state = {

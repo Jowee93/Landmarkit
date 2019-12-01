@@ -30,7 +30,7 @@ class SignUp extends Component {
   handleSubmit = async e => {
     e.preventDefault();
     const { username, email, password } = this.state;
-    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
     // if (username.length <= 0 && password.length <= 0 && email.length <= 0) {
     //   this.setState({
@@ -39,14 +39,14 @@ class SignUp extends Component {
     //     emailValid: true
     //   });
     //   return "Please fill in all fields";
-    // } else if (email != re) {
+    // } else if (email !== re) {
     //   this.setState({
     //     uniqueEmail: true
     //   });
     //   return "That email doesn't exist";
     // } else {
     await axios
-      .post("http://192.168.0.167:5000/api/v1/users/signup", {
+      .post("http://172.20.10.8:5000/api/v1/users/signup", {
         username: username,
         email: email,
         password: password
@@ -78,7 +78,7 @@ class SignUp extends Component {
             <br />
             <Avatar className="avatar">
               <Icon className="iconRoot">
-                <img className="imageIcon" src="#" />
+                <img className="imageIcon" src="#" alt="imageIcon" />
               </Icon>
             </Avatar>
             <Typography component="h1" variant="h5">

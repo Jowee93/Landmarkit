@@ -11,6 +11,9 @@ import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import Collapse from "@material-ui/core/Collapse";
+import Slide from "@material-ui/core/Slide";
+import Zoom from "@material-ui/core/Zoom";
 
 const profilePicStyle = {
   borderRadius: "50%",
@@ -36,7 +39,8 @@ class MyProfile extends React.Component {
     description: "",
     profileImage: "",
     editmode: false,
-    andchorEl: null
+    andchorEl: null,
+    transition: false
   };
 
   // API to retrieve user details from database
@@ -44,7 +48,7 @@ class MyProfile extends React.Component {
     let JWT = localStorage.getItem("userToken");
     axios({
       method: "GET",
-      url: "http://192.168.0.167:5000/api/v1/users/me",
+      url: "http://172.20.10.8:5000/api/v1/users/me",
       headers: { Authorization: `Bearer ${JWT}` }
     })
       .then(result => {
@@ -61,6 +65,12 @@ class MyProfile extends React.Component {
       .catch(error => {
         console.log(error.response);
       });
+
+    setTimeout(() => {
+      this.setState({
+        transition: true
+      });
+    }, 0.1);
   }
 
   edit = () => {
@@ -83,7 +93,7 @@ class MyProfile extends React.Component {
 
     await axios({
       method: "POST",
-      url: "http://192.168.0.167:5000/api/v1/users/me/edit",
+      url: "http://172.20.10.8:5000/api/v1/users/me/edit",
       data: { username, password, description },
       headers: { Authorization: `Bearer ${JWT}` }
     })
@@ -125,122 +135,129 @@ class MyProfile extends React.Component {
   render() {
     return (
       <div>
-        <Container id="follower_following_wrapper">
-          <Row
-            style={{
-              background: "turquoise",
-              height: "20vh",
-              marginBottom: "-5vh"
-            }}
+        <Zoom in={this.state.transition}>
+          <Container id="follower_following_wrapper">
+            <Row
+              style={{
+                background: "turquoise",
+                height: "20vh",
+                marginBottom: "-5vh"
+              }}
+            >
+              <Col className="d-flex justify-content-between m-3">
+                <span>
+                  0 <br /> FOLLOWERS
+                </span>
+                <span>
+                  0 <br /> FOLLOWING
+                </span>
+              </Col>
+            </Row>
+          </Container>
+        </Zoom>
+        <Zoom in={this.state.transition}>
+          <Container
+            id="addperson_profilePic_settings_wrapper"
+            style={{ position: "relative", bottom: "3vh", zIndex: "10" }}
           >
-            <Col className="d-flex justify-content-between m-3">
-              <span>
-                0 <br /> FOLLOWERS
-              </span>
-              <span>
-                0 <br /> FOLLOWING
-              </span>
-            </Col>
-          </Row>
-        </Container>
-
-        <Container
-          id="addperson_profilePic_settings_wrapper"
-          style={{ position: "relative", bottom: "3vh", zIndex: "10" }}
-        >
-          <Row>
-            <Col className="shadow" style={bodyStyle}>
-              <Row className="d-flex justify-content-between align-items-center ml-3 mr-3 mb-3">
-                <IconButton onClick={this.linkToSearch}>
-                  <PersonAddIcon />
-                </IconButton>
-
-                <div>
-                  <img
-                    style={profilePicStyle}
-                    src={this.state.profileImage}
-                    alt="profileImage"
-                  ></img>
-                  <p>@{this.state.username}</p>
-                  <p>"{this.state.description}"</p>
-                </div>
-                <Button
-                  aria-controls="simple-menu"
-                  aria-haspopup="true"
-                  onClick={this.handleClick}
-                >
-                  <IconButton>
-                    <SettingsIcon />
+            <Row>
+              <Col className="shadow" style={bodyStyle}>
+                <Row className="d-flex justify-content-between align-items-center ml-3 mr-3 mb-3">
+                  <IconButton onClick={this.linkToSearch}>
+                    <PersonAddIcon />
                   </IconButton>
-                </Button>
-                <Menu
-                  id="simple-menu"
-                  anchorEl={this.state.anchorEl}
-                  keepMounted
-                  open={Boolean(this.state.anchorEl)}
-                  onClose={this.handleClose}
-                >
-                  <MenuItem onClick={this.handleLogOut}>Logout</MenuItem>
-                </Menu>
-              </Row>
-              <form onSubmit={this.handleSubmit} className="d-flex flex-column">
-                <TextField
-                  disabled={this.state.editmode ? false : true}
-                  name="username"
-                  className="m-3"
-                  label="Username"
-                  variant="outlined"
-                  color="secondary"
-                  value={this.state.username}
-                  onChange={this.handleChange}
-                ></TextField>
-                <TextField
-                  disabled={this.state.editmode ? false : true}
-                  name="email"
-                  className="m-3"
-                  label="Email"
-                  variant="outlined"
-                  color="secondary"
-                  value={this.state.email}
-                  onChange={this.handleChange}
-                ></TextField>
-                <TextField
-                  disabled={this.state.editmode ? false : true}
-                  name="description"
-                  className="m-3"
-                  id="outlined-multiline-static"
-                  label="Biography"
-                  rowmax="4"
-                  variant="outlined"
-                  color="secondary"
-                  value={this.state.description}
-                  onChange={this.handleChange}
-                  multiline
-                />
-                <div className="">
-                  <button
-                    style={
-                      this.state.editmode
-                        ? { display: "block" }
-                        : { display: "none" }
-                    }
-                    className="btn btn-outline-info mx-auto mb-3"
-                  >
-                    SUBMIT CHANGES
-                  </button>
+
+                  <div>
+                    <img
+                      style={profilePicStyle}
+                      src={this.state.profileImage}
+                      alt="profileImage"
+                    ></img>
+                    <p>@{this.state.username}</p>
+                    <p>"{this.state.description}"</p>
+                  </div>
                   <Button
-                    className="d-block mx-auto"
-                    onClick={this.edit}
+                    aria-controls="simple-menu"
+                    aria-haspopup="true"
+                    onClick={this.handleClick}
+                  >
+                    <IconButton>
+                      <SettingsIcon />
+                    </IconButton>
+                  </Button>
+                  <Menu
+                    id="simple-menu"
+                    anchorEl={this.state.anchorEl}
+                    keepMounted
+                    open={Boolean(this.state.anchorEl)}
+                    onClose={this.handleClose}
+                  >
+                    <MenuItem onClick={this.handleLogOut}>Logout</MenuItem>
+                  </Menu>
+                </Row>
+                <form
+                  onSubmit={this.handleSubmit}
+                  className="d-flex flex-column"
+                >
+                  <TextField
+                    disabled={this.state.editmode ? false : true}
+                    name="username"
+                    className="m-3"
+                    label="Username"
                     variant="outlined"
                     color="secondary"
-                  >
-                    {this.state.editmode ? "Cancel" : "Edit Profile"}
-                  </Button>
-                </div>
-              </form>
-            </Col>
-          </Row>
-        </Container>
+                    value={this.state.username}
+                    onChange={this.handleChange}
+                  ></TextField>
+                  <TextField
+                    disabled={this.state.editmode ? false : true}
+                    name="email"
+                    className="m-3"
+                    label="Email"
+                    variant="outlined"
+                    color="secondary"
+                    value={this.state.email}
+                    onChange={this.handleChange}
+                  ></TextField>
+                  <TextField
+                    disabled={this.state.editmode ? false : true}
+                    name="description"
+                    className="m-3"
+                    id="outlined-multiline-static"
+                    label="Biography"
+                    rowmax="4"
+                    variant="outlined"
+                    color="secondary"
+                    value={this.state.description}
+                    onChange={this.handleChange}
+                    multiline
+                  />
+                  <div className="">
+                    <button
+                      style={
+                        this.state.editmode
+                          ? { display: "block" }
+                          : { display: "none" }
+                      }
+                      className="btn btn-outline-info mx-auto mb-3"
+                    >
+                      SUBMIT CHANGES
+                    </button>
+                    <Button
+                      className="d-block mx-auto"
+                      onClick={this.edit}
+                      variant="outlined"
+                      color="secondary"
+                    >
+                      {this.state.editmode ? "Cancel" : "Edit Profile"}
+                    </Button>
+                  </div>
+                </form>
+              </Col>
+            </Row>
+          </Container>
+        </Zoom>
+
         <NavbarComponent></NavbarComponent>
       </div>
     );

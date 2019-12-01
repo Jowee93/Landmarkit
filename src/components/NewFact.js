@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
-import Modal from "react-bootstrap/Modal";
 import axios from "axios";
-import { Card, CardTitle, CardText, CardDeck } from "reactstrap";
+import { Card, CardDeck } from "reactstrap";
 import { useHistory, useLocation, Redirect } from "react-router-dom";
 import TopBackNav from "./topBackNav";
 
@@ -36,7 +35,7 @@ export default function MultilineTextFields() {
 
     await axios({
       method: "POST",
-      url: `http://192.168.0.167:5000/api/v1/images/${location.state.image_id}/newfact`,
+      url: `http://172.20.10.8:5000/api/v1/images/${location.state.image_id}/newfact`,
       header: { Authoriation: `Bearer${JWT}` },
       data: formData
     })

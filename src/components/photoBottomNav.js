@@ -67,7 +67,7 @@ export default function PhotoBottomNav(props) {
     let JWT = localStorage.getItem("userToken");
     axios({
       method: "GET",
-      url: `http://192.168.0.167:5000/api/v1/images/${props.photodescription.id}/facts`,
+      url: `http://172.20.10.8:5000/api/v1/images/${props.photodescription.id}/facts`,
       headers: { Authorization: `Bearer ${JWT}` }
     })
       .then(response => {

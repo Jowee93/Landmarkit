@@ -1,6 +1,6 @@
 import React from "react";
 import PhotoComponent from "../components/photoComponent";
-import { Container, Row, Col } from "reactstrap";
+import { Container } from "reactstrap";
 import PhotoBottomNav from "../components/photoBottomNav";
 import NavBarComponent from "../components/NavbarComponent";
 import TopBackNav from "../components/topBackNav";
@@ -10,8 +10,6 @@ const containerStyle = {
   backgroundColor: "black",
   padding: "22vh 0 22vh 0"
 };
-
-const bottomContainerStyle = {};
 
 class PhotoPage extends React.Component {
   state = {
