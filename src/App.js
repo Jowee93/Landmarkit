@@ -6,7 +6,7 @@ import { reject } from "q";
 import NavbarComponent from "./components/NavbarComponent";
 import FunModal from "./components/funModal";
 import GenModal from "./components/genModal";
-import { Route } from "react-router-dom";
+import { Route,withRouter } from "react-router-dom";
 import LandingPage from "./pages/landingPage";
 import PhotoPage from "./pages/photoPage";
 import MainPage from "./pages/mainPage";
@@ -17,6 +17,7 @@ import HomePage from "./pages/inOrOutPage";
 import NewFact from "./components/NewFact";
 import SearchPage from "./pages/searchPage";
 import GoogleMap from "./components/googleMapComponent";
+import Location from "./components/Location";
 
 class App extends React.Component {
   state = {
@@ -34,7 +35,6 @@ class App extends React.Component {
         reject("No file selected.");
         return;
       }
-
       const myFile = filePicker.files[0];
 
       console.log(myFile);
@@ -45,7 +45,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <body className="App-body">
+      <div className="App-body">
         <div className="App">
           {/* <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
@@ -131,10 +131,16 @@ class App extends React.Component {
               return <GoogleMap {...props} />;
             }}
           />
+          <Route
+            path="/searchlocation"
+            component={props => {
+              return <Location {...props} />;
+            }}
+          />
         </div>
-      </body>
+      </div>
     );
   }
 }
 
-export default App;
+export default withRouter(App);
