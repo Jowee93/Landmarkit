@@ -34,6 +34,9 @@ export default function MultilineTextFields() {
   const handleSubmit = async e => {
     e.preventDefault();
     let JWT = localStorage.getItem("userToken");
+    // let userData = localStorage.getItem("userData");
+
+    // let username = userData.username;
 
     // let formData = new FormData();
     // formData.append("text", value);
@@ -41,9 +44,9 @@ export default function MultilineTextFields() {
 
     await axios({
       method: "POST",
-      url: `http://192.168.0.167:5000/api/v1/images/${location.state.image_id}/newfact`,
-      header: { Authoriation: `Bearer${JWT}` },
-      data: { title, text }
+      url: `https://lamppost.herokuapp.com/api/v1/images/${location.state.image_id}/newfact`,
+      headers: { Authorization: `Bearer ${JWT}` },
+      data: { text, title }
     })
       .then(response => {
         console.log("Add fact axios is called:");

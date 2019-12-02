@@ -42,7 +42,7 @@ export default function ImageGalleryComponent() {
     let JWT = localStorage.getItem("userToken");
     axios({
       method: "GET",
-      url: "http://192.168.1.80:5000/api/v1/images/me",
+      url: "https://lamppost.herokuapp.com/api/v1/images/me",
       headers: { Authorization: `Bearer ${JWT}` }
     })
       .then(response => {

@@ -46,7 +46,7 @@ class SignUp extends Component {
     //   return "That email doesn't exist";
     // } else {
     await axios
-      .post("http://192.168.1.80:5000/api/v1/users/signup", {
+      .post("https://lamppost.herokuapp.com/api/v1/users/signup", {
         username: username,
         email: email,
         password: password
@@ -147,13 +147,13 @@ class SignUp extends Component {
                     Please fill in email
                   </p>
                   {/* <p  */}
-                    {/* style={ */}
-                      {/* this.state.uniqueEmail */}
-                        {/* ? { color: "red "} */}
-                        {/* : {display: "none"} */}
-                    {/* } */}
+                  {/* style={ */}
+                  {/* this.state.uniqueEmail */}
+                  {/* ? { color: "red "} */}
+                  {/* : {display: "none"} */}
+                  {/* } */}
                   {/* > */}
-                    {/* That email doesn't exist */}
+                  {/* That email doesn't exist */}
                   {/* </p> */}
                 </Grid>
                 <Grid item xs={12} sm={6}>

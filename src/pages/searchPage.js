@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import NavbarComponent from "../components/NavbarComponent";
 import { MDBCol } from "mdbreact";
 import ButtonToolbar from "react";
@@ -40,13 +41,18 @@ export default function SearchPage(props) {
   const [userResult, setUserResult] = useState([]);
   const [locationResult, setLocationResult] = useState([]);
 
+  const history = useHistory();
+
   const handleSubmit = () => {
     if (category == "User") {
       let searchstring = searchInput;
+      let formData = new FormData();
+      formData.append("searchInput", searchInput);
+      console.log(searchstring);
       axios({
-        method: "GET",
-        url: "http://192.168.1.80:5000/users/search",
-        data: searchstring
+        method: "POST",
+        url: "https://lamppost.herokuapp.com/api/v1/users/search",
+        data: formData
       })
         .then(response => {
           console.log("Search User axios is called:");
@@ -58,18 +64,24 @@ export default function SearchPage(props) {
         });
     } else {
       let placename = searchInput;
+      let formData = new FormData();
+      formData.append("placename", searchInput);
+      console.log(placename);
+
       axios({
-        method: "GET",
-        url: "http://192.168.1.80:5000/images/search",
-        data: placename
+        method: "POST",
+        url: "https://lamppost.herokuapp.com/api/v1/images/search",
+        data: formData
       })
         .then(response => {
           console.log("Search location axios is called:");
           console.log(response.data);
           setLocationResult(placename);
-          props.history.push({
+          history.push({
             pathname: "/searchlocation",
-            data: locationResult
+            state: {
+              placename: response.data
+            }
           });
         })
         .catch(error => {

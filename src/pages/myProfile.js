@@ -51,7 +51,7 @@ class MyProfile extends React.Component {
     let JWT = localStorage.getItem("userToken");
     axios({
       method: "GET",
-      url: "http://192.168.1.80:5000/api/v1/users/me",
+      url: "https://lamppost.herokuapp.com/api/v1/users/me",
       headers: { Authorization: `Bearer ${JWT}` }
     })
       .then(result => {
@@ -107,7 +107,7 @@ class MyProfile extends React.Component {
 
     axios({
       method: "POST",
-      url: "http://192.168.1.80:5000/api/v1/users/me/edit/picture",
+      url: "https://lamppost.herokuapp.com/api/v1/users/me/edit/picture",
       data: formData,
       headers: { Authorization: `Bearer ${JWT}` }
     })
@@ -129,7 +129,7 @@ class MyProfile extends React.Component {
 
     await axios({
       method: "POST",
-      url: "http://192.168.1.80:5000/api/v1/users/me/edit",
+      url: "https://lamppost.herokuapp.com/api/v1/users/me/edit",
       data: { username, email, description },
       headers: { Authorization: `Bearer ${JWT}` }
     })

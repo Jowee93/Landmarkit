@@ -21,7 +21,7 @@ export default function UserPic() {
 
     axios({
       method: "GET",
-      url: "http://192.168.1.80:5000/api/v1/users/me",
+      url: "https://lamppost.herokuapp.com/api/v1/users/me",
       headers: { Authorization: `Bearer ${JWT}` }
     })
       .then(result => {

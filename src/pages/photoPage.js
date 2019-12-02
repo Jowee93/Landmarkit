@@ -23,12 +23,13 @@ class PhotoPage extends React.Component {
   async componentDidMount() {
     await axios({
       method: "GET",
-      url: `http://192.168.0.167:5000/api/v1/images/${this.props.match.params.id}`
+      url: `https://lamppost.herokuapp.com/api/v1/images/${this.props.match.params.id}`
     }).then(response => {
       console.log("Get Specific Image axios called:");
       console.log(response.data);
+
       this.setState({
-        image: response.data[0]
+        image: response.data
       });
     });
   }
@@ -43,7 +44,6 @@ class PhotoPage extends React.Component {
             image_id={this.state.image_id}
             image={this.state.image}
           />
-          
         </Container>
         <div style={{ position: "absolute", bottom: "20vh" }}>
           <PhotoBottomNav
