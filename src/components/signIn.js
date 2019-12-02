@@ -25,8 +25,8 @@ class SignIn extends React.Component {
   handleSubmit = async e => {
     e.preventDefault();
     const { username, password } = this.state;
-    await axios
-      .post("http://172.20.10.8:5000/api/v1/users/login", {
+    axios
+      .post("http://192.168.1.140:5000/users/currentuser", {
         username: username,
         password: password
       })

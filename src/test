@@ -1,0 +1,651 @@
+{
+    "meta": {
+        "code": 200,
+        "requestId": "5de34655e826ac001b0c810e"
+    },
+    "response": {
+        "suggestedFilters": {
+            "header": "Tap to show:",
+            "filters": [
+                {
+                    "name": "Open now",
+                    "key": "openNow"
+                },
+                {
+                    "name": "$-$$$$",
+                    "key": "price"
+                }
+            ]
+        },
+        "geocode": {
+            "what": "",
+            "where": "nyc",
+            "center": {
+                "lat": 40.742185,
+                "lng": -73.992602
+            },
+            "displayString": "New York, NY, United States",
+            "cc": "US",
+            "geometry": {
+                "bounds": {
+                    "ne": {
+                        "lat": 40.882214,
+                        "lng": -73.907
+                    },
+                    "sw": {
+                        "lat": 40.679548,
+                        "lng": -74.047285
+                    }
+                }
+            },
+            "slug": "new-york-city-new-york",
+            "longId": "72057594043056517"
+        },
+        "headerLocation": "New York",
+        "headerFullLocation": "New York",
+        "headerLocationGranularity": "city",
+        "totalResults": 240,
+        "suggestedBounds": {
+            "ne": {
+                "lat": 40.79809345,
+                "lng": -73.94910462069855
+            },
+            "sw": {
+                "lat": 40.697719549999995,
+                "lng": -74.0135069653305
+            }
+        },
+        "groups": [
+            {
+                "type": "Recommended Places",
+                "name": "recommended",
+                "items": [
+                    {
+                        "reasons": {
+                            "count": 0,
+                            "items": [
+                                {
+                                    "summary": "This spot is popular",
+                                    "type": "general",
+                                    "reasonName": "globalInteractionReason"
+                                }
+                            ]
+                        },
+                        "venue": {
+                            "id": "412d2800f964a520df0c1fe3",
+                            "name": "Central Park",
+                            "location": {
+                                "address": "59th St to 110th St",
+                                "crossStreet": "5th Ave to Central Park West",
+                                "lat": 40.78408342593807,
+                                "lng": -73.96485328674316,
+                                "labeledLatLngs": [
+                                    {
+                                        "label": "display",
+                                        "lat": 40.78408342593807,
+                                        "lng": -73.96485328674316
+                                    }
+                                ],
+                                "postalCode": "10028",
+                                "cc": "US",
+                                "city": "New York",
+                                "state": "NY",
+                                "country": "United States",
+                                "formattedAddress": [
+                                    "59th St to 110th St (5th Ave to Central Park West)",
+                                    "New York, NY 10028",
+                                    "United States"
+                                ]
+                            },
+                            "categories": [
+                                {
+                                    "id": "4bf58dd8d48988d163941735",
+                                    "name": "Park",
+                                    "pluralName": "Parks",
+                                    "shortName": "Park",
+                                    "icon": {
+                                        "prefix": "https://ss3.4sqi.net/img/categories_v2/parks_outdoors/park_",
+                                        "suffix": ".png"
+                                    },
+                                    "primary": true
+                                }
+                            ],
+                            "photos": {
+                                "count": 0,
+                                "groups": []
+                            }
+                        },
+                        "referralId": "e-0-412d2800f964a520df0c1fe3-0"
+                    },
+                    {
+                        "reasons": {
+                            "count": 0,
+                            "items": [
+                                {
+                                    "summary": "This spot is popular",
+                                    "type": "general",
+                                    "reasonName": "globalInteractionReason"
+                                }
+                            ]
+                        },
+                        "venue": {
+                            "id": "430d0a00f964a5203e271fe3",
+                            "name": "Brooklyn Bridge Park",
+                            "location": {
+                                "address": "Main St",
+                                "crossStreet": "Plymouth St",
+                                "lat": 40.702282,
+                                "lng": -73.996456,
+                                "labeledLatLngs": [
+                                    {
+                                        "label": "display",
+                                        "lat": 40.702282,
+                                        "lng": -73.996456
+                                    }
+                                ],
+                                "postalCode": "11201",
+                                "cc": "US",
+                                "neighborhood": "DUMBO, Brooklyn, NY",
+                                "city": "Brooklyn",
+                                "state": "NY",
+                                "country": "United States",
+                                "formattedAddress": [
+                                    "Main St (Plymouth St)",
+                                    "Brooklyn, NY 11201",
+                                    "United States"
+                                ]
+                            },
+                            "categories": [
+                                {
+                                    "id": "4bf58dd8d48988d163941735",
+                                    "name": "Park",
+                                    "pluralName": "Parks",
+                                    "shortName": "Park",
+                                    "icon": {
+                                        "prefix": "https://ss3.4sqi.net/img/categories_v2/parks_outdoors/park_",
+                                        "suffix": ".png"
+                                    },
+                                    "primary": true
+                                }
+                            ],
+                            "photos": {
+                                "count": 0,
+                                "groups": []
+                            }
+                        },
+                        "referralId": "e-0-430d0a00f964a5203e271fe3-1"
+                    },
+                    {
+                        "reasons": {
+                            "count": 0,
+                            "items": [
+                                {
+                                    "summary": "This spot is popular",
+                                    "type": "general",
+                                    "reasonName": "globalInteractionReason"
+                                }
+                            ]
+                        },
+                        "venue": {
+                            "id": "59580ce6db1d8148fee3d383",
+                            "name": "Los Tacos No. 1",
+                            "location": {
+                                "address": "229 W 43rd St",
+                                "crossStreet": "btwn 7th & 8th Ave",
+                                "lat": 40.75713361630251,
+                                "lng": -73.98753586979832,
+                                "labeledLatLngs": [
+                                    {
+                                        "label": "display",
+                                        "lat": 40.75713361630251,
+                                        "lng": -73.98753586979832
+                                    }
+                                ],
+                                "postalCode": "10036",
+                                "cc": "US",
+                                "neighborhood": "Theater District",
+                                "city": "New York",
+                                "state": "NY",
+                                "country": "United States",
+                                "formattedAddress": [
+                                    "229 W 43rd St (btwn 7th & 8th Ave)",
+                                    "New York, NY 10036",
+                                    "United States"
+                                ]
+                            },
+                            "categories": [
+                                {
+                                    "id": "4bf58dd8d48988d151941735",
+                                    "name": "Taco Place",
+                                    "pluralName": "Taco Places",
+                                    "shortName": "Tacos",
+                                    "icon": {
+                                        "prefix": "https://ss3.4sqi.net/img/categories_v2/food/taco_",
+                                        "suffix": ".png"
+                                    },
+                                    "primary": true
+                                }
+                            ],
+                            "photos": {
+                                "count": 0,
+                                "groups": []
+                            }
+                        },
+                        "referralId": "e-0-59580ce6db1d8148fee3d383-2"
+                    },
+                    {
+                        "reasons": {
+                            "count": 0,
+                            "items": [
+                                {
+                                    "summary": "This spot is popular",
+                                    "type": "general",
+                                    "reasonName": "globalInteractionReason"
+                                }
+                            ]
+                        },
+                        "venue": {
+                            "id": "4a9ad8d2f964a520213320e3",
+                            "name": "Conservatory Garden",
+                            "location": {
+                                "address": "1231 5th Ave",
+                                "crossStreet": "at 105th St",
+                                "lat": 40.793531,
+                                "lng": -73.952032,
+                                "labeledLatLngs": [
+                                    {
+                                        "label": "display",
+                                        "lat": 40.793531,
+                                        "lng": -73.952032
+                                    }
+                                ],
+                                "postalCode": "10029",
+                                "cc": "US",
+                                "city": "New York",
+                                "state": "NY",
+                                "country": "United States",
+                                "formattedAddress": [
+                                    "1231 5th Ave (at 105th St)",
+                                    "New York, NY 10029",
+                                    "United States"
+                                ]
+                            },
+                            "categories": [
+                                {
+                                    "id": "4bf58dd8d48988d15a941735",
+                                    "name": "Garden",
+                                    "pluralName": "Gardens",
+                                    "shortName": "Garden",
+                                    "icon": {
+                                        "prefix": "https://ss3.4sqi.net/img/categories_v2/parks_outdoors/garden_",
+                                        "suffix": ".png"
+                                    },
+                                    "primary": true
+                                }
+                            ],
+                            "photos": {
+                                "count": 0,
+                                "groups": []
+                            }
+                        },
+                        "referralId": "e-0-4a9ad8d2f964a520213320e3-3"
+                    },
+                    {
+                        "reasons": {
+                            "count": 0,
+                            "items": [
+                                {
+                                    "summary": "This spot is popular",
+                                    "type": "general",
+                                    "reasonName": "globalInteractionReason"
+                                }
+                            ]
+                        },
+                        "venue": {
+                            "id": "43222200f964a5209c271fe3",
+                            "name": "Gantry Plaza State Park",
+                            "location": {
+                                "address": "474 48th Ave",
+                                "crossStreet": "at Center Blvd",
+                                "lat": 40.74655794031174,
+                                "lng": -73.9580512046814,
+                                "labeledLatLngs": [
+                                    {
+                                        "label": "display",
+                                        "lat": 40.74655794031174,
+                                        "lng": -73.9580512046814
+                                    }
+                                ],
+                                "postalCode": "11109",
+                                "cc": "US",
+                                "city": "Queens",
+                                "state": "NY",
+                                "country": "United States",
+                                "formattedAddress": [
+                                    "474 48th Ave (at Center Blvd)",
+                                    "Long Island City, NY 11109",
+                                    "United States"
+                                ]
+                            },
+                            "categories": [
+                                {
+                                    "id": "5bae9231bedf3950379f89d0",
+                                    "name": "State / Provincial Park",
+                                    "pluralName": "State / Provincial Parks",
+                                    "shortName": "State / Provincial Park",
+                                    "icon": {
+                                        "prefix": "https://ss3.4sqi.net/img/categories_v2/parks_outdoors/default_",
+                                        "suffix": ".png"
+                                    },
+                                    "primary": true
+                                }
+                            ],
+                            "photos": {
+                                "count": 0,
+                                "groups": []
+                            }
+                        },
+                        "referralId": "e-0-43222200f964a5209c271fe3-4"
+                    },
+                    {
+                        "reasons": {
+                            "count": 0,
+                            "items": [
+                                {
+                                    "summary": "This spot is popular",
+                                    "type": "general",
+                                    "reasonName": "globalInteractionReason"
+                                }
+                            ]
+                        },
+                        "venue": {
+                            "id": "3fd66200f964a520d7f11ee3",
+                            "name": "Bryant Park",
+                            "location": {
+                                "address": "E 42nd St",
+                                "crossStreet": "btwn 5th & 6th Ave",
+                                "lat": 40.753621,
+                                "lng": -73.983265,
+                                "labeledLatLngs": [
+                                    {
+                                        "label": "display",
+                                        "lat": 40.753621,
+                                        "lng": -73.983265
+                                    }
+                                ],
+                                "postalCode": "10018",
+                                "cc": "US",
+                                "neighborhood": "Midtown",
+                                "city": "New York",
+                                "state": "NY",
+                                "country": "United States",
+                                "formattedAddress": [
+                                    "E 42nd St (btwn 5th & 6th Ave)",
+                                    "New York, NY 10018",
+                                    "United States"
+                                ]
+                            },
+                            "categories": [
+                                {
+                                    "id": "4bf58dd8d48988d163941735",
+                                    "name": "Park",
+                                    "pluralName": "Parks",
+                                    "shortName": "Park",
+                                    "icon": {
+                                        "prefix": "https://ss3.4sqi.net/img/categories_v2/parks_outdoors/park_",
+                                        "suffix": ".png"
+                                    },
+                                    "primary": true
+                                }
+                            ],
+                            "delivery": {
+                                "id": "298339",
+                                "url": "https://www.seamless.com/menu/calle-dao-bryant-park-38-w-39th-st-new-york/298339?affiliate=1131&utm_source=foursquare-affiliate-network&utm_medium=affiliate&utm_campaign=1131&utm_content=298339",
+                                "provider": {
+                                    "name": "seamless",
+                                    "icon": {
+                                        "prefix": "https://fastly.4sqi.net/img/general/cap/",
+                                        "sizes": [
+                                            40,
+                                            50
+                                        ],
+                                        "name": "/delivery_provider_seamless_20180129.png"
+                                    }
+                                }
+                            },
+                            "photos": {
+                                "count": 0,
+                                "groups": []
+                            }
+                        },
+                        "referralId": "e-0-3fd66200f964a520d7f11ee3-5"
+                    },
+                    {
+                        "reasons": {
+                            "count": 0,
+                            "items": [
+                                {
+                                    "summary": "This spot is popular",
+                                    "type": "general",
+                                    "reasonName": "globalInteractionReason"
+                                }
+                            ]
+                        },
+                        "venue": {
+                            "id": "4ed6adfce5fabbd89f617d4f",
+                            "name": "Hudson River Greenway Running Path",
+                            "location": {
+                                "address": "Hudson River Greenway",
+                                "crossStreet": "btwn Battery Park & W 72nd St",
+                                "lat": 40.73255155774,
+                                "lng": -74.01057958602905,
+                                "labeledLatLngs": [
+                                    {
+                                        "label": "display",
+                                        "lat": 40.73255155774,
+                                        "lng": -74.01057958602905
+                                    }
+                                ],
+                                "postalCode": "10282",
+                                "cc": "US",
+                                "city": "New York",
+                                "state": "NY",
+                                "country": "United States",
+                                "formattedAddress": [
+                                    "Hudson River Greenway (btwn Battery Park & W 72nd St)",
+                                    "New York, NY 10282",
+                                    "United States"
+                                ]
+                            },
+                            "categories": [
+                                {
+                                    "id": "4bf58dd8d48988d159941735",
+                                    "name": "Trail",
+                                    "pluralName": "Trails",
+                                    "shortName": "Trail",
+                                    "icon": {
+                                        "prefix": "https://ss3.4sqi.net/img/categories_v2/parks_outdoors/hikingtrail_",
+                                        "suffix": ".png"
+                                    },
+                                    "primary": true
+                                }
+                            ],
+                            "photos": {
+                                "count": 0,
+                                "groups": []
+                            },
+                            "venuePage": {
+                                "id": "125324441"
+                            }
+                        },
+                        "referralId": "e-0-4ed6adfce5fabbd89f617d4f-6"
+                    },
+                    {
+                        "reasons": {
+                            "count": 0,
+                            "items": [
+                                {
+                                    "summary": "This spot is popular",
+                                    "type": "general",
+                                    "reasonName": "globalInteractionReason"
+                                }
+                            ]
+                        },
+                        "venue": {
+                            "id": "4a07986bf964a52087731fe3",
+                            "name": "The Public Theater",
+                            "location": {
+                                "address": "425 Lafayette St",
+                                "crossStreet": "btwn Astor Pl & E 4th St",
+                                "lat": 40.72916880904384,
+                                "lng": -73.99207037967628,
+                                "labeledLatLngs": [
+                                    {
+                                        "label": "display",
+                                        "lat": 40.72916880904384,
+                                        "lng": -73.99207037967628
+                                    }
+                                ],
+                                "postalCode": "10003",
+                                "cc": "US",
+                                "city": "New York",
+                                "state": "NY",
+                                "country": "United States",
+                                "formattedAddress": [
+                                    "425 Lafayette St (btwn Astor Pl & E 4th St)",
+                                    "New York, NY 10003",
+                                    "United States"
+                                ]
+                            },
+                            "categories": [
+                                {
+                                    "id": "4bf58dd8d48988d137941735",
+                                    "name": "Theater",
+                                    "pluralName": "Theaters",
+                                    "shortName": "Theater",
+                                    "icon": {
+                                        "prefix": "https://ss3.4sqi.net/img/categories_v2/arts_entertainment/performingarts_theater_",
+                                        "suffix": ".png"
+                                    },
+                                    "primary": true
+                                }
+                            ],
+                            "photos": {
+                                "count": 0,
+                                "groups": []
+                            }
+                        },
+                        "referralId": "e-0-4a07986bf964a52087731fe3-7"
+                    },
+                    {
+                        "reasons": {
+                            "count": 0,
+                            "items": [
+                                {
+                                    "summary": "This spot is popular",
+                                    "type": "general",
+                                    "reasonName": "globalInteractionReason"
+                                }
+                            ]
+                        },
+                        "venue": {
+                            "id": "427c0500f964a52097211fe3",
+                            "name": "The Metropolitan Museum of Art (Metropolitan Museum of Art)",
+                            "location": {
+                                "address": "1000 5th Ave",
+                                "crossStreet": "btwn E 80th & E 84th St",
+                                "lat": 40.77972902126812,
+                                "lng": -73.96341562271118,
+                                "labeledLatLngs": [
+                                    {
+                                        "label": "display",
+                                        "lat": 40.77972902126812,
+                                        "lng": -73.96341562271118
+                                    }
+                                ],
+                                "postalCode": "10028",
+                                "cc": "US",
+                                "city": "New York",
+                                "state": "NY",
+                                "country": "United States",
+                                "formattedAddress": [
+                                    "1000 5th Ave (btwn E 80th & E 84th St)",
+                                    "New York, NY 10028",
+                                    "United States"
+                                ]
+                            },
+                            "categories": [
+                                {
+                                    "id": "4bf58dd8d48988d18f941735",
+                                    "name": "Art Museum",
+                                    "pluralName": "Art Museums",
+                                    "shortName": "Art Museum",
+                                    "icon": {
+                                        "prefix": "https://ss3.4sqi.net/img/categories_v2/arts_entertainment/museum_art_",
+                                        "suffix": ".png"
+                                    },
+                                    "primary": true
+                                }
+                            ],
+                            "photos": {
+                                "count": 0,
+                                "groups": []
+                            }
+                        },
+                        "referralId": "e-0-427c0500f964a52097211fe3-8"
+                    },
+                    {
+                        "reasons": {
+                            "count": 0,
+                            "items": [
+                                {
+                                    "summary": "This spot is popular",
+                                    "type": "general",
+                                    "reasonName": "globalInteractionReason"
+                                }
+                            ]
+                        },
+                        "venue": {
+                            "id": "4b240a1ff964a520b25f24e3",
+                            "name": "Hudson River Park",
+                            "location": {
+                                "address": "West St",
+                                "crossStreet": "btwn Battery Pl & W 59th St",
+                                "lat": 40.73321716644605,
+                                "lng": -74.01049434286524,
+                                "postalCode": "10011",
+                                "cc": "US",
+                                "city": "New York",
+                                "state": "NY",
+                                "country": "United States",
+                                "formattedAddress": [
+                                    "West St (btwn Battery Pl & W 59th St)",
+                                    "New York, NY 10011",
+                                    "United States"
+                                ]
+                            },
+                            "categories": [
+                                {
+                                    "id": "4bf58dd8d48988d163941735",
+                                    "name": "Park",
+                                    "pluralName": "Parks",
+                                    "shortName": "Park",
+                                    "icon": {
+                                        "prefix": "https://ss3.4sqi.net/img/categories_v2/parks_outdoors/park_",
+                                        "suffix": ".png"
+                                    },
+                                    "primary": true
+                                }
+                            ],
+                            "photos": {
+                                "count": 0,
+                                "groups": []
+                            }
+                        },
+                        "referralId": "e-0-4b240a1ff964a520b25f24e3-9"
+                    }
+                ]
+            }
+        ]
+    }
+}
