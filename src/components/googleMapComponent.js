@@ -32,6 +32,7 @@ class GoogleMapComponent extends React.Component {
     activeMarker: undefined, //Shows the active marker upon click
     selectedPlace: undefined, //Shows the infoWindow to the selected place upon a marker
     places: [],
+    info: []
   };
 
   onMarkerClick = (props, marker, e) =>
@@ -53,9 +54,10 @@ class GoogleMapComponent extends React.Component {
   componentDidMount() {
     const parameters = {
       section: "outdoors",
-      near: "Melaka",
-      limit: 10,
-      radius: 2000,
+      // near: "Penang",
+      ll: "3.1461,101.6255",
+      limit: 3,
+      radius: 5000,
       client_secret: process.env.REACT_APP_FOURSQUARE_CLIENT_SECRET,
       client_id: process.env.REACT_APP_FOURSQUARE_CLIENT_ID,
       v: "20191202"
@@ -68,7 +70,7 @@ class GoogleMapComponent extends React.Component {
       )
       .then(Response => {
         // console.log(Response.data.Response.groups[0].items)
-        console.log('data', Response.data.response.groups[0].items);
+        console.log("data", Response.data);
         this.setState({
           places: Response.data.response.groups[0].items
         });
@@ -76,11 +78,20 @@ class GoogleMapComponent extends React.Component {
       .catch(error => {
         console.log("ERROR! " + error);
       });
+
+      // axios.post(
+      //   `https://api.foursquare.com/v2/venues/explore?` +
+      //     new URLSearchParams(parameters)
+      // )
+      // .then(response => {
+      //   console.log("infos", response.data.response.groups[0].items[0].reasons)
+      // })
   }
 
   render() {
     
     return (
+      <>
       <Container className="d-flex justify-content-center">
         <div
           style={{
@@ -93,7 +104,7 @@ class GoogleMapComponent extends React.Component {
             google={this.props.google}
             zoom={16}
             style={mapStyles}
-            initialCenter={{ lat: 2.1944, lng: 102.2491 }}
+            initialCenter={{ lat:3.1461, lng:101.6255}}
           >
             {
               this.state.places.map((place, index) => {
@@ -118,11 +129,28 @@ class GoogleMapComponent extends React.Component {
               </div>
             </InfoWindow>
           </Map>
-          <div style={{position: 'absolute', top: '100%'}}>
+          {/* <div style={{position: 'absolute', top: '100%'}}>
             {this.state.activeMarker && this.state.activeMarker.name}
+          </div> */}
           </div>
-        </div>
-      </Container>
+          </Container>
+
+          {this.state.places.map(place => (
+            <div 
+            // style={{display : this.state.activeMarker.name == place.venue.name ? "" : "hidden"}}
+            >
+                
+                  
+                 {/* {this.state.activeMarker} */}
+                  
+              <h1>
+                {place.venue.location.formattedAddress}
+                <img href={place.venue.categories.icon.prefix} />
+                
+                </h1>
+            </div>
+          ))}
+      </>
     );
   }
 }

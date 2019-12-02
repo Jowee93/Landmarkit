@@ -4,7 +4,8 @@ import ModalBody from "react-bootstrap/ModalBody";
 import ModalHeader from "react-bootstrap/ModalHeader";
 import SignUp from "../components/signUp";
 import SignIn from "../components/signIn";
-import "../pages/css/home.css";
+import "../components/css/signUp.css"
+import "../pages/css/home.css"
 
 class HomePage extends React.Component {
   constructor(props, context) {
