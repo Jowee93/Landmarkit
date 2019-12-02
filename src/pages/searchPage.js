@@ -20,6 +20,7 @@ import Typography from "@material-ui/core/Typography";
 import Superman from "../components/superman.png";
 import Joana from "../components/yq.jpg";
 import { Card } from "reactstrap";
+import axios from "axios";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -36,17 +37,50 @@ export default function SearchPage(props) {
   const classes = useStyles();
   const [searchInput, setSearchInput] = useState("");
   const [category, setCategory] = useState("");
+  const [userResult, setUserResult] = useState([]);
+  const [locationResult, setLocationResult] = useState([]);
+
   const handleSubmit = () => {
-    props.history.push({
-      pathname: "/searchlocation",
-      data: searchInput 
-    });
+    if (category == "User") {
+      let searchstring = searchInput;
+      axios({
+        method: "GET",
+        url: "https://lamppost.herokuapp.com/users/search",
+        data: searchstring
+      })
+        .then(response => {
+          console.log("Search User axios is called:");
+          console.log(response.data);
+          setUserResult(response.data);
+        })
+        .catch(error => {
+          console.log(error.response);
+        });
+    } else {
+      let placename = searchInput;
+      axios({
+        method: "GET",
+        url: "https://lamppost.herokuapp.com/images/search",
+        data: placename
+      })
+        .then(response => {
+          console.log("Search location axios is called:");
+          console.log(response.data);
+          setLocationResult(placename);
+          props.history.push({
+            pathname: "/searchlocation",
+            data: locationResult
+          });
+        })
+        .catch(error => {
+          console.log(error.response);
+        });
+    }
   };
-  console.log(category);
+  // console.log(category);
   return (
     <div>
       <div className="m-3">
-        <button onClick={() => handleSubmit()}>submit</button>
         <InputGroup>
           <FormControl
             placeholder="Search"
@@ -78,33 +112,39 @@ export default function SearchPage(props) {
             <Dropdown.Item href="#">Location</Dropdown.Item>
           </DropdownButton> */}
         </InputGroup>
+        <button className="btn btn-info" onClick={() => handleSubmit()}>
+          Search
+        </button>
       </div>
-      <Card className="m-3 shadow">
-        <List className={classes.root}>
-          <ListItem alignItems="flex-start">
-            <ListItemAvatar>
-              <Avatar alt="#" src={Joana} />
-            </ListItemAvatar>
-            <ListItemText
-              primary="@Joana"
-              secondary={
-                <React.Fragment>
-                  <Typography
-                    component="span"
-                    variant="body2"
-                    className={classes.inline}
-                    color="textPrimary"
-                  >
-                    {" — adventures at #joanax…"}
-                  </Typography>
-                </React.Fragment>
-              }
-            ></ListItemText>
-          </ListItem>
-        </List>
-      </Card>
 
-      <Card className="m-3 shadow">
+      {userResult.map((user, index) => (
+        <Card className="m-3 shadow">
+          <List className={classes.root}>
+            <ListItem alignItems="flex-start">
+              <ListItemAvatar>
+                <Avatar alt="#" src={user.profileImage} />
+              </ListItemAvatar>
+              <ListItemText
+                primary={user.username}
+                secondary={
+                  <React.Fragment>
+                    <Typography
+                      component="span"
+                      variant="body2"
+                      className={classes.inline}
+                      color="textPrimary"
+                    >
+                      {user.description}
+                    </Typography>
+                  </React.Fragment>
+                }
+              ></ListItemText>
+            </ListItem>
+          </List>
+        </Card>
+      ))}
+
+      {/* <Card className="m-3 shadow">
         <List className={classes.root}>
           <ListItem alignItems="flex-start">
             <ListItemAvatar>
@@ -127,7 +167,7 @@ export default function SearchPage(props) {
             ></ListItemText>
           </ListItem>
         </List>
-      </Card>
+      </Card> */}
 
       <NavbarComponent></NavbarComponent>
     </div>

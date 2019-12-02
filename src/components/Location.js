@@ -2,6 +2,7 @@ import React from "react";
 import NavbarComponent from "../components/NavbarComponent";
 import { makeStyles } from "@material-ui/core/styles";
 import Input from "@material-ui/core/Input";
+import Gallery from "react-photo-gallery";
 
 const useStyles = makeStyles(theme => ({
   input: {
@@ -11,7 +12,10 @@ const useStyles = makeStyles(theme => ({
 
 export default function Inputs(props) {
   const classes = useStyles();
+  const [location, setLocation] = React.useState(props.data);
+
   console.log(props);
+
   return (
     <div className={classes.container}>
       <Input
@@ -21,8 +25,7 @@ export default function Inputs(props) {
           "aria-label": "description"
         }}
       />
-
-      <img src=""></img>
+      <Gallery photos={location}   />
       <NavbarComponent></NavbarComponent>
     </div>
   );

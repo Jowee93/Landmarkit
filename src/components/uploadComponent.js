@@ -30,7 +30,7 @@ export default function UploadButtons() {
     let formData = new FormData();
 
     formData.append("user_image", e.target.files[0]);
-    // formData.append("user_id", 7);
+    formData.append("user_id", 31);
 
     e.persist();
 
