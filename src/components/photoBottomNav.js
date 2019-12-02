@@ -67,7 +67,7 @@ export default function PhotoBottomNav(props) {
     let JWT = localStorage.getItem("userToken");
     axios({
       method: "GET",
-      url: `http://lamppost.herokuapp.com/api/v1/images/${props.image_id}/facts`,
+      url: `http://192.168.1.80:5000/api/v1/images/${props.image_id}/facts`,
       headers: { Authorization: `Bearer ${JWT}` }
     })
       .then(response => {

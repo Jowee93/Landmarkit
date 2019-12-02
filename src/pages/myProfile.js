@@ -40,6 +40,7 @@ class MyProfile extends React.Component {
     email: "",
     description: "",
     profileImage: "",
+    currentImage: "",
     editmode: false,
     andchorEl: null,
     transition: false
@@ -50,7 +51,7 @@ class MyProfile extends React.Component {
     let JWT = localStorage.getItem("userToken");
     axios({
       method: "GET",
-      url: "http://172.20.10.8:5000/api/v1/users/me",
+      url: "http://192.168.1.80:5000/api/v1/users/me",
       headers: { Authorization: `Bearer ${JWT}` }
     })
       .then(result => {
@@ -61,7 +62,7 @@ class MyProfile extends React.Component {
           username: result.data.username,
           email: result.data.email,
           description: result.data.description,
-          profileImage: result.data.profileImage
+          currentImage: result.data.profileImage
         });
       })
       .catch(error => {
@@ -87,16 +88,49 @@ class MyProfile extends React.Component {
     });
   };
 
+  handleUpload = e => {
+    this.setState({
+      profileImage: e.target.files[0]
+    });
+    console.log(this.state.profileImage);
+  };
+
+  handleProfileImage = e => {
+    e.preventDefault();
+    e.persist();
+
+    let JWT = localStorage.getItem("userToken");
+
+    let formData = new FormData();
+
+    formData.append("profileImage", this.state.profileImage);
+
+    axios({
+      method: "POST",
+      url: "http://192.168.1.80:5000/api/v1/users/me/edit/picture",
+      data: formData,
+      headers: { Authorization: `Bearer ${JWT}` }
+    })
+      .then(response => {
+        console.log(response);
+        window.location.reload();
+      })
+      .catch(error => {
+        console.log(error.response);
+      });
+  };
+
   handleSubmit = async e => {
     let JWT = localStorage.getItem("userToken");
-    const { username, password, description } = this.state;
+    const { username, email, description } = this.state;
+
     e.preventDefault();
     e.persist();
 
     await axios({
       method: "POST",
-      url: "http://172.20.10.8:5000/api/v1/users/me/edit",
-      data: { username, password, description },
+      url: "http://192.168.1.80:5000/api/v1/users/me/edit",
+      data: { username, email, description },
       headers: { Authorization: `Bearer ${JWT}` }
     })
       .then(response => {
@@ -171,7 +205,7 @@ class MyProfile extends React.Component {
                   <div>
                     <img
                       style={profilePicStyle}
-                      src={this.state.profileImage}
+                      src={this.state.currentImage}
                       alt="profileImage"
                     ></img>
                     <p>@{this.state.username}</p>
@@ -233,6 +267,7 @@ class MyProfile extends React.Component {
                     onChange={this.handleChange}
                     multiline
                   />
+
                   <div className="">
                     <button
                       style={
@@ -253,6 +288,14 @@ class MyProfile extends React.Component {
                       {this.state.editmode ? "Cancel" : "Edit Profile"}
                     </Button>
                   </div>
+                </form>
+                <form onSubmit={this.handleProfileImage}>
+                  <input
+                    type="file"
+                    name="profileImage"
+                    onChange={this.handleUpload}
+                  ></input>
+                  <button type="submit">upload profile image</button>
                 </form>
               </Col>
             </Row>

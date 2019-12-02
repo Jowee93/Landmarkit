@@ -45,7 +45,7 @@ export default function SearchPage(props) {
       let searchstring = searchInput;
       axios({
         method: "GET",
-        url: "https://lamppost.herokuapp.com/users/search",
+        url: "http://192.168.1.80:5000/users/search",
         data: searchstring
       })
         .then(response => {
@@ -60,7 +60,7 @@ export default function SearchPage(props) {
       let placename = searchInput;
       axios({
         method: "GET",
-        url: "https://lamppost.herokuapp.com/images/search",
+        url: "http://192.168.1.80:5000/images/search",
         data: placename
       })
         .then(response => {

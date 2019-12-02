@@ -38,7 +38,7 @@ export default function UploadButtons() {
 
     await axios({
       method: "POST",
-      url: "http://192.168.0.167:5000/api/v1/users/json",
+      url: "http://192.168.1.80:5000/api/v1/users/json",
       data: formData,
       headers: { Authorization: `Bearer ${JWT}` }
     })
