@@ -14,6 +14,8 @@ import { Link } from "react-router-dom";
 import Collapse from "@material-ui/core/Collapse";
 import Slide from "@material-ui/core/Slide";
 import Zoom from "@material-ui/core/Zoom";
+import Fade from "@material-ui/core/Fade";
+import Grow from "@material-ui/core/Grow";
 
 const profilePicStyle = {
   borderRadius: "50%",
@@ -38,6 +40,7 @@ class MyProfile extends React.Component {
     email: "",
     description: "",
     profileImage: "",
+    currentImage: "",
     editmode: false,
     andchorEl: null,
     transition: false
@@ -48,7 +51,7 @@ class MyProfile extends React.Component {
     let JWT = localStorage.getItem("userToken");
     axios({
       method: "GET",
-      url: "http://172.20.10.8:5000/api/v1/users/me",
+      url: "https://lamppost.herokuapp.com/api/v1/users/me",
       headers: { Authorization: `Bearer ${JWT}` }
     })
       .then(result => {
@@ -59,7 +62,7 @@ class MyProfile extends React.Component {
           username: result.data.username,
           email: result.data.email,
           description: result.data.description,
-          profileImage: result.data.profileImage
+          currentImage: result.data.profileImage
         });
       })
       .catch(error => {
@@ -85,16 +88,49 @@ class MyProfile extends React.Component {
     });
   };
 
+  handleUpload = e => {
+    this.setState({
+      profileImage: e.target.files[0]
+    });
+    console.log(this.state.profileImage);
+  };
+
+  handleProfileImage = e => {
+    e.preventDefault();
+    e.persist();
+
+    let JWT = localStorage.getItem("userToken");
+
+    let formData = new FormData();
+
+    formData.append("profileImage", this.state.profileImage);
+
+    axios({
+      method: "POST",
+      url: "https://lamppost.herokuapp.com/api/v1/users/me/edit/picture",
+      data: formData,
+      headers: { Authorization: `Bearer ${JWT}` }
+    })
+      .then(response => {
+        console.log(response);
+        window.location.reload();
+      })
+      .catch(error => {
+        console.log(error.response);
+      });
+  };
+
   handleSubmit = async e => {
     let JWT = localStorage.getItem("userToken");
-    const { username, password, description } = this.state;
+    const { username, email, description } = this.state;
+
     e.preventDefault();
     e.persist();
 
     await axios({
       method: "POST",
-      url: "http://172.20.10.8:5000/api/v1/users/me/edit",
-      data: { username, password, description },
+      url: "https://lamppost.herokuapp.com/api/v1/users/me/edit",
+      data: { username, email, description },
       headers: { Authorization: `Bearer ${JWT}` }
     })
       .then(response => {
@@ -134,8 +170,8 @@ class MyProfile extends React.Component {
 
   render() {
     return (
-      <div>
-        <Zoom in={this.state.transition}>
+      <Fade in={this.state.transition}>
+        <div>
           <Container id="follower_following_wrapper">
             <Row
               style={{
@@ -154,8 +190,7 @@ class MyProfile extends React.Component {
               </Col>
             </Row>
           </Container>
-        </Zoom>
-        <Zoom in={this.state.transition}>
+
           <Container
             id="addperson_profilePic_settings_wrapper"
             style={{ position: "relative", bottom: "3vh", zIndex: "10" }}
@@ -170,7 +205,7 @@ class MyProfile extends React.Component {
                   <div>
                     <img
                       style={profilePicStyle}
-                      src={this.state.profileImage}
+                      src={this.state.currentImage}
                       alt="profileImage"
                     ></img>
                     <p>@{this.state.username}</p>
@@ -232,6 +267,7 @@ class MyProfile extends React.Component {
                     onChange={this.handleChange}
                     multiline
                   />
+
                   <div className="">
                     <button
                       style={
@@ -253,13 +289,21 @@ class MyProfile extends React.Component {
                     </Button>
                   </div>
                 </form>
+                <form onSubmit={this.handleProfileImage}>
+                  <input
+                    type="file"
+                    name="profileImage"
+                    onChange={this.handleUpload}
+                  ></input>
+                  <button type="submit">upload profile image</button>
+                </form>
               </Col>
             </Row>
           </Container>
-        </Zoom>
 
-        <NavbarComponent></NavbarComponent>
-      </div>
+          <NavbarComponent></NavbarComponent>
+        </div>
+      </Fade>
     );
   }
 }

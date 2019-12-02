@@ -25,8 +25,8 @@ class SignIn extends React.Component {
   handleSubmit = async e => {
     e.preventDefault();
     const { username, password } = this.state;
-    axios
-      .post("http://192.168.1.140:5000/users/currentuser", {
+    await axios
+      .post("https://lamppost.herokuapp.com/api/v1/users/login", {
         username: username,
         password: password
       })

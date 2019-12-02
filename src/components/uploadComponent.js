@@ -34,21 +34,24 @@ export default function UploadButtons() {
 
     e.persist();
 
+    let JWT = localStorage.getItem("userToken");
+
     await axios({
       method: "POST",
-      url: "http://172.20.10.8:5000/api/v1/users/json",
-      data: formData
+      url: "https://lamppost.herokuapp.com/api/v1/users/json",
+      data: formData,
+      headers: { Authorization: `Bearer ${JWT}` }
     })
       .then(response => {
         console.log(response.data[0]);
         setDescription(response.data[0].description);
         if (response) {
           history.push({
-            pathname: `/photo/${response.data[0].id}`,
-            state: {
-              currentImage: URL.createObjectURL(e.target.files[0]),
-              description: response.data[0]
-            }
+            pathname: `/photo/${response.data[0].id}`
+            // state: {
+            //   currentImage: URL.createObjectURL(e.target.files[0]),
+            //   description: response.data[0]
+            // }
           });
         } else {
           console.log("Failed");

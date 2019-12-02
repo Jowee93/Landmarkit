@@ -42,7 +42,7 @@ export default function ImageGalleryComponent() {
     let JWT = localStorage.getItem("userToken");
     axios({
       method: "GET",
-      url: "http://172.20.10.8:5000/api/v1/images/me",
+      url: "https://lamppost.herokuapp.com/api/v1/images/me",
       headers: { Authorization: `Bearer ${JWT}` }
     })
       .then(response => {
@@ -57,7 +57,7 @@ export default function ImageGalleryComponent() {
 
   return (
     <div>
-      <Gallery photos={photos} onClick={openLightbox} />
+      <Gallery photos={images} onClick={openLightbox} />
       {/* <ModalGateway>
         {viewerIsOpen ? (
           <Modal onClose={closeLightbox}>
