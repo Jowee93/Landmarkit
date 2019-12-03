@@ -147,15 +147,6 @@ class SignUp extends React.Component {
                   >
                     Please fill in email
                   </p>
-                  {/* <p  */}
-                  {/* style={ */}
-                  {/* this.state.uniqueEmail */}
-                  {/* ? { color: "red "} */}
-                  {/* : {display: "none"} */}
-                  {/* } */}
-                  {/* > */}
-                  {/* That email doesn't exist */}
-                  {/* </p> */}
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <TextField

@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from "../components/Gear-0.2s-200px.svg";
+import Logo from "../components/Bean Eater.svg";
 
 class LoadingPage extends React.Component {
   render() {

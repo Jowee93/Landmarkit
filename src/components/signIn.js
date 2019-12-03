@@ -50,7 +50,7 @@ class SignIn extends React.Component {
 
   render() {
     return (
-      <body>
+      <div>
         <Container component="main" maxWidth="xs">
           <CssBaseline />
           <div className="paper">
@@ -105,7 +105,7 @@ class SignIn extends React.Component {
             <br />
           </div>
         </Container>
-      </body>
+      </div>
     );
   }
 }
