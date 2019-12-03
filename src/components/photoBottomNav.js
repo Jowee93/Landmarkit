@@ -45,7 +45,7 @@ const buttonStyle = {
   margin: 0,
   top: "auto",
   right: 20,
-  bottom: 110,
+  bottom: 20,
   left: "auto",
   position: "fixed"
 };
@@ -149,6 +149,18 @@ export default function PhotoBottomNav(props) {
           </div>
         </div>
 
+        <Fab
+          id="FactButton"
+          style={buttonStyle}
+          className={classes.fab}
+          color="primary"
+          aria-label="add"
+          label="Add new facts"
+          onClick={addFact}
+        >
+          <AddIcon />
+        </Fab>
+
         {facts.map((fact, index) => (
           <div className="row">
             <div className="col-sm-6">
@@ -180,18 +192,6 @@ export default function PhotoBottomNav(props) {
         >
           New fact
         </Button> */}
-
-        <Fab
-          id="FactButton"
-          style={buttonStyle}
-          className={classes.fab}
-          color="primary"
-          aria-label="add"
-          label="Add new facts"
-          onClick={addFact}
-        >
-          <AddIcon />
-        </Fab>
       </Container>
     </div>
   );
