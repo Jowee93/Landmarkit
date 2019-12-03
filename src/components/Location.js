@@ -4,6 +4,7 @@ import NavbarComponent from "../components/NavbarComponent";
 import { makeStyles } from "@material-ui/core/styles";
 import Input from "@material-ui/core/Input";
 import Gallery from "react-photo-gallery";
+import TopBackNav from "./topBackNav";
 
 const useStyles = makeStyles(theme => ({
   input: {
@@ -41,6 +42,7 @@ export default function Inputs(props) {
 
   return (
     <div className={classes.container}>
+      <TopBackNav></TopBackNav>
       <Input
         value={props.location.data}
         className={classes.input}
