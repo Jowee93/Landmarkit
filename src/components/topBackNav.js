@@ -12,6 +12,10 @@ const useStyles = makeStyles(theme => ({
   },
   textField: {
     width: "100%"
+  },
+  toolbar: {
+    backgroundColor: "#9FF5EC",
+    color: "grey"
   }
 }));
 
@@ -26,7 +30,7 @@ export default function TopBackNav() {
   return (
     <>
       <AppBar position="static">
-        <Toolbar>
+        <Toolbar className={classes.toolbar}>
           <IconButton
             onClick={handleBack}
             edge="start"

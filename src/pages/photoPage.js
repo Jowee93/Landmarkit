@@ -9,7 +9,9 @@ import axios from "axios";
 const containerStyle = {
   height: "100%",
   backgroundColor: "black",
-  padding: "22vh 0 22vh 0"
+  padding: "22vh 0 22vh 0",
+  margin: "0 0 0 0",
+  width: "100%"
 };
 
 class PhotoPage extends React.Component {
@@ -45,7 +47,7 @@ class PhotoPage extends React.Component {
             image={this.state.image}
           />
         </Container>
-        <div style={{ position: "absolute", bottom: "20vh" }}>
+        <div style={{ position: "relative", bottom: "20vh" }}>
           <PhotoBottomNav
             image={this.state.image}
             image_id={this.state.image_id}
