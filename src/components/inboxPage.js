@@ -27,51 +27,51 @@ export default function AlignItemsList() {
     <>
       <h1>Notification</h1>
       <small>Today</small>
-      <List className={classes.root}>
-        <ListItem alignItems="flex-start">
-          <ListItemAvatar>
-            <Avatar alt="#" src="/static/images/avatar/1.jpg" />
-          </ListItemAvatar>
-          <ListItemText
-            primary="You have 1 unread message."
-            secondary={
-              <React.Fragment>
-                <Typography
-                  component="span"
-                  variant="body2"
-                  className={classes.inline}
-                  color="textPrimary"
-                >
-                  Wendy
-                </Typography>
-                {" — You have follow someone…"}
-              </React.Fragment>
-            }
-          />
-        </ListItem>
-        <Divider variant="inset" component="li" />
-        <ListItem alignItems="flex-start">
-          <ListItemAvatar>
-            <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" />
-          </ListItemAvatar>
-          <ListItemText
-            primary="You have 1 unread message"
-            secondary={
-              <React.Fragment>
-                <Typography
-                  component="span"
-                  variant="body2"
-                  className={classes.inline}
-                  color="textPrimary"
-                >
-                  to Scott, Alex, Jennifer
-                </Typography>
-                {" — Wish I could come, but I'm out of town this…"}
-              </React.Fragment>
-            }
-          />
-        </ListItem>
-      </List>
+        {/* <List className={classes.root}>
+          <ListItem alignItems="flex-start">
+            <ListItemAvatar>
+              <Avatar alt="#" src="/static/images/avatar/1.jpg" />
+            </ListItemAvatar>
+            <ListItemText
+              primary="You have 1 unread message."
+              secondary={
+                <React.Fragment>
+                  <Typography
+                    component="span"
+                    variant="body2"
+                    className={classes.inline}
+                    color="textPrimary"
+                  >
+                    Wendy
+                  </Typography>
+                  {" — You have follow someone…"}
+                </React.Fragment>
+              }
+            />
+          </ListItem>
+          <Divider variant="inset" component="li" />
+          <ListItem alignItems="flex-start">
+            <ListItemAvatar>
+              <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" />
+            </ListItemAvatar>
+            <ListItemText
+              primary="You have 1 unread message"
+              secondary={
+                <React.Fragment>
+                  <Typography
+                    component="span"
+                    variant="body2"
+                    className={classes.inline}
+                    color="textPrimary"
+                  >
+                    to Scott, Alex, Jennifer
+                  </Typography>
+                  {" — Wish I could come, but I'm out of town this…"}
+                </React.Fragment>
+              }
+            />
+          </ListItem>
+        </List> */}
       <NavbarComponent></NavbarComponent>
     </>
   );

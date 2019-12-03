@@ -18,6 +18,9 @@ import Fade from "@material-ui/core/Fade";
 import Grow from "@material-ui/core/Grow";
 import Loader from "../components/LoadingPage";
 import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import SearchIcon from "@material-ui/icons/Search";
+import ImageSearchIcon from "@material-ui/icons/ImageSearch";
+
 const profilePicStyle = {
   borderRadius: "50%",
   width: "30vw",
@@ -25,13 +28,14 @@ const profilePicStyle = {
   position: "relative",
   bottom: "5vh",
   display: "block"
+  // height: "75vh"
 };
 
 const bodyStyle = {
-  height: "75vh",
   borderTopLeftRadius: "10%",
   borderTopRightRadius: "10%",
   backgroundColor: "white"
+  // overflow: "scroll"
 };
 
 class MyProfile extends React.Component {
@@ -184,7 +188,7 @@ class MyProfile extends React.Component {
     return (
       // <Fade in={this.state.transition}>
       <div>
-        <Container id="follower_following_wrapper">
+        <Container id="follower_following_wrapper" style={{ paddingTop: "0" }}>
           <Row
             style={{
               background: "turquoise",
@@ -194,7 +198,7 @@ class MyProfile extends React.Component {
           >
             <Col className="d-flex justify-content-between mx-3 mt-4 align-items-start">
               <IconButton onClick={this.linkToSearch}>
-                <PersonAddIcon />
+                <ImageSearchIcon />
               </IconButton>
               <Button
                 aria-controls="simple-menu"
@@ -214,7 +218,7 @@ class MyProfile extends React.Component {
           style={{ position: "relative", bottom: "3vh", zIndex: "10" }}
         >
           <Row>
-            <Col className="shadow" style={bodyStyle}>
+            <Col style={bodyStyle}>
               <Row className="d-flex justify-content-center align-items-center ml-3 mr-3 mb-3">
                 <div className="w-100">
                   <img
@@ -242,7 +246,11 @@ class MyProfile extends React.Component {
                   <MenuItem onClick={this.handleLogOut}>Logout</MenuItem>
                 </Menu>
               </Row>
-              <form onSubmit={this.handleSubmit} className="d-flex flex-column">
+              <form
+                onSubmit={this.handleSubmit}
+                style={{ overflow: "scroll", height: "50vh" }}
+                className="d-flex flex-column"
+              >
                 <TextField
                   disabled={this.state.editmode ? false : true}
                   name="username"
@@ -304,7 +312,6 @@ class MyProfile extends React.Component {
           </Row>
         </Container>
 
-        <NavbarComponent></NavbarComponent>
         <Modal
           isOpen={this.state.openModal}
           toggle={this.toggle}
@@ -340,6 +347,7 @@ class MyProfile extends React.Component {
             </form>
           </ModalBody>
         </Modal>
+        <NavbarComponent></NavbarComponent>
       </div>
       // </Fade>
     );
