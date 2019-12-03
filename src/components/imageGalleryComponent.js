@@ -9,6 +9,9 @@ import "../components/css/imageGallery.css";
 //loader
 import Loader from "../components/LoadingPage";
 
+
+
+
 export default function ImageGalleryComponent() {
   const [currentImage, setCurrentImage] = useState(0);
   const [viewerIsOpen, setViewerIsOpen] = useState(false);
