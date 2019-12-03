@@ -9,6 +9,7 @@ import Typography from "@material-ui/core/Typography";
 import "../components/css/signUp.css";
 import Container from "@material-ui/core/Container";
 import axios from "axios";
+import logo from "../components/logo.png";
 
 class SignIn extends React.Component {
   state = {
@@ -54,11 +55,7 @@ class SignIn extends React.Component {
           <CssBaseline />
           <div className="paper">
             <br />
-            <Avatar className="avatar">
-              <Icon className="iconRoot">
-                <img className="imageIcon" src="#" />
-              </Icon>
-            </Avatar>
+            <Avatar className="avatar" src={logo}></Avatar>
             <Typography component="h1" variant="h5">
               Sign In
             </Typography>

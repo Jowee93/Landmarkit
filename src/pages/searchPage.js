@@ -36,7 +36,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function SearchPage(props) {
   const classes = useStyles();
-  const [searchInput, setSearchInput] = useState("");
+  const [searchInput, setSearchInput] = useState(""); 
   const [category, setCategory] = useState("");
   const [userResult, setUserResult] = useState([]);
   const [locationResult, setLocationResult] = useState([]);
@@ -128,6 +128,30 @@ export default function SearchPage(props) {
           Search
         </button>
       </div>
+      <Card className="m-3 shadow">
+        <List className={classes.root}>
+          <ListItem alignItems="flex-start">
+            <ListItemAvatar>
+              <Avatar alt="#" src={Joana} />
+            </ListItemAvatar>
+            <ListItemText
+              primary="@Joana"
+              secondary={
+                <React.Fragment>
+                  <Typography
+                    component="span"
+                    variant="body2"
+                    className={classes.inline}
+                    color="textPrimary"
+                  >
+                    {" — adventures at #joanaxjapan…"}
+                  </Typography>
+                </React.Fragment>
+              }
+            ></ListItemText>
+          </ListItem>
+        </List>
+      </Card>
 
       {userResult.map((user, index) => (
         <Card className="m-3 shadow">

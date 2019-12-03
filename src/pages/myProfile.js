@@ -16,6 +16,7 @@ import Slide from "@material-ui/core/Slide";
 import Zoom from "@material-ui/core/Zoom";
 import Fade from "@material-ui/core/Fade";
 import Grow from "@material-ui/core/Grow";
+import Loader from "../components/LoadingPage";
 
 const profilePicStyle = {
   borderRadius: "50%",
@@ -43,7 +44,8 @@ class MyProfile extends React.Component {
     currentImage: "",
     editmode: false,
     andchorEl: null,
-    transition: false
+    transition: false,
+    // isLoading: true
   };
 
   // API to retrieve user details from database
@@ -63,6 +65,8 @@ class MyProfile extends React.Component {
           email: result.data.email,
           description: result.data.description,
           currentImage: result.data.profileImage
+          profileImage: result.data.profileImage,
+          // isLoading: false
         });
       })
       .catch(error => {
@@ -169,6 +173,9 @@ class MyProfile extends React.Component {
   };
 
   render() {
+    // if (this.state.isLoading) {
+    //   return <Loader />;
+    // }
     return (
       <Fade in={this.state.transition}>
         <div>
