@@ -214,7 +214,7 @@ class MyProfile extends React.Component {
           style={{ position: "relative", bottom: "3vh", zIndex: "10" }}
         >
           <Row>
-            <Col className="shadow" style={bodyStyle}>
+            <Col style={bodyStyle}>
               <Row className="d-flex justify-content-center align-items-center ml-3 mr-3 mb-3">
                 <div className="w-100">
                   <img
@@ -242,7 +242,11 @@ class MyProfile extends React.Component {
                   <MenuItem onClick={this.handleLogOut}>Logout</MenuItem>
                 </Menu>
               </Row>
-              <form onSubmit={this.handleSubmit} className="d-flex flex-column">
+              <form
+                onSubmit={this.handleSubmit}
+                style={{ overflow: "scroll" }}
+                className="d-flex flex-column"
+              >
                 <TextField
                   disabled={this.state.editmode ? false : true}
                   name="username"
