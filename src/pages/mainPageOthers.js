@@ -1,7 +1,7 @@
 import React from "react";
 import NavbarComponent from "../components/NavbarComponent";
-import Avatar from "../components/avatar";
-import ImageGalleryComponent from "../components/imageGalleryComponent";
+import AvatarOthers from "../components/avatarOthers";
+import ImageGalleryComponentOthers from "../components/imageGalleryComponentOthers";
 import { Container } from "@material-ui/core";
 
 const galleryContainer = {
@@ -13,14 +13,14 @@ const galleryContainer = {
   WebkitOverflowScrolling: "touch"
 };
 
-class MainPage extends React.Component {
+class MainPageOthers extends React.Component {
   render() {
     return (
       <div>
-        <Avatar></Avatar>
+        <AvatarOthers></AvatarOthers>
 
         <Container maxWidth="sm" style={galleryContainer}>
-          <ImageGalleryComponent></ImageGalleryComponent>
+          <ImageGalleryComponentOthers></ImageGalleryComponentOthers>
         </Container>
 
         <NavbarComponent></NavbarComponent>
@@ -29,4 +29,4 @@ class MainPage extends React.Component {
   }
 }
 
-export default MainPage;
+export default MainPageOthers;

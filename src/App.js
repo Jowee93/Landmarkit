@@ -20,7 +20,7 @@ import SearchPage from "./pages/searchPage";
 import GoogleMap from "./components/googleMapComponent";
 import Location from "./components/Location";
 import TransitionTest from "./components/transitionTest";
-import LoadingPage from "./components/LoadingPage"
+import LoadingPage from "./components/LoadingPage";
 
 class App extends React.Component {
   state = {
@@ -106,16 +106,17 @@ class App extends React.Component {
           />
           <Route
             path="/main"
+            exact
             component={props => {
               return <MainPage {...props} />;
             }}
           />
-          <Route
-            path=":id/main"
+          {/* <Route
+            path="/main/:id"
             component={props => {
               return <MainPageOthers {...props} />;
             }}
-          />
+          /> */}
           <Route
             path="/myprofile"
             component={props => {

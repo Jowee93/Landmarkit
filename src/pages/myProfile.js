@@ -295,6 +295,7 @@ class MyProfile extends React.Component {
                         : { display: "none" }
                     }
                     className="mx-auto mb-3"
+                    type="submit"
                   >
                     SUBMIT CHANGES
                   </Button>
