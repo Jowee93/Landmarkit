@@ -6,6 +6,8 @@ import SignUp from "../components/signUp";
 import SignIn from "../components/signIn";
 import "../components/css/signUp.css"
 import "../pages/css/home.css"
+import "../pages/css/home.css";
+import logo from "../components/logo.png";
 
 class HomePage extends React.Component {
   constructor(props, context) {
@@ -29,10 +31,17 @@ class HomePage extends React.Component {
 
   render() {
     return (
-      <div className="homeSize">
-        <h1>Title</h1>
+      <div id="signinbackground" className="homeSize">
         <br />
-        <img src="#" alt="logo" />
+        <div className="d-flex flex-column align-items-center">
+          <img className="m-3" src={logo} alt="logo" width="130" height="130" />
+          <h1
+            className=""
+            style={{ fontFamily: "sans-serif", fontSize: "15px" }}
+          >
+            Exploring landmarks, one photo at a time
+          </h1>
+        </div>
         <br />
         <Modal
           centered
@@ -45,10 +54,7 @@ class HomePage extends React.Component {
           </ModalBody>
         </Modal>
         <div className="forButton">
-          <button
-            className="buttonShape"
-            onClick={() => this.handleShow("login")}
-          >
+          <button class="btn btn-info" onClick={() => this.handleShow("login")}>
             <span>Log In</span>
           </button>
         </div>
@@ -64,7 +70,7 @@ class HomePage extends React.Component {
         </Modal>
         <div className="forButton">
           <button
-            className="buttonShape"
+            class="btn btn-info"
             onClick={() => this.handleShow("signup")}
           >
             <span>Create Account</span>

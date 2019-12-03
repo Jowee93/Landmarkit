@@ -20,6 +20,7 @@ import SearchPage from "./pages/searchPage";
 import GoogleMap from "./components/googleMapComponent";
 import Location from "./components/Location";
 import TransitionTest from "./components/transitionTest";
+import LoadingPage from "./components/LoadingPage"
 
 class App extends React.Component {
   state = {
@@ -143,6 +144,12 @@ class App extends React.Component {
             path="/searchlocation"
             component={props => {
               return <Location {...props} />;
+            }}
+          />
+          <Route
+            path="/loading"
+            component={props => {
+              return <LoadingPage {...props} />;
             }}
           />
         </div>

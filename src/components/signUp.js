@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -9,8 +9,9 @@ import Typography from "@material-ui/core/Typography";
 import "../components/css/signUp.css";
 import Container from "@material-ui/core/Container";
 import axios from "axios";
+import logo from "../components/logo.png";
 
-class SignUp extends Component {
+class SignUp extends React.Component {
   state = {
     username: "",
     email: "",
@@ -71,15 +72,15 @@ class SignUp extends Component {
 
   render() {
     return (
-      <div>
+      <body>
         <Container component="main" maxWidth="xs">
           <CssBaseline />
           <div className="paper">
             <br />
-            <Avatar className="avatar">
-              <Icon className="iconRoot">
-                <img className="imageIcon" src="#" alt="imageIcon" />
-              </Icon>
+            <Avatar className="avatar" src={logo}>
+              {/* <Icon className="iconRoot">
+                <img className="imageIcon" src={logo} alt="imageIcon" />
+              </Icon> */}
             </Avatar>
             <Typography component="h1" variant="h5">
               Sign Up
@@ -200,7 +201,7 @@ class SignUp extends Component {
             <br />
           </div>
         </Container>
-      </div>
+      </body>
     );
   }
 }

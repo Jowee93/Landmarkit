@@ -3,6 +3,7 @@ import NavbarComponent from "../components/NavbarComponent";
 import Avatar from "../components/avatar";
 import ImageGalleryComponent from "../components/imageGalleryComponent";
 import { Container } from "@material-ui/core";
+// import Loader from "../components/LoadingPage"
 
 const galleryContainer = {
   padding: "0",

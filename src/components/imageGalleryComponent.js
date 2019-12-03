@@ -6,11 +6,15 @@ import { photos } from "./photos";
 import axios from "axios";
 import $ from "jquery";
 import "../components/css/imageGallery.css";
+//loader
+import Loader from "../components/LoadingPage";
 
 export default function ImageGalleryComponent() {
   const [currentImage, setCurrentImage] = useState(0);
   const [viewerIsOpen, setViewerIsOpen] = useState(false);
   const [images, setImages] = useState([]);
+  //loader
+  const [isLoading, setIsLoading] = useState(true);
 
   const history = useHistory();
 
@@ -48,14 +52,23 @@ export default function ImageGalleryComponent() {
       .then(response => {
         console.log("Get User Images axios called:");
         console.log(response.data[0].src);
+        console.log(response.data);
+        console.log("hello");
         setImages(response.data);
+        //loader
+        setIsLoading(false);
       })
       .catch(error => {
         console.log(error.response);
+        setIsLoading(false);
       });
     console.log(images);
   }, []);
 
+  ///loader
+  if (isLoading) {
+    return <Loader />;
+  }
   return (
     <div>
       {/* <img src={images[1].src}></img> */}
