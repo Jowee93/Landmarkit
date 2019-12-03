@@ -17,5 +17,5 @@
 } */
 
 .modal-backdrop.show {
-  z-index: none;
+  z-index: 2;
 }
