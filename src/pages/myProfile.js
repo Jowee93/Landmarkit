@@ -17,7 +17,7 @@ import Zoom from "@material-ui/core/Zoom";
 import Fade from "@material-ui/core/Fade";
 import Grow from "@material-ui/core/Grow";
 import Loader from "../components/LoadingPage";
-
+import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 const profilePicStyle = {
   borderRadius: "50%",
   width: "30vw",
@@ -46,8 +46,13 @@ class MyProfile extends React.Component {
     andchorEl: null,
     transition: false,
     // isLoading: true
+    openModal: false
   };
-
+  toggle = () => {
+    this.setState({
+      openModal: !this.state.openModal
+    });
+  };
   // API to retrieve user details from database
   componentDidMount() {
     let JWT = localStorage.getItem("userToken");
@@ -64,8 +69,8 @@ class MyProfile extends React.Component {
           username: result.data.username,
           email: result.data.email,
           description: result.data.description,
-          currentImage: result.data.profileImage
-          profileImage: result.data.profileImage,
+          currentImage: result.data.profileImage,
+          profileImage: result.data.profileImage
           // isLoading: false
         });
       })
@@ -187,13 +192,19 @@ class MyProfile extends React.Component {
                 marginBottom: "-5vh"
               }}
             >
-              <Col className="d-flex justify-content-between m-3">
-                <span>
-                  0 <br /> FOLLOWERS
-                </span>
-                <span>
-                  0 <br /> FOLLOWING
-                </span>
+              <Col className="d-flex justify-content-between mx-3 mt-4 align-items-start">
+                <IconButton onClick={this.linkToSearch}>
+                  <PersonAddIcon />
+                </IconButton>
+                <Button
+                  aria-controls="simple-menu"
+                  aria-haspopup="true"
+                  onClick={this.handleClick}
+                >
+                  <IconButton>
+                    <SettingsIcon />
+                  </IconButton>
+                </Button>
               </Col>
             </Row>
           </Container>
@@ -204,29 +215,23 @@ class MyProfile extends React.Component {
           >
             <Row>
               <Col className="shadow" style={bodyStyle}>
-                <Row className="d-flex justify-content-between align-items-center ml-3 mr-3 mb-3">
-                  <IconButton onClick={this.linkToSearch}>
-                    <PersonAddIcon />
-                  </IconButton>
-
-                  <div>
+                <Row className="d-flex justify-content-center align-items-center ml-3 mr-3 mb-3">
+                  <div className="w-100">
                     <img
+                      className="mx-auto"
                       style={profilePicStyle}
                       src={this.state.currentImage}
                       alt="profileImage"
+                      onClick={this.toggle}
                     ></img>
-                    <p>@{this.state.username}</p>
-                    <p>"{this.state.description}"</p>
+                    <p style={{ wordBreak: "break-all" }}>
+                      @{this.state.username}
+                    </p>
+                    <p style={{ wordBreak: "break-all" }}>
+                      "{this.state.description}"
+                    </p>
                   </div>
-                  <Button
-                    aria-controls="simple-menu"
-                    aria-haspopup="true"
-                    onClick={this.handleClick}
-                  >
-                    <IconButton>
-                      <SettingsIcon />
-                    </IconButton>
-                  </Button>
+
                   <Menu
                     id="simple-menu"
                     anchorEl={this.state.anchorEl}
@@ -275,19 +280,21 @@ class MyProfile extends React.Component {
                     multiline
                   />
 
-                  <div className="">
-                    <button
+                  <div className="d-flex">
+                    <Button
+                      variant="outlined"
+                      color="primary"
                       style={
                         this.state.editmode
                           ? { display: "block" }
                           : { display: "none" }
                       }
-                      className="btn btn-outline-info mx-auto mb-3"
+                      className="mx-auto mb-3"
                     >
                       SUBMIT CHANGES
-                    </button>
+                    </Button>
                     <Button
-                      className="d-block mx-auto"
+                      className="mx-auto mb-3"
                       onClick={this.edit}
                       variant="outlined"
                       color="secondary"
@@ -296,19 +303,42 @@ class MyProfile extends React.Component {
                     </Button>
                   </div>
                 </form>
-                <form onSubmit={this.handleProfileImage}>
-                  <input
-                    type="file"
-                    name="profileImage"
-                    onChange={this.handleUpload}
-                  ></input>
-                  <button type="submit">upload profile image</button>
-                </form>
               </Col>
             </Row>
           </Container>
 
           <NavbarComponent></NavbarComponent>
+          <Modal isOpen={this.state.openModal} toggle={this.toggle}>
+            <ModalHeader toggle={this.toggle}>Upload Profile Image</ModalHeader>
+            <ModalBody>
+              <form onSubmit={this.handleProfileImage}>
+                <div className="custom-file my-3">
+                  <input
+                    type="file"
+                    name="profileImage"
+                    className="custom-file-input"
+                    // style={{ backgroundColor: "coral", border: "none",outline:"none" }}
+                    onChange={this.handleUpload}
+                  />
+                  <label className="custom-file-label">Choose File</label>
+                </div>
+                <Button
+                  color="primary"
+                  variant="outlined"
+                  onClick={this.handleProfileImage}
+                >
+                  Upload
+                </Button>{" "}
+                <Button
+                  color="secondary"
+                  variant="outlined"
+                  onClick={this.toggle}
+                >
+                  Cancel
+                </Button>
+              </form>
+            </ModalBody>
+          </Modal>
         </div>
       </Fade>
     );

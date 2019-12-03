@@ -5,7 +5,7 @@ class LoadingPage extends React.Component {
   render() {
     return (
       <div>
-        <img src={Logo} alt="loader" />
+        <img src={Logo} alt="loader" className="mx-auto" />
       </div>
     );
   }

@@ -34,9 +34,12 @@ class HomePage extends React.Component {
       <div id="signinbackground" className="homeSize">
         <br />
         <div className="d-flex flex-column align-items-center">
-          <img className="m-3" src={logo} alt="logo" width="150" height="150" />
-          <h1 className="" style={{ fontFamily: "rancho", fontSize: "20px" }}>
-            Shazam for building
+          <img className="m-3" src={logo} alt="logo" width="130" height="130" />
+          <h1
+            className=""
+            style={{ fontFamily: "sans-serif", fontSize: "15px" }}
+          >
+            Exploring landmarks, one photo at a time
           </h1>
         </div>
         <br />

@@ -14,9 +14,7 @@ export default function ImageGalleryComponent() {
   const [viewerIsOpen, setViewerIsOpen] = useState(false);
   const [images, setImages] = useState([]);
   //loader
-  const [isLoading, setIsLoading] = useState({
-    bool: true  
-  });
+  const [isLoading, setIsLoading] = useState(true);
 
   const history = useHistory();
 
@@ -58,17 +56,17 @@ export default function ImageGalleryComponent() {
         console.log("hello");
         setImages(response.data);
         //loader
-        setIsLoading({ bool: false });
+        setIsLoading(false);
       })
       .catch(error => {
         console.log(error.response);
+        setIsLoading(false);
       });
     console.log(images);
   }, []);
 
   ///loader
-  if (isLoading.bool) {
-    console.log("hello")
+  if (isLoading) {
     return <Loader />;
   }
   return (
