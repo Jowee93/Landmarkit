@@ -128,7 +128,7 @@ export default function SearchPage(props) {
           Search
         </button>
       </div>
-      <Card className="m-3 shadow">
+      {/* <Card className="m-3 shadow">
         <List className={classes.root}>
           <ListItem alignItems="flex-start">
             <ListItemAvatar>
@@ -151,7 +151,7 @@ export default function SearchPage(props) {
             ></ListItemText>
           </ListItem>
         </List>
-      </Card>
+      </Card> */}
 
       {userResult.map((user, index) => (
         <Card className="m-3 shadow">
