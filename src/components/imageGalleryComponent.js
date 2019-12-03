@@ -47,16 +47,18 @@ export default function ImageGalleryComponent() {
     })
       .then(response => {
         console.log("Get User Images axios called:");
-        console.log(response.data);
+        console.log(response.data[0].src);
         setImages(response.data);
       })
       .catch(error => {
         console.log(error.response);
       });
+    console.log(images);
   }, []);
 
   return (
     <div>
+      {/* <img src={images[1].src}></img> */}
       <Gallery photos={images} onClick={openLightbox} />
       {/* <ModalGateway>
         {viewerIsOpen ? (

@@ -229,7 +229,7 @@ export default function PhotoBottomNav(props) {
         </ModalHeader>
         <ModalBody>
           <h4>Places Nearby</h4>
-          <GoogleMapComponent></GoogleMapComponent>
+          <GoogleMapComponent position={props.image}></GoogleMapComponent>
         </ModalBody>
         <ModalFooter>
           <Button variant="secondary" onClick={handleClose}>

@@ -10,6 +10,7 @@ import { Route, withRouter } from "react-router-dom";
 import LandingPage from "./pages/landingPage";
 import PhotoPage from "./pages/photoPage";
 import MainPage from "./pages/mainPage";
+import MainPageOthers from "./pages/mainPageOthers";
 import MyProfile from "./pages/myProfile";
 import Notification from "./components/inboxPage";
 import SignUp from "./components/signUp";
@@ -106,6 +107,12 @@ class App extends React.Component {
             path="/main"
             component={props => {
               return <MainPage {...props} />;
+            }}
+          />
+          <Route
+            path=":id/main"
+            component={props => {
+              return <MainPageOthers {...props} />;
             }}
           />
           <Route

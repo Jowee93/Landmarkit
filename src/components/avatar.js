@@ -35,7 +35,7 @@ export default function UserPic() {
   }, []);
 
   return (
-    <div className="d-flex justify-content-end p-3">
+    <div className="d-flex justify-content-start p-3">
       <Avatar
         component={Link}
         to="/myprofile"
