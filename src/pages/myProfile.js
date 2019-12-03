@@ -182,169 +182,166 @@ class MyProfile extends React.Component {
     //   return <Loader />;
     // }
     return (
-      <Fade in={this.state.transition}>
-        <div>
-          <Container id="follower_following_wrapper">
-            <Row
-              style={{
-                background: "turquoise",
-                height: "20vh",
-                marginBottom: "-5vh"
-              }}
-            >
-              <Col className="d-flex justify-content-between mx-3 mt-4 align-items-start">
-                <IconButton onClick={this.linkToSearch}>
-                  <PersonAddIcon />
+      // <Fade in={this.state.transition}>
+      <div>
+        <Container id="follower_following_wrapper">
+          <Row
+            style={{
+              background: "turquoise",
+              height: "20vh",
+              marginBottom: "-5vh"
+            }}
+          >
+            <Col className="d-flex justify-content-between mx-3 mt-4 align-items-start">
+              <IconButton onClick={this.linkToSearch}>
+                <PersonAddIcon />
+              </IconButton>
+              <Button
+                aria-controls="simple-menu"
+                aria-haspopup="true"
+                onClick={this.handleClick}
+              >
+                <IconButton>
+                  <SettingsIcon />
                 </IconButton>
-                <Button
-                  aria-controls="simple-menu"
-                  aria-haspopup="true"
-                  onClick={this.handleClick}
-                >
-                  <IconButton>
-                    <SettingsIcon />
-                  </IconButton>
-                </Button>
-              </Col>
-            </Row>
-          </Container>
+              </Button>
+            </Col>
+          </Row>
+        </Container>
 
-          <Container
-            id="addperson_profilePic_settings_wrapper"
-            style={{ position: "relative", bottom: "3vh", zIndex: "10" }}
-          >
-            <Row>
-              <Col className="shadow" style={bodyStyle}>
-                <Row className="d-flex justify-content-center align-items-center ml-3 mr-3 mb-3">
-                  <div className="w-100">
-                    <img
-                      className="mx-auto"
-                      style={profilePicStyle}
-                      src={this.state.currentImage}
-                      alt="profileImage"
-                      onClick={this.toggle}
-                    ></img>
-                    <p style={{ wordBreak: "break-all" }}>
-                      @{this.state.username}
-                    </p>
-                    <p style={{ wordBreak: "break-all" }}>
-                      "{this.state.description}"
-                    </p>
-                  </div>
-
-                  <Menu
-                    id="simple-menu"
-                    anchorEl={this.state.anchorEl}
-                    keepMounted
-                    open={Boolean(this.state.anchorEl)}
-                    onClose={this.handleClose}
-                  >
-                    <MenuItem onClick={this.handleLogOut}>Logout</MenuItem>
-                  </Menu>
-                </Row>
-                <form
-                  onSubmit={this.handleSubmit}
-                  className="d-flex flex-column"
-                >
-                  <TextField
-                    disabled={this.state.editmode ? false : true}
-                    name="username"
-                    className="m-3"
-                    label="Username"
-                    variant="outlined"
-                    color="secondary"
-                    value={this.state.username}
-                    onChange={this.handleChange}
-                  ></TextField>
-                  <TextField
-                    disabled={this.state.editmode ? false : true}
-                    name="email"
-                    className="m-3"
-                    label="Email"
-                    variant="outlined"
-                    color="secondary"
-                    value={this.state.email}
-                    onChange={this.handleChange}
-                  ></TextField>
-                  <TextField
-                    disabled={this.state.editmode ? false : true}
-                    name="description"
-                    className="m-3"
-                    id="outlined-multiline-static"
-                    label="Biography"
-                    rowmax="4"
-                    variant="outlined"
-                    color="secondary"
-                    value={this.state.description}
-                    onChange={this.handleChange}
-                    multiline
-                  />
-
-                  <div className="d-flex">
-                    <Button
-                      variant="outlined"
-                      color="primary"
-                      style={
-                        this.state.editmode
-                          ? { display: "block" }
-                          : { display: "none" }
-                      }
-                      className="mx-auto mb-3"
-                    >
-                      SUBMIT CHANGES
-                    </Button>
-                    <Button
-                      className="mx-auto mb-3"
-                      onClick={this.edit}
-                      variant="outlined"
-                      color="secondary"
-                    >
-                      {this.state.editmode ? "Cancel" : "Edit Profile"}
-                    </Button>
-                  </div>
-                </form>
-              </Col>
-            </Row>
-          </Container>
-
-          <NavbarComponent></NavbarComponent>
-          <Modal
-            isOpen={this.state.openModal}
-            toggle={this.toggle}
-            style={{ zIndex: "99999!important" }}
-            zIndex="9999999"
-          >
-            <ModalHeader toggle={this.toggle}>Upload Profile Image</ModalHeader>
-            <ModalBody>
-              <form onSubmit={this.handleProfileImage}>
-                <div className="custom-file my-3">
-                  <input
-                    type="file"
-                    name="profileImage"
-                    className="custom-file-input"
-                    onChange={this.handleUpload}
-                  />
-                  <label className="custom-file-label">Choose File</label>
+        <Container
+          id="addperson_profilePic_settings_wrapper"
+          style={{ position: "relative", bottom: "3vh", zIndex: "10" }}
+        >
+          <Row>
+            <Col className="shadow" style={bodyStyle}>
+              <Row className="d-flex justify-content-center align-items-center ml-3 mr-3 mb-3">
+                <div className="w-100">
+                  <img
+                    className="mx-auto"
+                    style={profilePicStyle}
+                    src={this.state.currentImage}
+                    alt="profileImage"
+                    onClick={this.toggle}
+                  ></img>
+                  <p style={{ wordBreak: "break-all" }}>
+                    @{this.state.username}
+                  </p>
+                  <p style={{ wordBreak: "break-all" }}>
+                    "{this.state.description}"
+                  </p>
                 </div>
-                <Button
-                  color="primary"
-                  variant="outlined"
-                  onClick={this.handleProfileImage}
+
+                <Menu
+                  id="simple-menu"
+                  anchorEl={this.state.anchorEl}
+                  keepMounted
+                  open={Boolean(this.state.anchorEl)}
+                  onClose={this.handleClose}
                 >
-                  Upload
-                </Button>{" "}
-                <Button
+                  <MenuItem onClick={this.handleLogOut}>Logout</MenuItem>
+                </Menu>
+              </Row>
+              <form onSubmit={this.handleSubmit} className="d-flex flex-column">
+                <TextField
+                  disabled={this.state.editmode ? false : true}
+                  name="username"
+                  className="m-3"
+                  label="Username"
+                  variant="outlined"
                   color="secondary"
+                  value={this.state.username}
+                  onChange={this.handleChange}
+                ></TextField>
+                <TextField
+                  disabled={this.state.editmode ? false : true}
+                  name="email"
+                  className="m-3"
+                  label="Email"
                   variant="outlined"
-                  onClick={this.toggle}
-                >
-                  Cancel
-                </Button>
+                  color="secondary"
+                  value={this.state.email}
+                  onChange={this.handleChange}
+                ></TextField>
+                <TextField
+                  disabled={this.state.editmode ? false : true}
+                  name="description"
+                  className="m-3"
+                  id="outlined-multiline-static"
+                  label="Biography"
+                  rowmax="4"
+                  variant="outlined"
+                  color="secondary"
+                  value={this.state.description}
+                  onChange={this.handleChange}
+                  multiline
+                />
+
+                <div className="d-flex">
+                  <Button
+                    variant="outlined"
+                    color="primary"
+                    style={
+                      this.state.editmode
+                        ? { display: "block" }
+                        : { display: "none" }
+                    }
+                    className="mx-auto mb-3"
+                  >
+                    SUBMIT CHANGES
+                  </Button>
+                  <Button
+                    className="mx-auto mb-3"
+                    onClick={this.edit}
+                    variant="outlined"
+                    color="secondary"
+                  >
+                    {this.state.editmode ? "Cancel" : "Edit Profile"}
+                  </Button>
+                </div>
               </form>
-            </ModalBody>
-          </Modal>
-        </div>
-      </Fade>
+            </Col>
+          </Row>
+        </Container>
+
+        <NavbarComponent></NavbarComponent>
+        <Modal
+          isOpen={this.state.openModal}
+          toggle={this.toggle}
+          style={{ zIndex: "99999!important" }}
+          zIndex="9999999"
+        >
+          <ModalHeader toggle={this.toggle}>Upload Profile Image</ModalHeader>
+          <ModalBody>
+            <form onSubmit={this.handleProfileImage}>
+              <div className="custom-file my-3">
+                <input
+                  type="file"
+                  name="profileImage"
+                  className="custom-file-input"
+                  onChange={this.handleUpload}
+                />
+                <label className="custom-file-label">Choose File</label>
+              </div>
+              <Button
+                color="primary"
+                variant="outlined"
+                onClick={this.handleProfileImage}
+              >
+                Upload
+              </Button>{" "}
+              <Button
+                color="secondary"
+                variant="outlined"
+                onClick={this.toggle}
+              >
+                Cancel
+              </Button>
+            </form>
+          </ModalBody>
+        </Modal>
+      </div>
+      // </Fade>
     );
   }
 }
