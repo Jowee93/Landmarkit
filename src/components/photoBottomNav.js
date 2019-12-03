@@ -42,13 +42,14 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const buttonStyle = {
-  margin: 0,
-  top: "auto",
+  // margin: 0,
+  // top: "auto",
   right: 20,
   bottom: 20,
-  left: "auto",
+  // left: "auto",
   position: "fixed",
-  opacity: "0.6"
+  opacity: "0.6",
+  zIndex: "50"
 };
 
 export default function PhotoBottomNav(props) {
