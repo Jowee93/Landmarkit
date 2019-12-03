@@ -1,7 +1,7 @@
 import React from "react";
 import { Map, GoogleApiWrapper, InfoWindow, Marker } from "google-maps-react";
 import { Container, Row, Col } from "reactstrap";
-import axios from 'axios';
+import axios from "axios";
 import "../components/css/googleMap.css";
 
 // const markers = {
@@ -71,6 +71,7 @@ class GoogleMapComponent extends React.Component {
       .then(Response => {
         // console.log(Response.data.Response.groups[0].items)
         console.log("data", Response.data);
+        console.log("data", Response.data.response.groups[0].items);
         this.setState({
           places: Response.data.response.groups[0].items
         });
@@ -93,10 +94,10 @@ class GoogleMapComponent extends React.Component {
       // .then(response => {
       //   console.log("infos", response.data.response.groups[0].items[0].reasons)
       // })
+    console.log(this.props.position);
   }
 
   render() {
-    
     return (
       <>
       <Container className="d-flex justify-content-center">
@@ -113,18 +114,19 @@ class GoogleMapComponent extends React.Component {
             style={mapStyles}
             initialCenter={{ lat:3.1461, lng:101.6255}}
           >
-            {
-              this.state.places.map((place, index) => {
-                return(
-                  <Marker
-                    key={index}
-                    onClick={this.onMarkerClick}
-                    position={{lat: place.venue.location.lat , lng: place.venue.location.lng}}
-                    name={place.venue.name}
-                  />
-                )
-              })
-            }
+            {this.state.places.map((place, index) => {
+              return (
+                <Marker
+                  key={index}
+                  onClick={this.onMarkerClick}
+                  position={{
+                    lat: place.venue.location.lat,
+                    lng: place.venue.location.lng
+                  }}
+                  name={place.venue.name}
+                />
+              );
+            })}
 
             <InfoWindow
               marker={this.state.activeMarker}
@@ -132,11 +134,14 @@ class GoogleMapComponent extends React.Component {
               onClose={this.onClose}
             >
               <div>
-                <h4>{this.state.selectedPlace && this.state.selectedPlace.name}</h4>
+                <h4>
+                  {this.state.selectedPlace && this.state.selectedPlace.name}
+                </h4>
               </div>
             </InfoWindow>
           </Map>
           {/* <div style={{position: 'absolute', top: '100%'}}>
+          <div style={{ position: "absolute", top: "100%" }}>
             {this.state.activeMarker && this.state.activeMarker.name}
           </div> */}
           </div>
