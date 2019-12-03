@@ -20,7 +20,10 @@ class PhotoComponent extends React.Component {
     return (
       <>
         <Picture style={photoStyle} src={this.props.image.url}></Picture>;
-        <p style={{ color: "white" }} className="mt-3">
+        <p
+          style={{ color: "white", fontFamily: "Farsan", fontSize: "125%" }}
+          className="mt-3"
+        >
           {this.props.image.name}
         </p>
       </>
