@@ -308,7 +308,11 @@ class MyProfile extends React.Component {
           </Container>
 
           <NavbarComponent></NavbarComponent>
-          <Modal isOpen={this.state.openModal} toggle={this.toggle}>
+          <Modal
+            isOpen={this.state.openModal}
+            toggle={this.toggle}
+            style={{ zIndex: 1040 }}
+          >
             <ModalHeader toggle={this.toggle}>Upload Profile Image</ModalHeader>
             <ModalBody>
               <form onSubmit={this.handleProfileImage}>
@@ -317,7 +321,6 @@ class MyProfile extends React.Component {
                     type="file"
                     name="profileImage"
                     className="custom-file-input"
-                    // style={{ backgroundColor: "coral", border: "none",outline:"none" }}
                     onChange={this.handleUpload}
                   />
                   <label className="custom-file-label">Choose File</label>
