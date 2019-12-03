@@ -60,7 +60,7 @@ class GoogleMapComponent extends React.Component {
       radius: 5000,
       client_secret: process.env.REACT_APP_FOURSQUARE_CLIENT_SECRET,
       client_id: process.env.REACT_APP_FOURSQUARE_CLIENT_ID,
-      v: "20191202"
+      v: "20191203"
     };
 
     axios
@@ -74,6 +74,13 @@ class GoogleMapComponent extends React.Component {
         this.setState({
           places: Response.data.response.groups[0].items
         });
+        console.log(
+          "data",
+          Response.data.response.groups[0].items[0].venue.categories[0].icon
+            .prefix +
+            Response.data.response.groups[0].items[0].venue.categories[0].icon
+              .suffix 
+        );
       })
       .catch(error => {
         console.log("ERROR! " + error);
@@ -135,21 +142,39 @@ class GoogleMapComponent extends React.Component {
           </div>
           </Container>
 
-          {this.state.places.map(place => (
-            <div 
-            // style={{display : this.state.activeMarker.name == place.venue.name ? "" : "hidden"}}
-            >
-                
-                  
-                 {/* {this.state.activeMarker} */}
-                  
-              <h1>
-                {place.venue.location.formattedAddress}
-                <img href={place.venue.categories.icon.prefix} />
-                
-                </h1>
-            </div>
-          ))}
+          {this.state.places.map(place => {
+            if(this.state.activeMarker && (place.venue.name === this.state.activeMarker.name)){
+              return (
+                <div
+                  // style={{display : this.state.activeMarker.name == place.venue.name ? "" : "hidden"}}
+                  className="card"
+                >
+                  <div className="container">
+                    <h4>{place.venue.name}</h4>
+                    {/* <img
+                        src={
+                          place.venue.categories[0].icon.prefix +
+                          88 +
+                          place.venue.categories[0].icon.suffix
+                        }
+                      /> */}
+                    <span>
+                      {place.venue.location.address}{" "}
+                      {place.venue.location.crossStreet},{" "}
+                      {place.venue.location.postalCode},{" "}
+                      {place.venue.location.city}{" "}
+                      {place.venue.location.street}{" "}
+                      {place.venue.location.country}{" "}
+                    </span>
+                    <div className="innerContainer">
+                      {place.venue.categories[0].pluralName}
+                    </div>
+                  </div>
+                </div>
+              );
+
+            }
+          })}
       </>
     );
   }
