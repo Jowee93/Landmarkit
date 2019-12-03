@@ -45,7 +45,7 @@ const buttonStyle = {
   margin: 0,
   top: "auto",
   right: 20,
-  bottom: 20,
+  bottom: 110,
   left: "auto",
   position: "fixed"
 };

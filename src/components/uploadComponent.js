@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import IconButton from "@material-ui/core/IconButton";
@@ -23,8 +23,12 @@ export default function UploadButtons() {
   const classes = useStyles();
   const [currentImage, setCurrentImage] = React.useState("");
   const [description, setDescription] = React.useState("");
-  // const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   const history = useHistory();
+
+  useEffect(() => {
+    setIsLoading(false);
+  }, []);
 
   const handleSubmit = async e => {
     // setIsLoading(true);

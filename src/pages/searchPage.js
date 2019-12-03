@@ -16,14 +16,14 @@ import ListItem from "@material-ui/core/ListItem";
 import Divider from "@material-ui/core/Divider";
 import ListItemText from "@material-ui/core/ListItemText";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
-// import Avatar from "@material-ui/core/Avatar";
+import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
 import Superman from "../components/superman.png";
 import Joana from "../components/yq.jpg";
 import { Card } from "reactstrap";
 import axios from "axios";
 import Loader from "../components/LoadingPage";
-import Avatar from "../components/avatar";
+import AvatarC from "../components/avatar";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -107,7 +107,7 @@ export default function SearchPage(props) {
   if (isLoading) {
     return (
       <>
-        <Avatar></Avatar>
+        <AvatarC></AvatarC>
         <Loader />
         <NavbarComponent></NavbarComponent>
       </>
