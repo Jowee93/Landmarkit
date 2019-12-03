@@ -311,7 +311,8 @@ class MyProfile extends React.Component {
           <Modal
             isOpen={this.state.openModal}
             toggle={this.toggle}
-            style={{ zIndex: 1040 }}
+            style={{ zIndex: "99999!important" }}
+            zIndex="9999999"
           >
             <ModalHeader toggle={this.toggle}>Upload Profile Image</ModalHeader>
             <ModalBody>
