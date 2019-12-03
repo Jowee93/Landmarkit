@@ -2,9 +2,11 @@ import React from "react";
 import PhotoComponent from "../components/photoComponent";
 import { Container } from "reactstrap";
 import PhotoBottomNav from "../components/photoBottomNav";
-import NavBarComponent from "../components/NavbarComponent";
+import NavbarComponent from "../components/NavbarComponent";
 import TopBackNav from "../components/topBackNav";
 import axios from "axios";
+import Avatar from "../components/avatar";
+import Loader from "../components/LoadingPage";
 
 const containerStyle = {
   height: "100%",
@@ -19,7 +21,8 @@ class PhotoPage extends React.Component {
     // currentImage: this.props.location.state.currentImage,
     // description: this.props.location.state.description
     image_id: this.props.match.params.id,
-    image: ""
+    image: "",
+    isLoading: false
   };
 
   async componentDidMount() {
@@ -31,12 +34,22 @@ class PhotoPage extends React.Component {
       console.log(response.data);
 
       this.setState({
-        image: response.data
+        image: response.data,
+        isLoading: false
       });
     });
   }
 
   render() {
+    if (this.state.isLoading) {
+      return (
+        <>
+          <Avatar></Avatar>
+          <Loader />
+          <NavbarComponent></NavbarComponent>
+        </>
+      );
+    }
     return (
       <div>
         <TopBackNav></TopBackNav>
@@ -54,7 +67,7 @@ class PhotoPage extends React.Component {
           ></PhotoBottomNav>
         </div>
 
-        <NavBarComponent />
+        <NavbarComponent />
       </div>
     );
   }

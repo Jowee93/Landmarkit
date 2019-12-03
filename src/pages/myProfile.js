@@ -20,6 +20,8 @@ import Loader from "../components/LoadingPage";
 import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import SearchIcon from "@material-ui/icons/Search";
 import ImageSearchIcon from "@material-ui/icons/ImageSearch";
+import Avatar from "../components/avatar";
+import EditIcon from "@material-ui/icons/Edit";
 
 const profilePicStyle = {
   borderRadius: "50%",
@@ -49,7 +51,7 @@ class MyProfile extends React.Component {
     editmode: false,
     andchorEl: null,
     transition: false,
-    // isLoading: true
+    isLoading: true,
     openModal: false
   };
   toggle = () => {
@@ -74,8 +76,8 @@ class MyProfile extends React.Component {
           email: result.data.email,
           description: result.data.description,
           currentImage: result.data.profileImage,
-          profileImage: result.data.profileImage
-          // isLoading: false
+          profileImage: result.data.profileImage,
+          isLoading: false
         });
       })
       .catch(error => {
@@ -182,9 +184,15 @@ class MyProfile extends React.Component {
   };
 
   render() {
-    // if (this.state.isLoading) {
-    //   return <Loader />;
-    // }
+    if (this.state.isLoading) {
+      return (
+        <>
+          <Avatar></Avatar>
+          <Loader />
+          <NavbarComponent></NavbarComponent>
+        </>
+      );
+    }
     return (
       // <Fade in={this.state.transition}>
       <div>
@@ -221,13 +229,27 @@ class MyProfile extends React.Component {
             <Col style={bodyStyle}>
               <Row className="d-flex justify-content-center align-items-center ml-3 mr-3 mb-3">
                 <div className="w-100">
-                  <img
-                    className="mx-auto"
-                    style={profilePicStyle}
-                    src={this.state.currentImage}
-                    alt="profileImage"
-                    onClick={this.toggle}
-                  ></img>
+                  <div style={{ position: "relative" }}>
+                    <img
+                      id="profilepic"
+                      className="mx-auto"
+                      style={profilePicStyle}
+                      src={this.state.currentImage}
+                      alt="profileImage"
+                      // onClick={this.toggle}
+                    />
+                    <IconButton
+                      color="primary"
+                      onClick={this.toggle}
+                      style={{
+                        position: "absolute",
+                        bottom: "25px",
+                        right: "28%"
+                      }}
+                    >
+                      <EditIcon />
+                    </IconButton>
+                  </div>
                   <p style={{ wordBreak: "break-all" }}>
                     @{this.state.username}
                   </p>

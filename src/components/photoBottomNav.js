@@ -244,7 +244,7 @@ export default function PhotoBottomNav(props) {
       >
         {fullList("bottom")}
       </Drawer>
-      <Modal show={show} onHide={handleClose}>
+      <Modal style={{ zIndex: "50" }} show={show} onHide={handleClose}>
         <ModalHeader closeButton>
           <ModalTitle style={{ fontFamily: "Josefin Sans" }}>
             Places Nearby !

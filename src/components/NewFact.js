@@ -12,7 +12,7 @@ const useStyles = makeStyles(theme => ({
     display: "block"
   },
   textField: {
-    width: "100%"
+  width: "100%"
   }
 }));
 

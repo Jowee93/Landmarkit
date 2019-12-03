@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import IconButton from "@material-ui/core/IconButton";
 import PhotoCamera from "@material-ui/icons/PhotoCamera";
+import Loader from "../components/LoadingPage";
+import Avatar from "../components/avatar";
 import axios from "axios";
+import NavbarComponent from "../components/NavbarComponent";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -20,9 +23,11 @@ export default function UploadButtons() {
   const classes = useStyles();
   const [currentImage, setCurrentImage] = React.useState("");
   const [description, setDescription] = React.useState("");
+  // const [isLoading, setIsLoading] = useState(true);
   const history = useHistory();
 
   const handleSubmit = async e => {
+    // setIsLoading(true);
     setCurrentImage(URL.createObjectURL(e.target.files[0]));
 
     e.preventDefault();
@@ -45,6 +50,7 @@ export default function UploadButtons() {
       .then(response => {
         console.log(response.data[0]);
         setDescription(response.data[0].description);
+        // setIsLoading(false);
         if (response) {
           history.push({
             pathname: `/photo/${response.data[0].id}`
@@ -59,9 +65,19 @@ export default function UploadButtons() {
       })
       .catch(error => {
         console.log(error.response);
+        // setIsLoading(false);
       });
   };
 
+  // if (isLoading) {
+  //   return (
+  //     <>
+  //       <Avatar></Avatar>
+  //       <Loader />
+  //       <NavbarComponent></NavbarComponent>
+  //     </>
+  //   );
+  // }
   return (
     <div className={classes.root}>
       <input
