@@ -47,7 +47,8 @@ const buttonStyle = {
   right: 20,
   bottom: 20,
   left: "auto",
-  position: "fixed"
+  position: "fixed",
+  opacity: "0.6"
 };
 
 export default function PhotoBottomNav(props) {
@@ -149,7 +150,10 @@ export default function PhotoBottomNav(props) {
           </div>
         </div>
 
-        <Fab
+        <button className="btn btn-info" style={buttonStyle} onClick={addFact}>
+          + Add New Fact
+        </button>
+        {/* <Fab
           id="FactButton"
           style={buttonStyle}
           className={classes.fab}
@@ -159,7 +163,7 @@ export default function PhotoBottomNav(props) {
           onClick={addFact}
         >
           <AddIcon />
-        </Fab>
+        </Fab> */}
 
         {facts.map((fact, index) => (
           <div className="row">
