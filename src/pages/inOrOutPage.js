@@ -74,7 +74,7 @@ class HomePage extends React.Component {
           show={this.state.show === "login"}
           onHide={this.handleClose}
         >
-          <ModalHeader closeButton />
+          <ModalHeader style={{ backgroundColor: "#9ff5ec" }} closeButton />
           <ModalBody className="body">
             <SignIn childProps={this.props} />
           </ModalBody>
@@ -84,7 +84,7 @@ class HomePage extends React.Component {
           show={this.state.show == "signup"}
           onHide={this.handleClose}
         >
-          <ModalHeader closeButton />
+          <ModalHeader style={{ backgroundColor: "#9ff5ec" }} closeButton />
           <ModalBody className="body">
             <SignUp />
           </ModalBody>
