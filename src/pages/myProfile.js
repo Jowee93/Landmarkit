@@ -29,8 +29,8 @@ const profilePicStyle = {
   bottom: "10px",
   position: "relative",
   bottom: "5vh",
-  display: "block",
-  height: "15vh"
+  display: "block"
+  // height: "15vh"
 };
 
 const bodyStyle = {
