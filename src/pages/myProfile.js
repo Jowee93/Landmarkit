@@ -291,7 +291,8 @@ class MyProfile extends React.Component {
                   label="Email"
                   variant="outlined"
                   color="secondary"
-                  value={this.state.email}
+                  placeholder="(Leave blank to keep existing email)"
+                  // value={this.state.email}
                   onChange={this.handleChange}
                 ></TextField>
                 <TextField
@@ -303,7 +304,8 @@ class MyProfile extends React.Component {
                   rowmax="4"
                   variant="outlined"
                   color="secondary"
-                  value={this.state.description}
+                  placeholder="(Leave blank to keep existing biography)"
+                  // value={this.state.description}
                   onChange={this.handleChange}
                   multiline
                 />
