@@ -29,8 +29,8 @@ const profilePicStyle = {
   bottom: "10px",
   position: "relative",
   bottom: "5vh",
-  display: "block"
-  // height: "75vh"
+  display: "block",
+  height: "15vh"
 };
 
 const bodyStyle = {
@@ -280,8 +280,8 @@ class MyProfile extends React.Component {
                   label="Username"
                   variant="outlined"
                   color="secondary"
-                  // placeholder="(Leave blank to keep existing username)"
-                  value={this.state.username}
+                  placeholder="(Leave blank to keep existing username)"
+                  // value={this.state.username}
                   onChange={this.handleChange}
                 ></TextField>
                 <TextField
