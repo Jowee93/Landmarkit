@@ -252,7 +252,7 @@ export default function PhotoBottomNav(props) {
       <Modal style={{ zIndex: "50" }} show={show} onHide={handleClose}>
         <ModalHeader closeButton>
           <ModalTitle style={{ fontFamily: "Josefin Sans" }}>
-            Places Nearby !
+            Attractions Nearby !
           </ModalTitle>
         </ModalHeader>
         <ModalBody>

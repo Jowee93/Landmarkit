@@ -71,47 +71,48 @@ class GoogleMapComponent extends React.Component {
       .then(Response => {
         // console.log(Response.data.Response.groups[0].items)
         console.log("data", Response.data);
-        this.setState ({
+        this.setState({
           places: Response.data.response.groups[0].items
-        })
-          // const photoParameters = {
-          //   limit: 5,
-          //   client_secret: process.env.REACT_APP_FOURSQUARE_CLIENT_SECRET,
-          //   client_id: process.env.REACT_APP_FOURSQUARE_CLIENT_ID,
-          //   v: "20191203"
-          // };
-          // let photos = [];
-          // for (let i = 0; i < places.length; i++) {
-          //   axios
-          //     .get(
-          //       `https://api.foursquare.com/v2/venues/${places[i].venue.id}/photos?` +
-          //         new URLSearchParams(photoParameters)
-          //     )
-          //     .then(response => {
-          //       console.log("photos", response.data);
-          //       photos.push(response.data.response.photos.items[0]);
-          //       this.setState({
-          //         places: places,
-          //         photos: photos
-          //       });
-          //     })
-          //     .catch(error => {
-          //       console.log("ERROR" + error);
-          //     });
-          // }
+        });
+        // const photoParameters = {
+        //   limit: 5,
+        //   client_secret: process.env.REACT_APP_FOURSQUARE_CLIENT_SECRET,
+        //   client_id: process.env.REACT_APP_FOURSQUARE_CLIENT_ID,
+        //   v: "20191203"
+        // };
+        // let photos = [];
+        // for (let i = 0; i < places.length; i++) {
+        //   axios
+        //     .get(
+        //       `https://api.foursquare.com/v2/venues/${places[i].venue.id}/photos?` +
+        //         new URLSearchParams(photoParameters)
+        //     )
+        //     .then(response => {
+        //       console.log("photos", response.data);
+        //       photos.push(response.data.response.photos.items[0]);
+        //       this.setState({
+        //         places: places,
+        //         photos: photos
+        //       });
+        //     })
+        //     .catch(error => {
+        //       console.log("ERROR" + error);
+        //     });
+        // }
       })
       .catch(error => {
         console.log("ERROR! " + error);
       });
-      
   }
-  
 
   render() {
-    console.log(this.state.photos)
+    console.log(this.state.photos);
     return (
       <>
-        <Container style={{padding: 0}} className="d-flex justify-content-center">
+        <Container
+          style={{ padding: 0 }}
+          className="d-flex justify-content-center"
+        >
           <div
             style={{
               position: "relative",
@@ -218,5 +219,5 @@ class GoogleMapComponent extends React.Component {
 }
 
 export default GoogleApiWrapper({
-  // apiKey: (process.env.REACT_APP_GOOGLE_MAP_API)
+  apiKey: process.env.REACT_APP_GOOGLE_MAP_API
 })(GoogleMapComponent);
