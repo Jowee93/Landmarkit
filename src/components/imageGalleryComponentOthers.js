@@ -9,9 +9,6 @@ import "../components/css/imageGallery.css";
 //loader
 import Loader from "../components/LoadingPage";
 
-
-
-
 export default function ImageGalleryComponent() {
   const [currentImage, setCurrentImage] = useState(0);
   const [viewerIsOpen, setViewerIsOpen] = useState(false);
@@ -49,7 +46,7 @@ export default function ImageGalleryComponent() {
     let JWT = localStorage.getItem("userToken");
     axios({
       method: "GET",
-      url: "https://lamppost.herokuapp.com/api/v1/images/me",
+      url: `https://lamppost.herokuapp.com/api/v1/images/user/${this.props.match.params.id}`,
       headers: { Authorization: `Bearer ${JWT}` }
     })
       .then(response => {

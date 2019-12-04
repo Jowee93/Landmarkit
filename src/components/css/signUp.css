@@ -29,12 +29,6 @@
 */
 
 .body {
-  background: -webkit-linear-gradient(-45deg, #499cea44 60%, #798eea 40%);
-  background: -o-linear-gradient(-45deg, #499cea44 60%, #798eea 40%);
-  background: -ms-linear-gradient(-45deg, #499cea44 60%, #798eea 40%);
-  background: -webkit-linear-gradient(315deg, #499cea44 60%, #798eea 40%);
-  background: -o-linear-gradient(315deg, #499cea44 60%, #798eea 40%);
-  background: linear-gradient(70deg, #499cea44 60%, #798eea 40%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#499CEA44', endColorstr='#798EEA', GradientType=1 );
+  background-image: linear-gradient(118.4deg, #9ff5ec, #e5e5be);
   z-index: 1;
 }

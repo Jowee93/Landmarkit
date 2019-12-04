@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import NavbarComponent from "../components/NavbarComponent";
 import { MDBCol } from "mdbreact";
@@ -22,6 +22,8 @@ import Superman from "../components/superman.png";
 import Joana from "../components/yq.jpg";
 import { Card } from "reactstrap";
 import axios from "axios";
+import Loader from "../components/LoadingPage";
+import AvatarC from "../components/avatar";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -36,14 +38,16 @@ const useStyles = makeStyles(theme => ({
 
 export default function SearchPage(props) {
   const classes = useStyles();
-  const [searchInput, setSearchInput] = useState(""); 
+  const [searchInput, setSearchInput] = useState("");
   const [category, setCategory] = useState("");
   const [userResult, setUserResult] = useState([]);
   const [locationResult, setLocationResult] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const history = useHistory();
 
   const handleSubmit = () => {
+    setIsLoading(true);
     if (category == "User") {
       let searchstring = searchInput;
       let formData = new FormData();
@@ -58,9 +62,11 @@ export default function SearchPage(props) {
           console.log("Search User axios is called:");
           console.log(response.data);
           setUserResult(response.data);
+          setIsLoading(false);
         })
         .catch(error => {
           console.log(error.response);
+          setIsLoading(false);
         });
     } else {
       let placename = searchInput;
@@ -77,6 +83,7 @@ export default function SearchPage(props) {
           console.log("Search location axios is called:");
           console.log(response.data);
           setLocationResult(placename);
+          setIsLoading(false);
           history.push({
             pathname: "/searchlocation",
             state: {
@@ -86,10 +93,26 @@ export default function SearchPage(props) {
         })
         .catch(error => {
           console.log(error.response);
+          setIsLoading(false);
         });
     }
   };
+
+  useEffect(() => {
+    setIsLoading(false);
+  }, []);
+
   // console.log(category);
+
+  if (isLoading) {
+    return (
+      <>
+        <AvatarC></AvatarC>
+        <Loader />
+        <NavbarComponent></NavbarComponent>
+      </>
+    );
+  }
   return (
     <div>
       <div className="m-3">
@@ -128,7 +151,7 @@ export default function SearchPage(props) {
           Search
         </button>
       </div>
-      <Card className="m-3 shadow">
+      {/* <Card className="m-3 shadow">
         <List className={classes.root}>
           <ListItem alignItems="flex-start">
             <ListItemAvatar>
@@ -151,7 +174,7 @@ export default function SearchPage(props) {
             ></ListItemText>
           </ListItem>
         </List>
-      </Card>
+      </Card> */}
 
       {userResult.map((user, index) => (
         <Card className="m-3 shadow">

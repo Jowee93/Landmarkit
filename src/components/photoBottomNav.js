@@ -30,7 +30,8 @@ const useStyles = makeStyles(theme => ({
   fab: {
     position: "absolute",
     bottom: theme.spacing(2),
-    right: theme.spacing(2)
+    right: theme.spacing(2),
+    opacity: "0.7"
   },
   button: {
     margin: theme.spacing(1)
@@ -41,12 +42,14 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const buttonStyle = {
-  margin: 0,
-  top: "auto",
+  // margin: 0,
+  // top: "auto",
   right: 20,
   bottom: 20,
-  left: "auto",
-  position: "fixed"
+  // left: "auto",
+  position: "fixed",
+  opacity: "0.6",
+  zIndex: "50"
 };
 
 export default function PhotoBottomNav(props) {
@@ -110,12 +113,14 @@ export default function PhotoBottomNav(props) {
     >
       <Container style={{ height: "35vh" }}>
         <h1
+          className="m-3"
           style={{
             position: "absolute",
             display: "block",
             Index: "10",
             backgroundColor: "white",
-            width: "100%"
+            width: "100%",
+            fontFamily: "Josefin Sans, sans-serif"
           }}
         >
           Did you know ?
@@ -126,8 +131,18 @@ export default function PhotoBottomNav(props) {
           <div className="col-sm-6">
             <div className="card mb-3">
               <div className="card-body">
-                <h5 className="card-title">General Information</h5>
-                <p className="card-text">{props.image.description}</p>
+                <h5
+                  style={{ fontFamily: "Josefin Sans, sans-serif" }}
+                  className="card-title"
+                >
+                  General Information
+                </h5>
+                <p
+                  style={{ fontFamily: "Josefin Sans, sans-serif" }}
+                  className="card-text"
+                >
+                  {props.image.description}
+                </p>
                 {/* <a href="/" className="btn btn-primary">
                   Go somewhere
                 </a> */}
@@ -136,13 +151,33 @@ export default function PhotoBottomNav(props) {
           </div>
         </div>
 
+        <button className="btn btn-info" style={buttonStyle} onClick={addFact}>
+          + Add New Fact
+        </button>
+        {/* <Fab
+          id="FactButton"
+          style={buttonStyle}
+          className={classes.fab}
+          color="primary"
+          aria-label="add"
+          label="Add new facts"
+          onClick={addFact}
+        >
+          <AddIcon />
+        </Fab> */}
+
         {facts.map((fact, index) => (
           <div className="row">
             <div className="col-sm-6">
               <div className="card mb-3">
                 <div className="card-body">
                   <h5 className="card-title">{fact.title}</h5>
-                  <p className="card-text">{fact.text}</p>
+                  <p
+                    className="card-text"
+                    style={{ fontFamily: "Josefin Sans, sans-serif" }}
+                  >
+                    {fact.text}
+                  </p>
                   <span className="float-right">
                     <small>{fact.username}</small>
                   </span>
@@ -152,7 +187,7 @@ export default function PhotoBottomNav(props) {
           </div>
         ))}
 
-        <Button
+        {/* <Button
           variant="contained"
           color="secondary"
           className={classes.button}
@@ -161,16 +196,7 @@ export default function PhotoBottomNav(props) {
           onClick={addFact}
         >
           New fact
-        </Button>
-        {/* <Fab
-          style={buttonStyle}
-          className={classes.fab}
-          color="primary"
-          aria-label="add"
-          label="Add new facts"
-        >
-          <AddIcon />
-        </Fab> */}
+        </Button> */}
       </Container>
     </div>
   );
@@ -203,11 +229,11 @@ export default function PhotoBottomNav(props) {
           icon={<InfoTwoToneIcon />}
           className={classes.icon}
         />
-        <BottomNavigationAction
+        {/* <BottomNavigationAction
           label="Post"
           icon={<PostAddIcon />}
           className={classes.icon}
-        />
+        /> */}
         <BottomNavigationAction
           onClick={handleShow}
           label="Nearby"
@@ -223,12 +249,13 @@ export default function PhotoBottomNav(props) {
       >
         {fullList("bottom")}
       </Drawer>
-      <Modal show={show} onHide={handleClose}>
+      <Modal style={{ zIndex: "50" }} show={show} onHide={handleClose}>
         <ModalHeader closeButton>
-          <ModalTitle>Google Maps !</ModalTitle>
+          <ModalTitle style={{ fontFamily: "Josefin Sans" }}>
+            Places Nearby !
+          </ModalTitle>
         </ModalHeader>
         <ModalBody>
-          <h4>Places Nearby</h4>
           <GoogleMapComponent position={props.image}></GoogleMapComponent>
         </ModalBody>
         <ModalFooter>

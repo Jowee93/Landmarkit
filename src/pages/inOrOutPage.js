@@ -4,10 +4,11 @@ import ModalBody from "react-bootstrap/ModalBody";
 import ModalHeader from "react-bootstrap/ModalHeader";
 import SignUp from "../components/signUp";
 import SignIn from "../components/signIn";
-import "../components/css/signUp.css"
-import "../pages/css/home.css"
+import "../components/css/signUp.css";
+import "../pages/css/home.css";
 import "../pages/css/home.css";
 import logo from "../components/logo.png";
+import logo123 from "../components/logo123.png";
 
 class HomePage extends React.Component {
   constructor(props, context) {
@@ -33,13 +34,38 @@ class HomePage extends React.Component {
     return (
       <div id="signinbackground" className="homeSize">
         <br />
-        <div className="d-flex flex-column align-items-center">
-          <img className="m-3" src={logo} alt="logo" width="130" height="130" />
+        <div className="d-flex flex-column align-items-center mb-5">
+          <img className="" src={logo} alt="logo" width="130" height="130" />
           <h1
             className=""
-            style={{ fontFamily: "sans-serif", fontSize: "15px" }}
+            style={{
+              fontFamily: "Rancho, cursive",
+              fontSize: "18px",
+              fontWeight: "bold",
+              paddingRight: "35px"
+            }}
           >
-            Exploring landmarks, one photo at a time
+            Exploring landmarks,
+          </h1>
+          <h1
+            className=""
+            style={{
+              fontFamily: "Rancho, cursive",
+              fontSize: "18px",
+              fontWeight: "bold",
+              paddingLeft: "25px"
+            }}
+          >
+            {/* <img
+              style={{
+                display: "inline",
+                height: "7%",
+                width: "7%",
+                paddingBottom: "10px"
+              }}
+              src={logo123}
+            ></img> */}
+            One photo at a time
           </h1>
         </div>
         <br />
@@ -53,11 +79,6 @@ class HomePage extends React.Component {
             <SignIn childProps={this.props} />
           </ModalBody>
         </Modal>
-        <div className="forButton">
-          <button class="btn btn-info" onClick={() => this.handleShow("login")}>
-            <span>Log In</span>
-          </button>
-        </div>
         <Modal
           centered
           show={this.state.show == "signup"}
@@ -68,13 +89,23 @@ class HomePage extends React.Component {
             <SignUp />
           </ModalBody>
         </Modal>
-        <div className="forButton">
-          <button
-            class="btn btn-info"
-            onClick={() => this.handleShow("signup")}
-          >
-            <span>Create Account</span>
-          </button>
+        <div>
+          <div className="forButton m-3">
+            <button
+              class="btn btn-info"
+              onClick={() => this.handleShow("login")}
+            >
+              <span>Log In</span>
+            </button>
+          </div>
+          <div className="forButton">
+            <button
+              class="btn btn-info"
+              onClick={() => this.handleShow("signup")}
+            >
+              <span>Create Account</span>
+            </button>
+          </div>
         </div>
       </div>
     );

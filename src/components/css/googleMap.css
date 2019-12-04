@@ -1,7 +1,7 @@
-.information {
-    background: yellow;
-    height: 50vh;
-    margin: auto;
+/* .information {
+  background: yellow;
+  height: 50vh;
+  margin: auto;
 }
 
 .newcard {
@@ -13,7 +13,7 @@
     padding: 0;
     margin: 0;
     /* width: 300px; */
-}
+/* } */
 
 .newcard:hover {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
