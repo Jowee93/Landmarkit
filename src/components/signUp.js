@@ -72,7 +72,7 @@ class SignUp extends React.Component {
 
   render() {
     return (
-      <body>
+      <div>
         <Container component="main" maxWidth="xs">
           <CssBaseline />
           <div className="paper">
@@ -102,8 +102,8 @@ class SignUp extends React.Component {
                     type="text"
                     style={
                       this.state.usernameValid
-                        ? { border: "1px solid red" }
-                        : { border: "1px solid green" }
+                        ? { border: "1px red" }
+                        : { border: "1px white" }
                     }
                   />
                   <p
@@ -131,11 +131,11 @@ class SignUp extends React.Component {
                     type="email"
                     style={
                       (this.state.emailValid
-                        ? { border: "1px solid red" }
-                        : { border: "1px solid green" },
+                        ? { border: "1px red" }
+                        : { border: "1px white" },
                       this.state.uniqueEmail
-                        ? { border: "1px solid red" }
-                        : { border: "1px solid green" })
+                        ? { border: "1px red" }
+                        : { border: "1px white" })
                     }
                   />
                   <p
@@ -163,8 +163,8 @@ class SignUp extends React.Component {
                     onChange={this.handleChange}
                     style={
                       this.state.passwordValid
-                        ? { border: "1px solid red" }
-                        : { border: "1px solid green" }
+                        ? { border: "1px red" }
+                        : { border: "1px white" }
                     }
                   />
                   <p
@@ -192,7 +192,7 @@ class SignUp extends React.Component {
             <br />
           </div>
         </Container>
-      </body>
+      </div>
     );
   }
 }
