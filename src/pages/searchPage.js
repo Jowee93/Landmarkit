@@ -117,7 +117,7 @@ export default function SearchPage(props) {
       <div className="m-3">
         <InputGroup>
           <FormControl
-            placeholder="Search"
+            placeholder="Click search to discover"
             aria-label="Search"
             aria-describedby="basic-addon2"
             value={searchInput}
