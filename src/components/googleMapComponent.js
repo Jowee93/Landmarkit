@@ -32,7 +32,7 @@ class GoogleMapComponent extends React.Component {
     activeMarker: undefined, //Shows the active marker upon click
     selectedPlace: undefined, //Shows the infoWindow to the selected place upon a marker
     places: [],
-    info: []
+    photos: []
   };
 
   onMarkerClick = (props, marker, e) =>
@@ -52,11 +52,11 @@ class GoogleMapComponent extends React.Component {
   };
 
   componentDidMount() {
-    const parameters = {
+    const locationParameters = {
       section: "outdoors",
       // near: "Penang",
       ll: this.props.position.latitude + "," + this.props.position.longitude,
-      limit: 3,
+      limit: 10,
       radius: 5000,
       client_secret: process.env.REACT_APP_FOURSQUARE_CLIENT_SECRET,
       client_id: process.env.REACT_APP_FOURSQUARE_CLIENT_ID,
@@ -66,41 +66,52 @@ class GoogleMapComponent extends React.Component {
     axios
       .get(
         `https://api.foursquare.com/v2/venues/explore?` +
-          new URLSearchParams(parameters)
+          new URLSearchParams(locationParameters)
       )
       .then(Response => {
         // console.log(Response.data.Response.groups[0].items)
         console.log("data", Response.data);
-        console.log("data", Response.data.response.groups[0].items);
-        this.setState({
+        this.setState ({
           places: Response.data.response.groups[0].items
-        });
-        console.log(
-          "data",
-          Response.data.response.groups[0].items[0].venue.categories[0].icon
-            .prefix +
-            Response.data.response.groups[0].items[0].venue.categories[0].icon
-              .suffix
-        );
+        })
+          // const photoParameters = {
+          //   limit: 5,
+          //   client_secret: process.env.REACT_APP_FOURSQUARE_CLIENT_SECRET,
+          //   client_id: process.env.REACT_APP_FOURSQUARE_CLIENT_ID,
+          //   v: "20191203"
+          // };
+          // let photos = [];
+          // for (let i = 0; i < places.length; i++) {
+          //   axios
+          //     .get(
+          //       `https://api.foursquare.com/v2/venues/${places[i].venue.id}/photos?` +
+          //         new URLSearchParams(photoParameters)
+          //     )
+          //     .then(response => {
+          //       console.log("photos", response.data);
+          //       photos.push(response.data.response.photos.items[0]);
+          //       this.setState({
+          //         places: places,
+          //         photos: photos
+          //       });
+          //     })
+          //     .catch(error => {
+          //       console.log("ERROR" + error);
+          //     });
+          // }
       })
       .catch(error => {
         console.log("ERROR! " + error);
       });
-
-    // axios.post(
-    //   `https://api.foursquare.com/v2/venues/explore?` +
-    //     new URLSearchParams(parameters)
-    // )
-    // .then(response => {
-    //   console.log("infos", response.data.response.groups[0].items[0].reasons)
-    // })
-    console.log(this.props.position.latitude);
+      
   }
+  
 
   render() {
+    console.log(this.state.photos)
     return (
       <>
-        <Container className="d-flex justify-content-center">
+        <Container style={{padding: 0}} className="d-flex justify-content-center">
           <div
             style={{
               position: "relative",
@@ -116,6 +127,7 @@ class GoogleMapComponent extends React.Component {
                 lat: this.props.position.latitude,
                 lng: this.props.position.longitude
               }}
+              className="forwidth"
             >
               {this.state.places.map((place, index) => {
                 return (
@@ -158,9 +170,9 @@ class GoogleMapComponent extends React.Component {
             return (
               <div
                 // style={{display : this.state.activeMarker.name == place.venue.name ? "" : "hidden"}}
-                className="card"
+                className="newcard"
               >
-                <div className="container">
+                <div className="mapContainer">
                   <h4>{place.venue.name}</h4>
                   {/* <img
                         src={
@@ -176,6 +188,22 @@ class GoogleMapComponent extends React.Component {
                     {place.venue.location.city} {place.venue.location.street}{" "}
                     {place.venue.location.country}{" "}
                   </span>
+                  {/* <div>
+                    {this.state.photos.map(photo => {
+                      if (
+                        this.state.activeMarker &&
+                        photo.items.id == this.state.activeMarker.name
+                      ) {
+                        return (
+                          <div>
+                            <div>
+
+                            </div>
+                          </div>
+                        )
+                      }
+                    })}
+                  </div> */}
                   <div className="innerContainer">
                     {place.venue.categories[0].pluralName}
                   </div>
