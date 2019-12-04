@@ -280,6 +280,7 @@ class MyProfile extends React.Component {
                   label="Username"
                   variant="outlined"
                   color="secondary"
+                  // placeholder="(Leave blank to keep existing username)"
                   value={this.state.username}
                   onChange={this.handleChange}
                 ></TextField>
